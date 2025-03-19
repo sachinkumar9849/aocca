@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  nextjs-app:
+    image: sajilo-patrika-gadgets
+    restart: always
+    build: .
+    ports:
+      - "3004:3000"
+    environment:
+      - NODE_ENV=production

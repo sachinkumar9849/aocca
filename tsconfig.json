@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "bundler",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true,
+      "plugins": [
+          {
+              "name": "next"
+          }
+      ],
+      "paths": {
+          "@/*": ["./src/*"],
+          "@components/*": ["./src/app/components/*"],
+          "@Types/*": ["./src/app/Types/*"],
+          "@Variables/*": ["./src/app/globalvariables/*"],
+          "@Wrapper/*": ["./src/app/wrapper/*"],
+          "@Hooks/*": ["./src/app/hooks/*"],
+          "@Utils/*": ["./src/app/utils/*"]
+      }
+  },
+  "include": [
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      ".next/types/**/*.ts",
+      "src/app/error.tsx",
+      "src/app/loading.js",
+      "src/app/(pages)/(users)/dashboard/edit/[...id]"
+, "src/app/(pages)/typing-four"  ],
+  "exclude": ["node_modules"]
+}

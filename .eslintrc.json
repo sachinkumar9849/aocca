@@ -1,0 +1,51 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:react/recommended",
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "no-comments",
+    "spellcheck",
+    "unused-imports"
+  ],
+  "rules": {
+     "react/prop-types": "off",
+    "no-comments/disallowComments": [
+      "error",
+      {
+        "allow": ["TODO", "FIXME", "NOTE", "DEBUG"]
+      }
+    ],
+    "react-hooks/exhaustive-deps": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-indent": [
+      "error",
+      4
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["error", "info"]
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "unused-imports/no-unused-imports": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,
+        "tabWidth": 4,
+        "printWidth": 120,
+        "doubleQuote": true,
+        "trailingComma": "all",
+        "endOfLine": "lf"
+      }
+    ]
+   
+  }
+}
