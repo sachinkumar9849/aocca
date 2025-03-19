@@ -11,18 +11,8 @@ const About = () => {
             <Breadcrumbs />
             <div className="padding aboutHome">
                 <div className="mx-auto max-w-7xl">
-                    <div className="grid grid-cols-2 items-center md:gap-10 gap-5">
-                        <div className="col-span-1">
-                            <div className="aboutImgWrap relative">
-                                <div className="about-us-img-box">
-                                    <Image width={300} height={300} src={about2} alt="Example Image" />
-                                </div>
-                                <div className="aboutImgTwo">
-                                    <Image width={300} height={300} src={about1} alt="Example Image" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-span-1">
+                    <div className="grid grid-cols-5 items-center md:gap-10 gap-5">
+                        <div className="col-span-3">
                             <div className="about-us-text-box">
                                 <div className="sec-title mb-0">
                                     <Title title="Academy Of Commerce Chartered Accountant" subTitle="About Us" />
@@ -37,35 +27,13 @@ const About = () => {
                                         Nepal (ICAN), making us a one-stop learning hub for students pursuing CA
                                         qualifications.
                                     </p>
-
-                                    <div className="aboutUlli">
-                                        <div className="aboutDivBlock">
-                                            <img
-                                                src="https://cdn-icons-png.flaticon.com/512/6005/6005592.png"
-                                                className="img-fluid"
-                                                alt=""
-                                            />
-                                            <h2>Corporate Finance</h2>
-                                        </div>
-                                        <div className="aboutDivBlock">
-                                            <img
-                                                src="https://static.thenounproject.com/png/3191169-200.png"
-                                                className="img-fluid"
-                                                alt=""
-                                            />
-                                            <h2>Accountancy</h2>
-                                        </div>
-                                        <div className="aboutDivBlock">
-                                            <img
-                                                src="https://static.vecteezy.com/system/resources/previews/009/588/968/non_2x/graph-analysis-business-growth-transparent-free-png.png"
-                                                className="img-fluid"
-                                                alt=""
-                                            />
-                                            <h2>Auditing</h2>
-                                        </div>
-                                    </div>
-
-                                    <div className="servicesButtom wow fadeInUp text-left"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-span-2">
+                            <div className="aboutImgWrap relative">
+                                <div className="about-us-img-box">
+                                    <Image width={300} height={300} src={about2} alt="Example Image" />
                                 </div>
                             </div>
                         </div>

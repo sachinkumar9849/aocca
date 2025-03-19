@@ -3,7 +3,7 @@ import React from "react";
 const Breadcrumbs = () => {
     return (
         <div
-            className="innerBanner innerBannerTwo bg-img-hero text-center"
+            className="innerBanner innerBannerTwo bg-img-hero text-center relative"
             style={{
                 backgroundImage:
                     "url(https://www.insidehook.com/wp-content/uploads/2023/02/college.jpg?fit=1200%2C800)",

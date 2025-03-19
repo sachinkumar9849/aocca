@@ -1,15 +1,16 @@
 import React from "react";
 import logo from "@/app/assets/images/logo.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
     return (
         <>
             <nav className="headerNav w-full relative z-10 relative border-gray-200 dark:bg-gray-900 dark:border-gray-700">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
-                    <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image className="h-[73px] w-[192px]" src={logo} alt="img" width={100} height={100} />
-                    </a>
+                    </Link>
                     <button
                         data-collapse-toggle="navbar-multi-level"
                         type="button"
