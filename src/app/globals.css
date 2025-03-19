@@ -2115,3 +2115,18 @@ li.post-author a {
     font-size: 14px;
     font-weight: 100;
 }
+.innerBanner {
+    margin-top: -84px;
+    height: 72vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.innerBannerTwo {
+    height: 300px;
+}
+.innerBannerTwo {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
