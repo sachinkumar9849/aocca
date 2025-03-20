@@ -2,10 +2,55 @@ import React from "react";
 import logo from "@/app/assets/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
     return (
         <>
+            <div className="top-header">
+                <div className="mx-auto max-w-7xl">
+                    <div className="grid grid-cols-1">
+                        <div className="col-span-1">
+                            <div className="topHeaderBlock">
+                                <div className="top-header-info">
+                                    <div className="header-contact-info">
+                                        <ul className="flex items-center">
+                                            <li className="flex flex-row items-center">
+                                                <FontAwesomeIcon icon={faLocationDot} width={13} />
+                                                <span> AOC Blue Complex, Ramshah Path, Putalisadak,Kathmandu</span>
+                                            </li>
+                                            <li className="flex flex-row items-center">
+                                                <FontAwesomeIcon icon={faEnvelope} width={13} />
+                                                academyofcommercenepal@gmail.com
+                                            </li>
+                                            <li className="flex flex-row items-center">
+                                                <FontAwesomeIcon icon={faPhone} width={13} />
+                                                +977-01-4240338 , 01-4232067
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div className="socialIconsTop">
+                                    <ul>
+                                        <li>
+                                            <i className="fab fa-facebook" />
+                                        </li>
+                                        <li>
+                                            <i className="fab fa-twitter" />
+                                        </li>
+                                        <li>
+                                            <i className="fab fa-instagram" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <nav className="headerNav w-full relative z-10 relative border-gray-200 dark:bg-gray-900 dark:border-gray-700">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
                     <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -40,7 +85,7 @@ const Header = () => {
                             <li>
                                 <a
                                     href="#"
-                                    className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                                    className="block py-2 px-3 text-white  rounded-sm md:bg-transparent "
                                     aria-current="page"
                                 >
                                     Home
@@ -50,7 +95,7 @@ const Header = () => {
                                 <button
                                     id="dropdownNavbarLink"
                                     data-dropdown-toggle="dropdownNavbar"
-                                    className="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                                    className="text-white flex items-center justify-between w-full py-2 px-3  dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                                 >
                                     Dropdown{" "}
                                     <svg
@@ -81,7 +126,7 @@ const Header = () => {
                                         <li>
                                             <a
                                                 href="#"
-                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                className="text-white block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
                                                 Dashboard
                                             </a>
