@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import about2 from "@/app/assets/img/about02.jpg";
-import about1 from "@/app/assets/img/about01.jpg";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import Title from "@/app/components/comman/Title";
 
