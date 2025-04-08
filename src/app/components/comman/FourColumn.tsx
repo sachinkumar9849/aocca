@@ -1,5 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import corporateFinance from "@/app/assets/img/corporateFinance.jpg";
+import Accountancy from "@/app/assets/img/account-training.jpg";
+import Auditing from "@/app/assets/img/report-audit.webp";
 
 const FourColumn = () => {
     return (
@@ -14,18 +18,14 @@ const FourColumn = () => {
                     >
                         <Link className="hp-hero__cta-item-anchor" href="/">
                             <div className="hp-hero__cta-item-container" data-expand="-42px">
-                                <picture>
-                                    <source
-                                        srcSet="https://extension.harvard.edu/wp-content/uploads/sites/8/2022/07/careers-in-corporate-finance.jpg"
-                                        type="image/webp"
-                                    />
-                                    <img
-                                        loading="lazy"
-                                        className="hp-hero__cta-item-background"
-                                        src="https://extension.harvard.edu/wp-content/uploads/sites/8/2022/07/careers-in-corporate-finance.jpg"
-                                        alt=""
-                                    />
-                                </picture>
+                                <Image
+                                    className="w-full object-cover"
+                                    src={corporateFinance}
+                                    alt="img"
+                                    width={300}
+                                    height={300}
+                                />
+
                                 <div className="hp-hero__cta-item-mask" />
                                 <div className="hp-hero__cta-item-title">Corporate Finance</div>
                                 <div className="hp-hero__cta-item-caption">
@@ -42,18 +42,13 @@ const FourColumn = () => {
                     >
                         <Link className="hp-hero__cta-item-anchor" href={"/"}>
                             <div className="hp-hero__cta-item-container" data-expand="-42px">
-                                <picture>
-                                    <source
-                                        srcSet="https://www.shutterstock.com/image-photo/documents-compliance-report-audit-concept-600nw-2402656563.jpg"
-                                        type="image/webp"
-                                    />
-                                    <img
-                                        loading="lazy"
-                                        className="hp-hero__cta-item-background"
-                                        src="https://www.shutterstock.com/image-photo/documents-compliance-report-audit-concept-600nw-2402656563.jpg"
-                                        alt=""
-                                    />
-                                </picture>
+                                <Image
+                                    className="w-full object-cover"
+                                    src={Auditing}
+                                    alt="img"
+                                    width={300}
+                                    height={300}
+                                />
                                 <div className="hp-hero__cta-item-mask" />
                                 <div className="hp-hero__cta-item-title">Auditing</div>
                                 <div className="hp-hero__cta-item-caption" />
@@ -67,18 +62,13 @@ const FourColumn = () => {
                     >
                         <Link className="hp-hero__cta-item-anchor" href={"/"}>
                             <div className="hp-hero__cta-item-container" data-expand="-42px">
-                                <picture>
-                                    <source
-                                        srcSet="https://www.gtiaindia.org/images/blog/account-training-centre-13-06-2024.jpg"
-                                        type="image/webp"
-                                    />
-                                    <img
-                                        loading="lazy"
-                                        className="hp-hero__cta-item-background"
-                                        src="https://www.gtiaindia.org/images/blog/account-training-centre-13-06-2024.jpg"
-                                        alt=""
-                                    />
-                                </picture>
+                                <Image
+                                    className="w-full object-cover"
+                                    src={Accountancy}
+                                    alt="img"
+                                    width={300}
+                                    height={300}
+                                />
                                 <div className="hp-hero__cta-item-mask" />
                                 <div className="hp-hero__cta-item-title">Accountancy</div>
                                 <div className="hp-hero__cta-item-caption" />
@@ -92,18 +82,13 @@ const FourColumn = () => {
                     >
                         <Link className="hp-hero__cta-item-anchor" href={"/"}>
                             <div className="hp-hero__cta-item-container" data-expand="-42px">
-                                <picture>
-                                    <source
-                                        srcSet="https://www.shutterstock.com/image-photo/documents-compliance-report-audit-concept-600nw-2402656563.jpg"
-                                        type="image/webp"
-                                    />
-                                    <img
-                                        loading="lazy"
-                                        className="hp-hero__cta-item-background"
-                                        src="https://www.shutterstock.com/image-photo/documents-compliance-report-audit-concept-600nw-2402656563.jpg"
-                                        alt=""
-                                    />
-                                </picture>
+                                <Image
+                                    className="w-full object-cover"
+                                    src={Auditing}
+                                    alt="img"
+                                    width={300}
+                                    height={300}
+                                />
                                 <div className="hp-hero__cta-item-mask" />
                                 <div className="hp-hero__cta-item-title">Auditing</div>
                                 <div className="hp-hero__cta-item-caption" />

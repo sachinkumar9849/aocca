@@ -3,7 +3,7 @@ import React from "react";
 const Breadcrumbs = () => {
     return (
         <div
-            className="innerBanner innerBannerTwo bg-img-hero text-center"
+            className="innerBanner innerBannerTwo bg-img-hero text-center relative"
             style={{
                 backgroundImage:
                     "url(https://www.insidehook.com/wp-content/uploads/2023/02/college.jpg?fit=1200%2C800)",
@@ -39,9 +39,9 @@ const Breadcrumbs = () => {
                             >
                                 <path
                                     stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="m1 9 4-4-4-4"
                                 />
                             </svg>
@@ -64,9 +64,9 @@ const Breadcrumbs = () => {
                             >
                                 <path
                                     stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="m1 9 4-4-4-4"
                                 />
                             </svg>
