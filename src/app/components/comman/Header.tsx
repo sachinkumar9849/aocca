@@ -8,7 +8,9 @@ import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-
 
 const Header = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [doubleDropdownOpen, setDoubleDropdownOpen] = useState(false);
+
+    const [dropdownOpent, setDropdownOpent] = useState(false);
+
     const [isSticky, setIsSticky] = useState(false);
     const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -96,15 +98,15 @@ const Header = () => {
                     </Link>
 
                     <div className="hidden w-full md:block md:w-auto" id="navbar-multi-level">
-                        <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <ul className="flex items-center flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             <li>
-                                <a
-                                    href="#"
-                                    className="block py-2 px-3 rounded-sm md:bg-transparent"
+                                <Link
+                                    href="/"
+                                    className="block py-2 px-2 rounded-sm md:bg-transparent"
                                     aria-current="page"
                                 >
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             <li className="relative">
                                 <button
@@ -113,7 +115,7 @@ const Header = () => {
                                     onMouseEnter={() => setDropdownOpen(true)}
                                     onMouseLeave={() => setDropdownOpen(false)}
                                 >
-                                    Dropdown{" "}
+                                    About Us{" "}
                                     <svg
                                         className="w-2.5 h-2.5 ms-2.5"
                                         aria-hidden="true"
@@ -144,127 +146,147 @@ const Header = () => {
                                         aria-labelledby="dropdownLargeButton"
                                     >
                                         <li>
-                                            <a
-                                                href="#"
+                                            <Link
+                                                href="/about"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                Dashboard
-                                            </a>
+                                                About Aoc
+                                            </Link>
                                         </li>
-                                        <li aria-labelledby="dropdownNavbarLink" className="relative">
-                                            <button
-                                                id="doubleDropdownButton"
-                                                type="button"
-                                                className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                onMouseEnter={() => setDoubleDropdownOpen(true)}
-                                                onMouseLeave={() => setDoubleDropdownOpen(false)}
-                                            >
-                                                Dropdown
-                                                <svg
-                                                    className="w-2.5 h-2.5 ms-2.5"
-                                                    aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 10 6"
-                                                >
-                                                    <path
-                                                        stroke="currentColor"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={2}
-                                                        d="m1 1 4 4 4-4"
-                                                    />
-                                                </svg>
-                                            </button>
-                                            <div
-                                                id="doubleDropdown"
-                                                className={`absolute left-full -top-2 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 ${
-                                                    doubleDropdownOpen ? "block" : "hidden"
-                                                }`}
-                                                onMouseEnter={() => setDoubleDropdownOpen(true)}
-                                                onMouseLeave={() => setDoubleDropdownOpen(false)}
-                                            >
-                                                <ul
-                                                    className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                                    aria-labelledby="doubleDropdownButton"
-                                                >
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                                        >
-                                                            Overview
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                                        >
-                                                            My downloads
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                                        >
-                                                            Billing
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                                        >
-                                                            Rewards
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
+
                                         <li>
-                                            <a
-                                                href="#"
+                                            <Link
+                                                href="/team"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                Earnings
-                                            </a>
+                                                Management Team
+                                            </Link>
                                         </li>
                                     </ul>
-                                    <div className="py-1">
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                        >
-                                            Sign out
-                                        </a>
-                                    </div>
                                 </div>
                             </li>
+
+                            <li className="relative">
+                                <button
+                                    id="dropdownNavbarLink"
+                                    className="flex items-center justify-between w-full py-2 px-3 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                                    onMouseEnter={() => setDropdownOpent(true)}
+                                    onMouseLeave={() => setDropdownOpent(false)}
+                                >
+                                    Ca Courses{" "}
+                                    <svg
+                                        className="w-2.5 h-2.5 ms-2.5"
+                                        aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 10 6"
+                                    >
+                                        <path
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="m1 1 4 4 4-4"
+                                        />
+                                    </svg>
+                                </button>
+
+                                <div
+                                    id="dropdownNavbar"
+                                    className={`absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 ${
+                                        dropdownOpent ? "block" : "hidden"
+                                    }`}
+                                    onMouseEnter={() => setDropdownOpent(true)}
+                                    onMouseLeave={() => setDropdownOpent(false)}
+                                >
+                                    <ul
+                                        className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                        aria-labelledby="dropdownLargeButton"
+                                    >
+                                        <li>
+                                            <Link
+                                                href="/cap-i"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                CAP I
+                                            </Link>
+                                        </li>
+
+                                        <li>
+                                            <Link
+                                                href="/cap-ii"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                CAP II
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/cap-iii"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                CAP III
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/icai"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                ICAI
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/ca-final"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                CA FINAL
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href="/news-list"
                                     className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                                 >
-                                    Services
-                                </a>
+                                    News & Notice
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href="/routine"
                                     className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                                 >
-                                    Pricing
-                                </a>
+                                    Routine
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href="/our-alumni"
+                                    className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                                >
+                                    Our Alumni
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/faqs"
+                                    className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                                >
+                                    Faqs
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/contact"
                                     className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                                 >
                                     Contact
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
