@@ -150,9 +150,6 @@ body {
     font-family: "Inter", serif;
 }
 
-li {
-    list-style: none;
-}
 .roundedBl {
     border-bottom-left-radius: 22px;
     border-top-left-radius: 20px;
@@ -440,7 +437,7 @@ nav.headerNav {
     display: block;
     font-family: var(--font-sans);
     height: 120px;
-    list-style: none;
+
     margin-top: 0;
     min-height: 120px;
     position: relative;
@@ -2027,7 +2024,7 @@ li.breadcrumb-item a {
     background-size: cover;
 }
 .widget ul {
-    list-style: none;
+    /* list-style: none; */
     margin-top: 5px;
     padding-left: 0;
 }
@@ -2149,9 +2146,6 @@ header.site-header.header-primary {
 
 .header-contact-info ul {
     font-size: 0px;
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
 }
 
 .header-contact-info ul li {
@@ -2368,4 +2362,64 @@ section.class_home::before {
 }
 .testimonialPadding {
     padding-bottom: 76px;
+}
+section.sectionCustomCss ul {
+    margin: 15px 0 !important;
+}
+
+section.sectionCustomCss ol,
+section.sectionCustomCss ul,
+section.sectionCustomCss menu {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+}
+
+section.sectionCustomCss pre,
+section.sectionCustomCss code {
+    font-family: revert;
+    font-size: revert;
+}
+section.sectionCustomCss a {
+    color: revert;
+    text-decoration: revert;
+}
+
+section.sectionCustomCss button,
+section.sectionCustomCss input,
+optgroup,
+select,
+textarea {
+    font-family: revert;
+    font-size: revert;
+    line-height: revert;
+    margin: revert;
+}
+
+section.sectionCustomCss table {
+    border-collapse: revert;
+}
+
+section.sectionCustomCss th {
+    font-weight: revert;
+    text-align: revert;
+}
+
+section.sectionCustomCss p {
+    margin: revert;
+}
+
+section.sectionCustomCss h1,
+section.sectionCustomCss h2,
+section.sectionCustomCss h3,
+section.sectionCustomCss h4,
+section.sectionCustomCss h5,
+section.sectionCustomCss h6 {
+    font-size: revert;
+    font-weight: revert;
+    margin: revert;
+}
+section.sectionCustomCss blockquote {
+    margin: revert;
+    padding: revert;
 }
