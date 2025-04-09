@@ -4,7 +4,7 @@ import Header from "./components/comman/Header";
 import "./globals.css";
 
 export const metadata = {
-    title: "Sajilo Patrika",
+    title: "Academy Of Commerce Chartered Accountant",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
