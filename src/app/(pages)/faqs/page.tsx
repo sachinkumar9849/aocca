@@ -5,7 +5,7 @@ import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 const page = () => {
     return (
         <>
-            <Breadcrumbs />
+            <Breadcrumbs title="Faq" />
             <div className="padding">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="w-1/2 mx-auto">
