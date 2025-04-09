@@ -7,8 +7,8 @@ import Title from "@/app/components/comman/Title";
 const About = () => {
     return (
         <>
-            <Breadcrumbs />
-            <div className="padding aboutHome">
+            <Breadcrumbs title="About Us" />
+            <div className="padding">
                 <div className="mx-auto max-w-7xl">
                     <div className="grid grid-cols-5 items-center md:gap-10 gap-5">
                         <div className="col-span-3">

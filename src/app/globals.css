@@ -2465,3 +2465,9 @@ body {
     scrollbar-width: none;
     scroll-behavior: smooth;
 }
+section.service-section-details.position-relative.bg_gray.pb-5 {
+    padding-bottom: 120px;
+}
+nav#breadCrumbItem {
+    margin-top: 100px;
+}
