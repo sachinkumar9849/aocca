@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import logo from "@/app/assets/images/logo.png";
+import logo from "@/app/assets/img/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -88,7 +88,7 @@ const Header = () => {
             </div>
             <nav
                 ref={navRef}
-                className={`headerNav w-full z-50 border-gray-200 bg-white dark:border-gray-700 ${
+                className={`headerNav w-full z-50 border-gray-200 bg-white dark:border-gray-700 py-[8px] ${
                     isSticky ? "fixed top-0 left-0 shadow-md transition-all duration-300" : "relative"
                 }`}
             >
