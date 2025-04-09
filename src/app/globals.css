@@ -728,9 +728,8 @@ button.owl-prev {
     margin-bottom: 3px;
 }
 .sectionTitle h1 {
-    color: rgb(22, 35, 57);
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 40px !important;
+    font-weight: 700 !important;
     text-transform: none;
     line-height: 50px;
 }
@@ -2340,6 +2339,7 @@ section.class_home::before {
     height: 100%;
     width: 100%;
     top: 0;
+    z-index: -1;
 }
 .hp-hero__cta-item:hover .hp-hero__cta-item-container::after,
 .hp-hero__cta-item:focus-within .hp-hero__cta-item-container::after {
@@ -2422,4 +2422,46 @@ section.sectionCustomCss h6 {
 section.sectionCustomCss blockquote {
     margin: revert;
     padding: revert;
+}
+nav.headerNav {
+    transition: 0.3s ease-in-out;
+
+    border-bottom: 1px solid rgb(14 86 159 / 57%);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.page_link {
+    position: fixed;
+    top: 50%;
+    z-index: 99;
+
+    background: #e62d14;
+    padding: 10px 15px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    left: 0;
+}
+.page_link ul li a {
+    color: #fff;
+    /* font-weight: 700; */
+    padding-bottom: 6px;
+    display: inline-block;
+    text-transform: capitalize;
+    border-bottom: 1px solid #f7fbf1;
+    transition: 0.5s !important;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.page_link ul {
+    margin-left: 6px;
+    z-index: 99;
+}
+.page_link ul {
+    margin-left: 10px !important;
+}
+html,
+body {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
 }

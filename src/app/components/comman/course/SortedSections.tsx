@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-// Define the interface for API response items
 interface SectionData {
     id: number;
     title: string;
@@ -29,7 +28,6 @@ const SortedSections: React.FC = () => {
 
                 const data: SectionData[] = await response.json();
 
-                // Sort the sections based on sort_order
                 const sortedData = [...data].sort((a, b) => a.sort_order - b.sort_order);
 
                 setSections(sortedData);
@@ -43,12 +41,10 @@ const SortedSections: React.FC = () => {
         fetchSections();
     }, []);
 
-    // Function to render HTML content safely
     const renderHTML = (html: string) => {
         return { __html: html };
     };
 
-    // Render section content based on title
     const renderSection = (section: SectionData) => {
         switch (section.title.toLowerCase()) {
             case "course structure":
@@ -79,9 +75,9 @@ const SortedSections: React.FC = () => {
                 return (
                     <div key={section.id} id="registrationDetail">
                         <section className="about-services position-relative bg_pink padding">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-md-12 text-center">
+                            <div className="mx-auto max-w-7xl">
+                                <div className="grid grid-cols-1">
+                                    <div className="col-span-1 text-center">
                                         <div className="sectionTitle">
                                             <p className="wow fadeInUp ml-3 text-white">CAP I</p>
                                             <h1 className="wow fadeInUp text-white">{section.title}</h1>
@@ -131,13 +127,15 @@ const SortedSections: React.FC = () => {
 
             default:
                 return (
-                    <section key={section.id} className="sectionCustomCss padding">
-                        <div className="mx-auto max-w-7xl">
+                    <section key={section.id} className="sectionCustomCss class-section  padding">
+                        <div className="mx-auto max-w-7xl z-20">
                             <div className="grid grid-cols-12 gap-8">
                                 <div className="col-span-4">
                                     <div className="sectionTitle">
                                         <p className="wow fadeInUp ml-3">CAP I</p>
-                                        <h1 className="wow fadeInUp">{section.title}</h1>
+                                        <h1 style={{ padding: "0px", margin: "0px" }} className="wow fadeInUp p-0 m-0">
+                                            {section.title}
+                                        </h1>
                                     </div>
                                 </div>
                                 <div className="col-span-8">
@@ -163,7 +161,39 @@ const SortedSections: React.FC = () => {
         return <div className="text-center p-8 text-red-500">Error: {error}</div>;
     }
 
-    return <>{sections.map((section) => renderSection(section))}</>;
+    return (
+        <>
+            <div className="page_link">
+                <ul>
+                    <li>
+                        <a href="#Requirements" title="Requirements to enroll these courses">
+                            About Course{" "}
+                        </a>
+                    </li>
+                    <li>
+                        {" "}
+                        <a className="text-white" href="#registrationDetail" title="Registration Details">
+                            Registration Eligibility
+                        </a>
+                    </li>
+                    <li>
+                        {" "}
+                        <a href="#Cost" title="Estimated Cost">
+                            Registration Deadlines
+                        </a>
+                    </li>
+                    <li>
+                        {" "}
+                        <a href="#ExaminationsPassingCriteria" title="Examinations & Passing Criteria">
+                            Examinations &amp; Passing Criteria
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            {sections.map((section) => renderSection(section))}
+        </>
+    );
 };
 
 export default SortedSections;
