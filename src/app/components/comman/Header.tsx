@@ -50,8 +50,8 @@ const Header = () => {
                 </div>
             </div>
 
-            <nav className="headerNav w-full relative z-10 relative border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+            <nav className="headerNav w-full z-10 relative border-gray-200 bg-white dark:border-gray-700">
+                <div className=" max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
                     <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image className="h-[73px] w-[192px]" src={logo} alt="img" width={100} height={100} />
                     </Link>
@@ -84,7 +84,7 @@ const Header = () => {
                             <li>
                                 <a
                                     href="#"
-                                    className="block py-2 px-3 text-white  rounded-sm md:bg-transparent "
+                                    className="block py-2 px-3   rounded-sm md:bg-transparent "
                                     aria-current="page"
                                 >
                                     Home
@@ -94,7 +94,7 @@ const Header = () => {
                                 <button
                                     id="dropdownNavbarLink"
                                     data-dropdown-toggle="dropdownNavbar"
-                                    className="text-white flex items-center justify-between w-full py-2 px-3  dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                                    className=" flex items-center justify-between w-full py-2 px-3  dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                                 >
                                     Dropdown{" "}
                                     <svg
