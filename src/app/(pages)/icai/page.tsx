@@ -19,7 +19,7 @@ const SortedSections: React.FC = () => {
         const fetchSections = async () => {
             try {
                 const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=cap-iii&status=published`,
+                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=icai&status=published`,
                 );
 
                 if (!response.ok) {
