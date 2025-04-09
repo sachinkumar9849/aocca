@@ -2471,3 +2471,111 @@ section.service-section-details.position-relative.bg_gray.pb-5 {
 nav#breadCrumbItem {
     margin-top: 100px;
 }
+
+.item {
+    box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-radius: 8px;
+}
+.item .thumb {
+    position: relative;
+    padding: 15px;
+}
+.thumb {
+    display: flex;
+    align-items: center;
+}
+
+.item .thumb img {
+    height: auto;
+    width: 100%;
+    border-radius: 5px;
+    height: 251px;
+    object-fit: cover;
+}
+.item .thumb .date {
+    position: absolute;
+    left: 30px;
+    bottom: -30px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.08);
+    padding: 15px 20px;
+    font-size: 36px;
+    color: #00aeee;
+    font-weight: 600;
+    border-radius: 5px;
+    line-height: 1;
+}
+.item .thumb .date span {
+    display: block;
+    font-size: 14px;
+    color: #232323;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+.info {
+    padding: 30px;
+    padding-top: 41px;
+    overflow: hidden;
+}
+.info .meta {
+    margin-bottom: -8px;
+}
+.info .meta ul {
+    margin-left: 0;
+    list-style: inherit;
+    margin-top: -5px;
+}
+.info .meta ul li {
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+    font-weight: 500;
+    color: #232323;
+    font-size: 13px;
+}
+.info .meta ul li i {
+    font-weight: 500;
+    margin-right: 2px;
+    color: #00aeee;
+}
+
+.info .meta a {
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #00aeee;
+}
+.info h4 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    transform: translateY(1px);
+}
+.textBtn a {
+    color: rgb(92, 102, 114);
+    font-size: 12px;
+    font-weight: 700;
+}
+.contact-info-content {
+    margin-bottom: 50px;
+}
+.contact-info-content .contact-box {
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.contact-info-content .contact-box .box a,
+.contact-info-content .contact-box .box p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 1.5;
+    position: relative;
+    display: block;
+    color: #9b9b9b;
+    font-family: "Barlow", sans-serif;
+}

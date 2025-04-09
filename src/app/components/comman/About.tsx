@@ -23,7 +23,9 @@ const About = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/page/1my-a333wesom111`);
+                const response = await fetch(
+                    `${process.env.NEXT_PUBLIC_URL}/page/academy_of_commerce_chartered_accountant`,
+                );
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);

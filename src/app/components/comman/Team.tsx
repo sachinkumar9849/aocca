@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Title from "./Title";
 
 interface TopperTestimonial {
@@ -89,22 +89,7 @@ const Team = () => {
                                             <div className="m-t10">
                                                 <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
                                                     <li>
-                                                        <FontAwesomeIcon
-                                                            icon={faFacebook}
-                                                            className="max-w-[16] min-w-[16px]"
-                                                        />
-                                                    </li>
-                                                    <li className="mx-2">
-                                                        <FontAwesomeIcon
-                                                            icon={faTwitter}
-                                                            className="max-w-[16] min-w-[16px]"
-                                                        />
-                                                    </li>
-                                                    <li>
-                                                        <FontAwesomeIcon
-                                                            icon={faInstagram}
-                                                            className="max-w-[16] min-w-[16px]"
-                                                        />
+                                                        <FontAwesomeIcon icon={faLinkedin} className="" />
                                                     </li>
                                                 </ul>
                                             </div>
