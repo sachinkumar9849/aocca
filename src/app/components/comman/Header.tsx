@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "@/app/assets/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,9 +7,43 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [doubleDropdownOpen, setDoubleDropdownOpen] = useState(false);
+    const [isSticky, setIsSticky] = useState(false);
+    const [headerHeight, setHeaderHeight] = useState(0);
+
+    const topHeaderRef = useRef<HTMLDivElement>(null);
+    const navRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const measureElements = () => {
+            if (topHeaderRef.current) {
+                setHeaderHeight(topHeaderRef.current.offsetHeight);
+            }
+        };
+
+        measureElements();
+
+        const handleScroll = () => {
+            if (topHeaderRef.current) {
+                const topHeaderHeight = topHeaderRef.current.offsetHeight;
+                setIsSticky(window.scrollY > topHeaderHeight);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", measureElements);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", measureElements);
+        };
+    }, []);
+
     return (
         <>
-            <div className="top-header">
+            <div className="top-header" ref={topHeaderRef}>
+                <p className="hidden">{headerHeight}</p>
                 <div className="mx-auto max-w-7xl">
                     <div className="grid grid-cols-1">
                         <div className="col-span-1">
@@ -49,52 +84,34 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-
-            <nav className="headerNav w-full z-10 relative border-gray-200 bg-white dark:border-gray-700">
-                <div className=" max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
+            <nav
+                ref={navRef}
+                className={`headerNav w-full z-50 border-gray-200 bg-white dark:border-gray-700 ${
+                    isSticky ? "fixed top-0 left-0 shadow-md transition-all duration-300" : "relative"
+                }`}
+            >
+                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
                     <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image className="h-[73px] w-[192px]" src={logo} alt="img" width={100} height={100} />
                     </Link>
-                    <button
-                        data-collapse-toggle="navbar-multi-level"
-                        type="button"
-                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="navbar-multi-level"
-                        aria-expanded="false"
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 17 14"
-                        >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M1 1h15M1 7h15M1 13h15"
-                            />
-                        </svg>
-                    </button>
+
                     <div className="hidden w-full md:block md:w-auto" id="navbar-multi-level">
-                        <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             <li>
                                 <a
                                     href="#"
-                                    className="block py-2 px-3   rounded-sm md:bg-transparent "
+                                    className="block py-2 px-3 rounded-sm md:bg-transparent"
                                     aria-current="page"
                                 >
                                     Home
                                 </a>
                             </li>
-                            <li>
+                            <li className="relative">
                                 <button
                                     id="dropdownNavbarLink"
-                                    data-dropdown-toggle="dropdownNavbar"
-                                    className=" flex items-center justify-between w-full py-2 px-3  dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                                    className="flex items-center justify-between w-full py-2 px-3 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                                    onMouseEnter={() => setDropdownOpen(true)}
+                                    onMouseLeave={() => setDropdownOpen(false)}
                                 >
                                     Dropdown{" "}
                                     <svg
@@ -116,7 +133,11 @@ const Header = () => {
 
                                 <div
                                     id="dropdownNavbar"
-                                    className="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600"
+                                    className={`absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 ${
+                                        dropdownOpen ? "block" : "hidden"
+                                    }`}
+                                    onMouseEnter={() => setDropdownOpen(true)}
+                                    onMouseLeave={() => setDropdownOpen(false)}
                                 >
                                     <ul
                                         className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -125,18 +146,18 @@ const Header = () => {
                                         <li>
                                             <a
                                                 href="#"
-                                                className="text-white block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
                                                 Dashboard
                                             </a>
                                         </li>
-                                        <li aria-labelledby="dropdownNavbarLink">
+                                        <li aria-labelledby="dropdownNavbarLink" className="relative">
                                             <button
                                                 id="doubleDropdownButton"
-                                                data-dropdown-toggle="doubleDropdown"
-                                                data-dropdown-placement="right-start"
                                                 type="button"
                                                 className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                onMouseEnter={() => setDoubleDropdownOpen(true)}
+                                                onMouseLeave={() => setDoubleDropdownOpen(false)}
                                             >
                                                 Dropdown
                                                 <svg
@@ -157,7 +178,11 @@ const Header = () => {
                                             </button>
                                             <div
                                                 id="doubleDropdown"
-                                                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700"
+                                                className={`absolute left-full -top-2 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 ${
+                                                    doubleDropdownOpen ? "block" : "hidden"
+                                                }`}
+                                                onMouseEnter={() => setDoubleDropdownOpen(true)}
+                                                onMouseLeave={() => setDoubleDropdownOpen(false)}
                                             >
                                                 <ul
                                                     className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -245,6 +270,8 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
+
+            {isSticky && <div style={{ height: `${navRef.current?.offsetHeight}px` }} />}
         </>
     );
 };
