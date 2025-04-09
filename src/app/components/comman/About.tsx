@@ -1,9 +1,50 @@
+"use client";
 import Image from "next/image";
-import React from "react";
-import about2 from "@/app/assets/img/about02.jpg";
+import React, { useEffect, useState } from "react";
 import about1 from "@/app/assets/img/about01.jpg";
 
+interface PageData {
+    id: number;
+    title: string;
+    subtitle: string;
+    description: string;
+    image_url: string;
+    slug: string;
+    status: string;
+    created_at: string;
+    updated_at: string;
+}
+
 const About = () => {
+    const [pageData, setPageData] = useState<PageData | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/page/1my-a333wesom111`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                setPageData(data);
+            } catch (err) {
+                setError("Failed to fetch page data. Please try again later.");
+                console.error("Error fetching data:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) return <div className="padding flex justify-center">Loading...</div>;
+    if (error) return <div className="padding text-red-500">{error}</div>;
+    if (!pageData) return <div className="padding">No data available</div>;
     return (
         <div className="padding aboutHome">
             <div className="mx-auto max-w-7xl">
@@ -11,7 +52,7 @@ const About = () => {
                     <div className="col-span-1">
                         <div className="aboutImgWrap relative">
                             <div className="about-us-img-box">
-                                <Image width={300} height={300} src={about2} alt="Example Image" />
+                                <img width={300} height={300} src={pageData.image_url} alt="Example Image" />
                             </div>
                             <div className="aboutImgTwo">
                                 <Image width={300} height={300} src={about1} alt="Example Image" />
@@ -22,19 +63,10 @@ const About = () => {
                         <div className="about-us-text-box">
                             <div className="sec-title mb-0">
                                 <div className="sectionTitle">
-                                    <p className="wow fadeInUp">About Us</p>
-                                    <h1 className="wow fadeInUp">Academy Of Commerce Chartered Accountant </h1>
+                                    <p className="wow fadeInUp">{pageData.subtitle}</p>
+                                    <h1 className="wow fadeInUp">{pageData.title} </h1>
                                 </div>
-                                <p>
-                                    The Academy of Commerce (AOC) is Nepal’s leading institute for Chartered Accountancy
-                                    (CA) education, known for its excellence and commitment to student success. Founded
-                                    and run by highly qualified Chartered Accountants, AOC has been shaping the future
-                                    of aspiring CAs for over 13 years. We are proud to be the only institute in Nepal
-                                    that has continuously conducted CA classNamees under the Institute of Chartered
-                                    Accountants of India (ICAI) since our establishment. We also provide CA classNamees
-                                    under the Institute of Chartered Accountants of Nepal (ICAN), making us a one-stop
-                                    learning hub for students pursuing CA qualifications.
-                                </p>
+                                <p>{pageData.description}</p>
 
                                 <div className="aboutUlli">
                                     <div className="aboutDivBlock">

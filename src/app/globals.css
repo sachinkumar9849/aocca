@@ -2358,3 +2358,11 @@ section.class_home::before {
 .hp-hero__cta-item-container:hover .hp-hero__cta-item-mask {
     background: #231e1e2e;
 }
+
+.blogImg img {
+    width: 100%;
+    object-fit: cover;
+    height: 333px;
+    transform: scale(1);
+    transition: 0.5s;
+}
