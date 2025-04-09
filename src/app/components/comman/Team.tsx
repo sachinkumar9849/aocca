@@ -1,240 +1,122 @@
-import React from "react";
-import team01 from "@/app/assets/img/team01.jpg";
+"use client";
+import React, { useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Title from "./Title";
 
+interface TopperTestimonial {
+    id: string | number;
+    name: string;
+    title: string;
+    slug: string;
+    description: string;
+    image_url: string;
+    linkedin: string;
+    status: string;
+    rating: number;
+    sort_order: number;
+    team_type: string;
+    created_at: string;
+    updated_at: string;
+    seo: {
+        meta_title: string;
+        meta_description: string;
+        meta_keywords: string[];
+    };
+}
+
 const Team = () => {
+    const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchToppers = async () => {
+            try {
+                const response = await fetch(
+                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=team&status=published`,
+                );
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data: ${response.status}`);
+                }
+
+                const data = await response.json();
+                setToppers(data);
+                setLoading(false);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : "An unknown error occurred");
+                setLoading(false);
+            }
+        };
+        fetchToppers();
+    }, []);
+
     return (
         <section className="teamSection padding">
             <div className="mx-auto max-w-7xl">
                 <div className="text-center">
                     <Title title="Expert Academic Team" subTitle="Team" />
                 </div>
-                <Carousel>
-                    <CarouselContent>
-                        <CarouselItem className="basis-1/4">
-                            <div
-                                id="teamMember"
-                                className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                            >
-                                <div className="dez-media vertical-pan dez-img-effect">
-                                    <Image src={team01} alt="team" width="358" height="460" />
-                                </div>
-                                <div className="p-a15 bg-primary text-white dez-team">
-                                    <h4 className="dez-title text-capitalize mb-2">andrea</h4>
-                                    <div className="dez-separator-outer ">
-                                        <div className="dez-separator bg-white style-liner"></div>
+                {loading && <div className="text-center py-8">Loading topper students...</div>}
+
+                {error && <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>}
+
+                {!loading && !error && toppers.length === 0 && (
+                    <div className="text-center py-8">No topper students found</div>
+                )}
+                {!loading && !error && toppers.length > 0 && (
+                    <Carousel>
+                        <CarouselContent>
+                            {toppers?.map((team) => (
+                                <CarouselItem key={team?.id} className="basis-1/4">
+                                    <div
+                                        id="teamMember"
+                                        className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
+                                    >
+                                        <div className="dez-media vertical-pan dez-img-effect">
+                                            <img src={team?.image_url} alt="team" width="358" height="460" />
+                                        </div>
+                                        <div className="p-a15 bg-primary text-white dez-team">
+                                            <h4 className="dez-title text-capitalize mb-2">{team?.name}</h4>
+                                            <div className="dez-separator-outer ">
+                                                <div className="dez-separator bg-white style-liner"></div>
+                                            </div>
+                                            <span className="dez-member-position flex justify-center">
+                                                {team?.title}
+                                            </span>
+                                            <div className="m-t10">
+                                                <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
+                                                    <li>
+                                                        <FontAwesomeIcon
+                                                            icon={faFacebook}
+                                                            className="max-w-[16] min-w-[16px]"
+                                                        />
+                                                    </li>
+                                                    <li className="mx-2">
+                                                        <FontAwesomeIcon
+                                                            icon={faTwitter}
+                                                            className="max-w-[16] min-w-[16px]"
+                                                        />
+                                                    </li>
+                                                    <li>
+                                                        <FontAwesomeIcon
+                                                            icon={faInstagram}
+                                                            className="max-w-[16] min-w-[16px]"
+                                                        />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span className="dez-member-position flex justify-center">Professor</span>
-                                    <div className="m-t10">
-                                        <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faFacebook}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                            <li className="mx-2">
-                                                <FontAwesomeIcon icon={faTwitter} className="max-w-[16] min-w-[16px]" />
-                                            </li>
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faInstagram}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem className="basis-1/4">
-                            <div
-                                id="teamMember"
-                                className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                            >
-                                <div className="dez-media vertical-pan dez-img-effect">
-                                    <Image src={team01} alt="team" width="358" height="460" />
-                                </div>
-                                <div className="p-a15 bg-primary text-white dez-team">
-                                    <h4 className="dez-title text-capitalize mb-2">andrea</h4>
-                                    <div className="dez-separator-outer ">
-                                        <div className="dez-separator bg-white style-liner"></div>
-                                    </div>
-                                    <span className="dez-member-position flex justify-center">Professor</span>
-                                    <div className="m-t10">
-                                        <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faFacebook}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                            <li className="mx-2">
-                                                <FontAwesomeIcon icon={faTwitter} className="max-w-[16] min-w-[16px]" />
-                                            </li>
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faInstagram}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem className="basis-1/4">
-                            <div
-                                id="teamMember"
-                                className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                            >
-                                <div className="dez-media vertical-pan dez-img-effect">
-                                    <Image src={team01} alt="team" width="358" height="460" />
-                                </div>
-                                <div className="p-a15 bg-primary text-white dez-team">
-                                    <h4 className="dez-title text-capitalize mb-2">andrea</h4>
-                                    <div className="dez-separator-outer ">
-                                        <div className="dez-separator bg-white style-liner"></div>
-                                    </div>
-                                    <span className="dez-member-position flex justify-center">Professor</span>
-                                    <div className="m-t10">
-                                        <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faFacebook}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                            <li className="mx-2">
-                                                <FontAwesomeIcon icon={faTwitter} className="max-w-[16] min-w-[16px]" />
-                                            </li>
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faInstagram}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem className="basis-1/4">
-                            <div
-                                id="teamMember"
-                                className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                            >
-                                <div className="dez-media vertical-pan dez-img-effect">
-                                    <Image src={team01} alt="team" width="358" height="460" />
-                                </div>
-                                <div className="p-a15 bg-primary text-white dez-team">
-                                    <h4 className="dez-title text-capitalize mb-2">andrea</h4>
-                                    <div className="dez-separator-outer ">
-                                        <div className="dez-separator bg-white style-liner"></div>
-                                    </div>
-                                    <span className="dez-member-position flex justify-center">Professor</span>
-                                    <div className="m-t10">
-                                        <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faFacebook}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                            <li className="mx-2">
-                                                <FontAwesomeIcon icon={faTwitter} className="max-w-[16] min-w-[16px]" />
-                                            </li>
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faInstagram}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem className="basis-1/4">
-                            <div
-                                id="teamMember"
-                                className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                            >
-                                <div className="dez-media vertical-pan dez-img-effect">
-                                    <Image src={team01} alt="team" width="358" height="460" />
-                                </div>
-                                <div className="p-a15 bg-primary text-white dez-team">
-                                    <h4 className="dez-title text-capitalize mb-2">andrea</h4>
-                                    <div className="dez-separator-outer ">
-                                        <div className="dez-separator bg-white style-liner"></div>
-                                    </div>
-                                    <span className="dez-member-position flex justify-center">Professor</span>
-                                    <div className="m-t10">
-                                        <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faFacebook}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                            <li className="mx-2">
-                                                <FontAwesomeIcon icon={faTwitter} className="max-w-[16] min-w-[16px]" />
-                                            </li>
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faInstagram}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem className="basis-1/4">
-                            <div
-                                id="teamMember"
-                                className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                            >
-                                <div className="dez-media vertical-pan dez-img-effect">
-                                    <Image src={team01} alt="team" width="358" height="460" />
-                                </div>
-                                <div className="p-a15 bg-primary text-white dez-team">
-                                    <h4 className="dez-title text-capitalize mb-2">andrea</h4>
-                                    <div className="dez-separator-outer ">
-                                        <div className="dez-separator bg-white style-liner"></div>
-                                    </div>
-                                    <span className="dez-member-position flex justify-center">Professor</span>
-                                    <div className="m-t10">
-                                        <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faFacebook}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                            <li className="mx-2">
-                                                <FontAwesomeIcon icon={faTwitter} className="max-w-[16] min-w-[16px]" />
-                                            </li>
-                                            <li>
-                                                <FontAwesomeIcon
-                                                    icon={faInstagram}
-                                                    className="max-w-[16] min-w-[16px]"
-                                                />
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </CarouselItem>
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                    </Carousel>
+                )}
             </div>
         </section>
     );

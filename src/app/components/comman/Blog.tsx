@@ -1,15 +1,64 @@
-import React from "react";
-import student from "@/app/assets/img/student/student01.jpg";
+"use client";
+import React, { useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui/button";
 import Title from "./Title";
-import blog01 from "@/app/assets/img/blog01.jpg";
-import blog02 from "@/app/assets/img/blog02.jpg";
 
+interface TopperTestimonial {
+    id: string | number;
+    name: string;
+    title: string;
+    slug: string;
+    description: string;
+    image_url: string;
+    linkedin: string;
+    status: string;
+    rating: number;
+    sort_order: number;
+    team_type: string;
+    created_at: string;
+    updated_at: string;
+    seo: {
+        meta_title: string;
+        meta_description: string;
+        meta_keywords: string[];
+    };
+}
 const Blog = () => {
+    const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchToppers = async () => {
+            try {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/news-blog?type=blogs&status=published`);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data: ${response.status}`);
+                }
+
+                const data = await response.json();
+                setToppers(data);
+                setLoading(false);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : "An unknown error occurred");
+                setLoading(false);
+            }
+        };
+        fetchToppers();
+    }, []);
+
+    const formatDate = (dateString: string): string => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+        });
+    };
     return (
         <>
             <div className="blogSection padding" id="student">
@@ -17,127 +66,46 @@ const Blog = () => {
                     <div className="text-center">
                         <Title title="Latest From Our Blogs" subTitle="Our blog" />
                     </div>
+                    {loading && <div className="text-center py-8">Loading topper students...</div>}
+
+                    {error && (
+                        <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>
+                    )}
+
+                    {!loading && !error && toppers.length === 0 && (
+                        <div className="text-center py-8">No topper students found</div>
+                    )}
                     <Carousel>
                         <CarouselContent>
-                            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                                <div className="blogImg">
-                                    <Image
-                                        className="w-full rounded-md"
-                                        src={blog01}
-                                        width={200}
-                                        height={200}
-                                        alt="img"
-                                    />
-                                </div>
-
-                                <div className="blogContent">
-                                    <span className="flex items-center">
-                                        <FontAwesomeIcon width={10} icon={faCalendar} />{" "}
-                                        <span className="ml-1">12-02-2025</span>
-                                    </span>
-                                    <h3>Nepal Topper In CA Final</h3>
-                                    <div className="textBtn ">
-                                        <a className="flex items-center" href="#">
-                                            <span className="mr-2">Learn MORE</span>{" "}
-                                            <span>
-                                                <FontAwesomeIcon icon={faArrowRight} width={10} />
-                                            </span>
-                                        </a>
+                            {toppers?.map((blogItem) => (
+                                <CarouselItem key={blogItem.id} className="md:basis-1/2 lg:basis-1/3">
+                                    <div className="blogImg">
+                                        <img
+                                            className="w-full rounded-md"
+                                            src={blogItem?.image_url}
+                                            width={200}
+                                            height={200}
+                                            alt="img"
+                                        />
                                     </div>
-                                </div>
-                            </CarouselItem>
-                            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                                <div className="blogImg">
-                                    <Image
-                                        className="w-full rounded-md"
-                                        src={blog02}
-                                        width={200}
-                                        height={200}
-                                        alt="img"
-                                    />
-                                </div>
 
-                                <div className="blogContent">
-                                    <span className="flex items-center">
-                                        <FontAwesomeIcon width={10} icon={faCalendar} />{" "}
-                                        <span className="ml-1">12-02-2025</span>
-                                    </span>
-                                    <h3>Nepal Topper In CA Final</h3>
-                                    <div className="textBtn ">
-                                        <a className="flex items-center" href="#">
-                                            <span className="mr-2">Learn MORE</span>{" "}
-                                            <span>
-                                                <FontAwesomeIcon icon={faArrowRight} width={10} />
-                                            </span>
-                                        </a>
+                                    <div className="blogContent">
+                                        <span className="flex items-center">
+                                            <FontAwesomeIcon width={10} icon={faCalendar} />{" "}
+                                            <span className="ml-1"> {formatDate(blogItem.created_at)}</span>
+                                        </span>
+                                        <h3>{blogItem?.title}</h3>
+                                        <div className="textBtn ">
+                                            <a className="flex items-center" href="#">
+                                                <span className="mr-2">Learn MORE</span>{" "}
+                                                <span>
+                                                    <FontAwesomeIcon icon={faArrowRight} width={10} />
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </CarouselItem>
-                            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                                <div className="blogImg">
-                                    <Image
-                                        className="w-full rounded-md"
-                                        src={student}
-                                        width={200}
-                                        height={200}
-                                        alt="img"
-                                    />
-                                </div>
-
-                                <div className="blogContent">
-                                    <span className="flex items-center">
-                                        <FontAwesomeIcon width={10} icon={faCalendar} />{" "}
-                                        <span className="ml-1">12-02-2025</span>
-                                    </span>
-                                    <h3>Nepal Topper In CA Final</h3>
-                                    <div className="textBtn ">
-                                        <a className="flex items-center" href="#">
-                                            <span className="mr-2">Learn MORE</span>{" "}
-                                            <span>
-                                                <FontAwesomeIcon icon={faArrowRight} width={10} />
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </CarouselItem>
-                            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                                <div className="blogImg">
-                                    <Image
-                                        className="w-full rounded-md"
-                                        src={student}
-                                        width={200}
-                                        height={200}
-                                        alt="img"
-                                    />
-                                </div>
-
-                                <div className="blogContent">
-                                    <span className="flex items-center">
-                                        <FontAwesomeIcon width={10} icon={faCalendar} />{" "}
-                                        <span className="ml-1">12-02-2025</span>
-                                    </span>
-                                    <h3>Nepal Topper In CA Final</h3>
-                                    <div className="textBtn ">
-                                        <a className="flex items-center" href="#">
-                                            <span className="mr-2">Learn MORE</span>{" "}
-                                            <span>
-                                                <FontAwesomeIcon icon={faArrowRight} width={10} />
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </CarouselItem>
-                            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                                <div className="blogImg">
-                                    <Image
-                                        className="w-full rounded-md"
-                                        src={student}
-                                        width={200}
-                                        height={200}
-                                        alt="img"
-                                    />
-                                </div>
-                            </CarouselItem>
+                                </CarouselItem>
+                            ))}
                         </CarouselContent>
                         <CarouselPrevious />
                         <CarouselNext />

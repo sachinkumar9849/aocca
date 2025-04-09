@@ -130,7 +130,7 @@ const Footer = () => {
                             <div className="col-lg-4 mx-auto text-center">
                                 <div className="copyright-center wow fadeInUp">
                                     <p>
-                                        <i className="bx bx-copyright" /> Copyright 2024{" "}
+                                        <i className="bx bx-copyright" /> Copyright 2025{" "}
                                         <span>Academy Of Commerce Chartered Accountant </span>. All rights reserved.
                                     </p>
                                 </div>

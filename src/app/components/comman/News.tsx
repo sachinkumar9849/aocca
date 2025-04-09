@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import newsAnimation from "@/app/assets/img/newsAnimation.png";
-import about02 from "@/app/assets/img/about01.jpg";
 import Image from "next/image";
 import Title from "./Title";
 import Link from "next/link";
@@ -117,7 +116,7 @@ const News = () => {
                                 <div key={item?.id} className="col-span-1">
                                     <div className="news-listing-panel flex rounded-md">
                                         <div className="news_list_img">
-                                            <Image className="" src={about02} alt="img" />
+                                            <img className="" src={item?.image_url} alt="img" />
                                         </div>
                                         <div className="news_list_des px-3">
                                             <div className="time-location-panel relative z-10">

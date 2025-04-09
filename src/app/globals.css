@@ -2366,3 +2366,6 @@ section.class_home::before {
     transform: scale(1);
     transition: 0.5s;
 }
+.testimonialPadding {
+    padding-bottom: 76px;
+}
