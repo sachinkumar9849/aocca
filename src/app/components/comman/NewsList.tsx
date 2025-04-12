@@ -69,7 +69,7 @@ const NewsList = () => {
             <section className="blogSec padding">
                 <div className="mx-auto max-w-7xl">
                     {!loading && !error && toppers.length > 0 && (
-                        <div className="grid grid-cols-3">
+                        <div className="grid grid-cols-3 gap-6">
                             {toppers?.map((manItem) => (
                                 <div key={manItem?.id} className="col-span-1">
                                     <div className="item">
