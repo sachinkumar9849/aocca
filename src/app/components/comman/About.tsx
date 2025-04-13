@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface PageData {
     id: number;
@@ -65,7 +65,7 @@ const About = () => {
                                     <p className="wow fadeInUp">{pageData.subtitle}</p>
                                     <h1 className="wow fadeInUp">{pageData.title} </h1>
                                 </div>
-                                <p>{pageData.description}</p>
+                                <div dangerouslySetInnerHTML={{ __html: pageData.description }} />
 
                                 <div className="aboutUlli">
                                     <div className="aboutDivBlock">

@@ -1,47 +1,5 @@
-// import Image from "next/image";
-// import React from "react";
-// import about2 from "@/app/assets/img/about02.jpg";
-// import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
-// import Title from "@/app/components/comman/Title";
-
-// const About = () => {
-//     return (
-//         <>
-//             <Breadcrumbs title="About Us" />
-//             <div className="padding">
-//                 <div className="mx-auto max-w-7xl">
-//                     <div className="grid grid-cols-5 items-center md:gap-10 gap-5">
-//                         <div className="col-span-3">
-//                             <div className="about-us-text-box">
-//                                 <div className="sec-title mb-0">
-//                                     <Title title="Academy Of Commerce Chartered Accountant" subTitle="About Us" />
-//                                     <div
-//                                                     className="about_text"
-//                                                     dangerouslySetInnerHTML={{ __html: item.description }}
-//                                                 ></div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div className="col-span-2">
-//                             <div className="aboutImgWrap relative">
-//                                 <div className="about-us-img-box">
-//                                     <Image width={300} height={300} src={about2} alt="Example Image" />
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </>
-//     );
-// };
-
-// export default About;
-
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import about1 from "@/app/assets/img/about01.jpg";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 
 interface PageData {
@@ -106,7 +64,8 @@ const About = () => {
                                         <p className="wow fadeInUp">{pageData.subtitle}</p>
                                         <h1 className="wow fadeInUp">{pageData.title} </h1>
                                     </div>
-                                    <p>{pageData.description}</p>
+
+                                    <div dangerouslySetInnerHTML={{ __html: pageData.description }} />
 
                                     <div className="servicesButtom wow fadeInUp text-left"></div>
                                 </div>
