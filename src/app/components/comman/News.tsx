@@ -82,7 +82,7 @@ const News = () => {
                                     key={manItem.id}
                                     className="news_men position-relative mb-lg-0 mb-4  rounded-md overflow-hidden"
                                 >
-                                    <Link href="">
+                                    <Link href={`/news-list/${manItem.slug}`}>
                                         <div className="news_img  rounded-md">
                                             <img
                                                 className="w-full  rounded-md"
@@ -94,14 +94,14 @@ const News = () => {
                                         </div>
                                     </Link>
                                     <div className="news_des">
-                                        <Link href="">
+                                        <Link href={`/news-list/${manItem.slug}`}>
                                             <p className="text-white font-bold">
                                                 <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
                                                 {formatDate(manItem.created_at)}
                                             </p>
                                         </Link>
                                         <h5>
-                                            <Link href="" className="text-white">
+                                            <Link href={`/news-list/${manItem.slug}`} className="text-white">
                                                 {manItem?.title}
                                             </Link>
                                         </h5>
