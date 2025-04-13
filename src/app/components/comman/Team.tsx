@@ -89,7 +89,14 @@ const Team = () => {
                                             <div className="m-t10">
                                                 <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
                                                     <li>
-                                                        <FontAwesomeIcon icon={faLinkedin} className="" />
+                                                        <a
+                                                            href={team.linkedin}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-white hover:text-gray-300"
+                                                        >
+                                                            <FontAwesomeIcon icon={faLinkedin} className="" />
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
