@@ -1,5 +1,9 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface PageData {
     id: number;
@@ -89,7 +93,11 @@ const About = () => {
                                         <h2>Auditing</h2>
                                     </div>
                                 </div>
-
+                                <Link href="/about">
+                                    <Button>
+                                        View All <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />
+                                    </Button>
+                                </Link>
                                 <div className="servicesButtom wow fadeInUp text-left"></div>
                             </div>
                         </div>
