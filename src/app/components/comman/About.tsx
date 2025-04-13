@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import striptags from "striptags";
 
 interface PageData {
     id: number;
@@ -65,7 +66,8 @@ const About = () => {
                                     <p className="wow fadeInUp">{pageData.subtitle}</p>
                                     <h1 className="wow fadeInUp">{pageData.title} </h1>
                                 </div>
-                                <div dangerouslySetInnerHTML={{ __html: pageData.description }} />
+
+                                <div>{striptags(pageData.description).slice(0, 200)}...</div>
 
                                 <div className="aboutUlli">
                                     <div className="aboutDivBlock">
