@@ -20,13 +20,19 @@ const Footer = () => {
                                 <div className="dez-separator bg-primary" />
                                 <ul>
                                     <li className="wow fadeInUp">
-                                        <Link href="/cap-i">CAPI</Link>
+                                        <Link href="/cap-i">CAP-I</Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/">CAPII</Link>
+                                        <Link href="/cap-ii">CAP-II</Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/">CAPIII</Link>
+                                        <Link href="/cap-iii">CAP-III</Link>
+                                    </li>
+                                    <li className="wow fadeInUp">
+                                        <Link href="/icai">ICAI</Link>
+                                    </li>
+                                    <li className="wow fadeInUp">
+                                        <Link href="/ca-final">CA FINAL</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -37,13 +43,16 @@ const Footer = () => {
                                 <div className="dez-separator bg-primary" />
                                 <ul>
                                     <li className="wow fadeInUp">
-                                        <Link href="/">CA Foundation</Link>
+                                        <Link href="/about">About Us</Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/">CA Intermediate</Link>
+                                        <Link href="/news-list">News</Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/">CA Final</Link>
+                                        <Link href="/faqs">Faqs</Link>
+                                    </li>
+                                    <li className="wow fadeInUp">
+                                        <Link href="/contact">Contact</Link>
                                     </li>
                                 </ul>
                             </div>

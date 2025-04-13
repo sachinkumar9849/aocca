@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Title from "../Title";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel } from "@/components/ui/carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 
 interface TopperTestimonial {
     id: number;
@@ -55,29 +54,34 @@ const StudentSlider = () => {
         fetchToppers();
     }, []);
     return (
-        <div className="padding" id="student">
-            <div className="mx-auto max-w-7xl">
-                <div className="text-center">
-                    <Title title="Topper Students At CA" subTitle="Students" />
-                </div>
+        <>
+            <Breadcrumbs title={"Topper Students At CA"} />
+            <div className="padding" id="student">
+                <div className="mx-auto max-w-7xl">
+                    {loading && <div className="text-center py-8">Loading topper students...</div>}
 
-                {loading && <div className="text-center py-8">Loading topper students...</div>}
+                    {error && (
+                        <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>
+                    )}
 
-                {error && <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>}
+                    {!loading && !error && toppers.length === 0 && (
+                        <div className="text-center py-8">No topper students found</div>
+                    )}
 
-                {!loading && !error && toppers.length === 0 && (
-                    <div className="text-center py-8">No topper students found</div>
-                )}
-
-                {!loading && !error && toppers.length > 0 && (
-                    <Carousel className="w-full">
-                        <CarouselContent>
-                            {toppers.map((topper) => (
-                                <CarouselItem key={topper.id} className="md:basis-1/2 lg:basis-1/4">
-                                    <div className="">
-                                        <Link href={`/topper-student/${topper.slug}`}>
-                                            <img className="object-cover" src={topper.image_url} alt={topper.name} />
-                                        </Link>
+                    {!loading && !error && toppers.length > 0 && (
+                        <Carousel className="w-full">
+                            <div className="grid grid-cols-3 gap-7">
+                                {toppers.map((topper) => (
+                                    <div key={topper.id} className="col-span-1">
+                                        <div className="blogImg ">
+                                            <Link href={`/topper-student/${topper.slug}`}>
+                                                <img
+                                                    className="object-cover"
+                                                    src={topper.image_url}
+                                                    alt={topper.name}
+                                                />
+                                            </Link>
+                                        </div>
 
                                         <div className="blogContent p-4">
                                             <div className="flex items-center justify-between mb-2">
@@ -101,30 +105,13 @@ const StudentSlider = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="hidden md:flex" />
-                        <CarouselNext className="hidden md:flex" />
-                    </Carousel>
-                )}
-
-                <div className="grid grid-cols-1 z-10 mt-10 text-center">
-                    <div className="col-span-1">
-                        <div className="servicesButtom z-10 relative">
-                            <span>
-                                <span className="pr-2 mb-md-0 mb-2">See all AOC CA Topper students.</span>
-                                <Link href="/topper-student">
-                                    <Button>
-                                        View All <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />
-                                    </Button>
-                                </Link>
-                            </span>
-                        </div>
-                    </div>
+                                ))}
+                            </div>
+                        </Carousel>
+                    )}
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

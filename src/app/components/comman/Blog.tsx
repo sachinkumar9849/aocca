@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "@/components/ui/button";
 import Title from "./Title";
 import Link from "next/link";
 
@@ -113,17 +112,6 @@ const Blog = () => {
                         <CarouselPrevious />
                         <CarouselNext />
                     </Carousel>
-                    <div className="grid grid-cols-1 z-10 mt-10 text-center">
-                        <div className="col-span-1">
-                            <div className="servicesButtom wow fadeInUp z-10 relative">
-                                <span>
-                                    <Button>
-                                        View All <FontAwesomeIcon icon={faArrowRight} width={10} />
-                                    </Button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </>

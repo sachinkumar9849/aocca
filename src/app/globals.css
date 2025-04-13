@@ -1687,11 +1687,6 @@ a.btn.btn-active {
     -moz-transform: scale(1.2);
 }
 
-ul.dez-social-icon li {
-    border: 1px solid #ffffff5e;
-    padding: 6px 11px;
-    font-size: 15px;
-}
 ul.dez-social-icon {
     margin-top: 13px;
 }
@@ -2601,4 +2596,14 @@ nav#breadCrumbItem {
 }
 .info .meta {
     margin-bottom: -1px;
+}
+p[style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;"] {
+    display: none;
+}
+.dez-social-icon.dez-social-icon-lg li a {
+    font-size: 27px;
+    height: 35px;
+    line-height: 34px;
+    padding: 0;
+    width: 35px;
 }
