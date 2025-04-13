@@ -1,13 +1,55 @@
 import React from "react";
+import Image from "next/image";
 
-const page = () => {
+// Define types for the API response
+interface NewsDetail {
+    id: number;
+    title: string;
+    slug: string;
+    description: string;
+    image_url: string;
+    status: string;
+    type: string;
+    created_at: string;
+    updated_at: string;
+    seo: {
+        meta_title: string;
+        meta_description: string;
+        meta_keywords: string[];
+    };
+}
+
+// This is a server component that fetches data on the server side
+async function getNewsDetail(slug: string): Promise<NewsDetail> {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/news-blog/${slug}`, {
+        next: { revalidate: 3600 }, // Revalidate every hour
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch news detail");
+    }
+
+    return response.json();
+}
+
+// The page component using the async/await pattern for data fetching
+export default async function NewsDetailPage({ params }: { params: { slug: string } }) {
+    const newsDetail = await getNewsDetail(params.slug);
+
+    // Format the date for display
+    const formattedDate = new Date(newsDetail.created_at).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
+
     return (
         <div>
             <div id="registrationDetail">
                 <section className="about-services position-relative bg_pink padding">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12 text-center">
+                    <div className="mx-auto max-w-xl">
+                        <div className="grid grid-cols-12">
+                            <div className="col-span-10 mx-auto text-center">
                                 <div className="sectionTitle">
                                     <p
                                         className="wow fadeInUp ml-3 text-white"
@@ -19,32 +61,36 @@ const page = () => {
                                         className="wow fadeInUp text-white"
                                         style={{ visibility: "visible", animationName: "fadeInUp" }}
                                     >
-                                        CA AOC Academy of Commerce - Nepal
+                                        {newsDetail.title}
                                     </h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section className="service-section-details position-relative bg_gray pb-5">
-                    <div className="container">
+
+                <section className="service-section-details position-relative bg_gray pb-5 mt-[-60px]">
+                    <div className="mx-auto max-w-7xl">
                         <div className="row">
                             <div className="col-12">
-                                <div className="div-block bg-white">
+                                <div className="div-block bg-white p-4">
                                     <div className="mb-3">
-                                        <img src="assets/img/about02.jpg" className="img-fluid" alt="" />
+                                        {newsDetail.image_url && (
+                                            <img
+                                                src={newsDetail.image_url}
+                                                className="img-fluid w-100"
+                                                alt={newsDetail.title}
+                                            />
+                                        )}
                                     </div>
+
+                                    <div className="d-flex justify-content-between mb-3">
+                                        <span className="text-black">Published on: {formattedDate}</span>
+                                        <span className="badge bg-success">{newsDetail.type}</span>
+                                    </div>
+
                                     <div className="about_text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti placeat ex
-                                            pariatur, quibusdam in sed! Repellendus accusamus impedit dolorem nesciunt
-                                            nihil temporibus, pariatur fugiat eaque dicta cumque nemo eum modi. Lorem
-                                            ipsum dolor sit amet consectetur adipisicing elit. Quae sequi atque minima
-                                            provident incidunt architecto dolore hic accusantium natus repellendus
-                                            consequatur, repudiandae unde porro ducimus itaque veritatis placeat maxime
-                                            quo.
-                                        </p>
-                                        <p>&nbsp;</p>
+                                        <div dangerouslySetInnerHTML={{ __html: newsDetail.description }} />
                                     </div>
                                 </div>
                             </div>
@@ -54,6 +100,4 @@ const page = () => {
             </div>
         </div>
     );
-};
-
-export default page;
+}
