@@ -1,7 +1,9 @@
 "use client";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import about1 from "@/app/assets/img/about01.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface PageData {
     id: number;
@@ -23,9 +25,7 @@ const About = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_URL}/page/academy_of_commerce_chartered_accountant`,
-                );
+                const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/page-by-id/1`);
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -48,16 +48,13 @@ const About = () => {
     if (error) return <div className="padding text-red-500">{error}</div>;
     if (!pageData) return <div className="padding">No data available</div>;
     return (
-        <div className="padding aboutHome">
+        <div className="padding">
             <div className="mx-auto max-w-7xl">
                 <div className="grid grid-cols-2 items-center md:gap-10 gap-5">
                     <div className="col-span-1">
                         <div className="aboutImgWrap relative">
                             <div className="about-us-img-box">
                                 <img width={300} height={300} src={pageData.image_url} alt="Example Image" />
-                            </div>
-                            <div className="aboutImgTwo">
-                                <Image width={300} height={300} src={about1} alt="Example Image" />
                             </div>
                         </div>
                     </div>
@@ -68,7 +65,7 @@ const About = () => {
                                     <p className="wow fadeInUp">{pageData.subtitle}</p>
                                     <h1 className="wow fadeInUp">{pageData.title} </h1>
                                 </div>
-                                <p>{pageData.description}</p>
+                                <div dangerouslySetInnerHTML={{ __html: pageData.description }} />
 
                                 <div className="aboutUlli">
                                     <div className="aboutDivBlock">
@@ -96,7 +93,11 @@ const About = () => {
                                         <h2>Auditing</h2>
                                     </div>
                                 </div>
-
+                                <Link href="/about">
+                                    <Button>
+                                        View All <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />
+                                    </Button>
+                                </Link>
                                 <div className="servicesButtom wow fadeInUp text-left"></div>
                             </div>
                         </div>

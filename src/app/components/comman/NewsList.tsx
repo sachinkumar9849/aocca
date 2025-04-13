@@ -1,5 +1,6 @@
 "use client";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface TopperTestimonial {
@@ -74,13 +75,17 @@ const NewsList = () => {
                                 <div key={manItem?.id} className="col-span-1">
                                     <div className="item">
                                         <div className="thumb">
-                                            <a href="news-detail.php" className="w-full">
+                                            <Link
+                                                href={`/news-list/${manItem.slug}`}
+                                                className="p-1 text-blue-500 hover:text-blue-700"
+                                                title="Edit"
+                                            >
                                                 <img
                                                     height={500}
                                                     src={manItem?.image_url}
                                                     className="img-fluid w-full"
-                                                />{" "}
-                                            </a>
+                                                />
+                                            </Link>
                                             <div className="date">{formatDate(manItem.created_at)}</div>
                                         </div>
                                         <div className="info">
@@ -95,17 +100,17 @@ const NewsList = () => {
                                                 </ul>
                                             </div>
                                             <h4>
-                                                <a href="news-detail.php" className="w-full">
+                                                <Link href={`/news-list/${manItem.slug}`} className="w-full">
                                                     {manItem?.title}
-                                                </a>
+                                                </Link>
                                             </h4>
                                             <div className="textBtn">
-                                                <a href="news-detail.php" className="w-100">
+                                                <Link href={`/news-list/${manItem.slug}`} className="w-100">
                                                     READ MORE{" "}
                                                     <span>
                                                         <i className="fa fa-arrow-right" />
                                                     </span>
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

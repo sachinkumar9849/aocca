@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui/button";
 import Title from "./Title";
+import Link from "next/link";
 
 interface TopperTestimonial {
     id: string | number;
@@ -80,13 +81,15 @@ const Blog = () => {
                             {toppers?.map((blogItem) => (
                                 <CarouselItem key={blogItem.id} className="md:basis-1/2 lg:basis-1/3">
                                     <div className="blogImg">
-                                        <img
-                                            className="w-full rounded-md"
-                                            src={blogItem?.image_url}
-                                            width={200}
-                                            height={200}
-                                            alt="img"
-                                        />
+                                        <Link href={`/news-list/${blogItem.slug}`}>
+                                            <img
+                                                className="w-full rounded-md"
+                                                src={blogItem?.image_url}
+                                                width={200}
+                                                height={200}
+                                                alt="img"
+                                            />
+                                        </Link>
                                     </div>
 
                                     <div className="blogContent">
@@ -96,12 +99,12 @@ const Blog = () => {
                                         </span>
                                         <h3>{blogItem?.title}</h3>
                                         <div className="textBtn ">
-                                            <a className="flex items-center" href="#">
+                                            <Link href={`/news-list/${blogItem.slug}`} className="flex items-center">
                                                 <span className="mr-2">Learn MORE</span>{" "}
                                                 <span>
                                                     <FontAwesomeIcon icon={faArrowRight} width={10} />
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </CarouselItem>
