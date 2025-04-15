@@ -205,37 +205,22 @@ const Header = () => {
                                     >
                                         <li>
                                             <Link
-                                                href="/cap-i"
+                                                href="/ca-foundation"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                CAP I
+                                                Ca - Foundation
                                             </Link>
                                         </li>
 
                                         <li>
                                             <Link
-                                                href="/cap-ii"
+                                                href="/ca-Intermediate"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                CAP II
+                                                Ca - Intermediate
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                href="/cap-iii"
-                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                            >
-                                                CAP III
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="/icai"
-                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                            >
-                                                ICAI
-                                            </Link>
-                                        </li>
+
                                         <li>
                                             <Link
                                                 href="/ca-final"

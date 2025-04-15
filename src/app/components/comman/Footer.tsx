@@ -20,17 +20,12 @@ const Footer = () => {
                                 <div className="dez-separator bg-primary" />
                                 <ul>
                                     <li className="wow fadeInUp">
-                                        <Link href="/cap-i">CAP-I</Link>
+                                        <Link href="/ca-foundation">Ca-Foundation</Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/cap-ii">CAP-II</Link>
+                                        <Link href="/ca-Intermediate">Ca-Intermediate</Link>
                                     </li>
-                                    <li className="wow fadeInUp">
-                                        <Link href="/cap-iii">CAP-III</Link>
-                                    </li>
-                                    <li className="wow fadeInUp">
-                                        <Link href="/icai">ICAI</Link>
-                                    </li>
+
                                     <li className="wow fadeInUp">
                                         <Link href="/ca-final">CA FINAL</Link>
                                     </li>

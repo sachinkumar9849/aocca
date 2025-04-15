@@ -855,8 +855,8 @@ div#student::before {
 .about-us-img-box img {
     border-radius: 15px;
     width: 100%;
-    min-height: 440px;
-    max-height: 440px;
+    /* min-height: 440px;
+    max-height: 440px; */
     object-fit: cover;
     object-position: center;
 }
