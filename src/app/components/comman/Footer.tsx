@@ -29,6 +29,9 @@ const Footer = () => {
                                     <li className="wow fadeInUp">
                                         <Link href="/ca-final">CA FINAL</Link>
                                     </li>
+                                    <li className="wow fadeInUp">
+                                        <Link href="/mandatory-training">Mandatory Training</Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

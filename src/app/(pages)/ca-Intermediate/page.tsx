@@ -87,7 +87,7 @@ const CapIPage: React.FC = () => {
                                                     className="wow fadeInUp ml-3"
                                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                                 >
-                                                    CAP I
+                                                    CA-INTERMEDIATE
                                                 </p>
                                                 <h1
                                                     className="wow fadeInUp"
@@ -115,7 +115,7 @@ const CapIPage: React.FC = () => {
                                                         className="wow fadeInUp ml-3 text-white"
                                                         style={{ visibility: "visible", animationName: "fadeInUp" }}
                                                     >
-                                                        CAP I
+                                                        CA-INTERMEDIATE
                                                     </p>
                                                     <h1
                                                         className="wow fadeInUp text-white"
