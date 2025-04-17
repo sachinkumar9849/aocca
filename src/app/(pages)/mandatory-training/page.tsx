@@ -18,7 +18,7 @@ const CapIPage: React.FC = () => {
         const fetchCourseData = async (): Promise<void> => {
             try {
                 const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=foundation&status=published`,
+                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=mandatory&status=published`,
                 );
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
@@ -87,7 +87,7 @@ const CapIPage: React.FC = () => {
                                                     className="wow fadeInUp ml-3"
                                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                                 >
-                                                    CA-FOUNDATION
+                                                    MANDATORY-TRAINING
                                                 </p>
                                                 <h1
                                                     className="wow fadeInUp"
@@ -115,7 +115,7 @@ const CapIPage: React.FC = () => {
                                                         className="wow fadeInUp ml-3 text-white"
                                                         style={{ visibility: "visible", animationName: "fadeInUp" }}
                                                     >
-                                                        CA-FOUNDATION
+                                                        MANDATORY-TRAINING
                                                     </p>
                                                     <h1
                                                         className="wow fadeInUp text-white"
