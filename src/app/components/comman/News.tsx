@@ -30,6 +30,7 @@ const News = () => {
     const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const dummyImageUrl = "https://icrier.org/wp-content/uploads/2022/09/Event-Image-Not-Found.jpg";
 
     useEffect(() => {
         const fetchToppers = async () => {
@@ -39,7 +40,6 @@ const News = () => {
                 if (!response.ok) {
                     throw new Error(`Failed to fetch data: ${response.status}`);
                 }
-
                 const data = await response.json();
                 setToppers(data);
                 setLoading(false);
@@ -86,7 +86,7 @@ const News = () => {
                                         <div className="news_img  rounded-md">
                                             <img
                                                 className="w-full  rounded-md"
-                                                src={manItem?.image_url}
+                                                src={manItem?.image_url || dummyImageUrl}
                                                 alt="img"
                                                 width={500}
                                                 height={400}
@@ -95,14 +95,14 @@ const News = () => {
                                     </Link>
                                     <div className="news_des">
                                         <Link href={`/news-list/${manItem.slug}`}>
-                                            <p className="text-white font-bold">
+                                            <p className="text-gray-200 font-semibold">
                                                 <i className="fa fa-clock-o" aria-hidden="true"></i>{" "}
                                                 {formatDate(manItem.created_at)}
                                             </p>
                                         </Link>
                                         <h5>
                                             <Link href={`/news-list/${manItem.slug}`} className="text-white">
-                                                {manItem?.title}
+                                                {manItem?.title?.slice(0, 130)}...
                                             </Link>
                                         </h5>
                                     </div>
@@ -126,11 +126,12 @@ const News = () => {
                                                 </p>
                                             </div>
                                             <h5 className="relative z-10">
-                                                <Link href="">{item?.title}</Link>
+                                                <Link href="">{item?.title?.slice(0, 90)}...</Link>
                                             </h5>
-
                                             <div className="twoBtnHeader mt-3" id="topHeaderAnimatedbtn">
-                                                <button className="btnRemote border-animation">Learn more</button>
+                                                <Link href={`/news-list/${item.slug}`}>
+                                                    <button className="btnRemote border-animation">Learn more</button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

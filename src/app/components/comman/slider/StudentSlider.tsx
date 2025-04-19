@@ -76,7 +76,11 @@ const StudentSlider = () => {
                                 <CarouselItem key={topper.id} className="md:basis-1/2 lg:basis-1/4">
                                     <div className="">
                                         <Link href={`/topper-student/${topper.slug}`}>
-                                            <img className="object-cover" src={topper.image_url} alt={topper.name} />
+                                            <img
+                                                className="topperStudenHome object-cover"
+                                                src={topper.image_url}
+                                                alt={topper.name}
+                                            />
                                         </Link>
 
                                         <div className="blogContent p-4">

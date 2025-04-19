@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -147,7 +147,10 @@ input {
 }
 
 body {
-    font-family: "Inter", serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
 }
 
 .roundedBl {
@@ -728,10 +731,10 @@ button.owl-prev {
     margin-bottom: 3px;
 }
 .sectionTitle h1 {
-    font-size: 40px !important;
+    font-size: 35px !important;
     font-weight: 700 !important;
     text-transform: none;
-    line-height: 50px;
+    line-height: 45px;
 }
 .padding {
     padding: 100px 0;
@@ -794,6 +797,7 @@ button.owl-prev {
     transition: 0.5s;
     height: 333px;
     transform: scale(1);
+    border-radius: 7px;
 }
 
 div#student {
@@ -850,7 +854,7 @@ div#student::before {
     color: #0d569f;
 }
 .sectionTitle {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 .about-us-img-box img {
     border-radius: 15px;
@@ -1208,11 +1212,11 @@ section#news_section .news_list_des {
 }
 section#news_section .news-listing-panel .news_list_des h5 a {
     transition: 0.3s;
-    line-height: 27px;
-    font-weight: 600;
+    line-height: 28px;
+    font-weight: 400;
     margin-top: 7px;
     display: block;
-    color: white;
+    color: #c2e0ff;
     font-size: 19px !important;
 }
 .news_des h5 {
@@ -1390,7 +1394,7 @@ section#news_section::before {
     color: black;
 }
 .news_img img {
-    height: 537px;
+    height: 592px;
     width: 100%;
     transition: 0.5s;
     transform: scale(1);
@@ -1472,14 +1476,14 @@ div#topHeaderAnimatedbtn .btnRemote {
     background: white;
     border: none;
     color: #0d569f;
-    padding: 0.8rem 22px;
+    padding: 5px 10px;
     position: relative;
     cursor: pointer;
     margin: 5px;
     transition: 0.5s;
     text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 500;
 }
 div#topHeaderAnimatedbtn .border-animation::before,
 div#topHeaderAnimatedbtn .border-animation::after {
@@ -2362,25 +2366,33 @@ section.sectionCustomCss ul {
 }
 
 section.sectionCustomCss ol,
+div#faqSection ol,
 section.sectionCustomCss ul,
-section.sectionCustomCss menu {
+div#faqSection ul,
+section.sectionCustomCss menu,
+div#faqSection menu {
     list-style: revert;
     margin: revert;
     padding: revert;
 }
 
 section.sectionCustomCss pre,
-section.sectionCustomCss code {
+div#faqSection pre,
+section.sectionCustomCss code,
+div#faqSection code {
     font-family: revert;
     font-size: revert;
 }
-section.sectionCustomCss a {
+section.sectionCustomCss a,
+div#faqSection a {
     color: revert;
     text-decoration: revert;
 }
 
 section.sectionCustomCss button,
+div#faqSection button,
 section.sectionCustomCss input,
+div#faqSection input,
 optgroup,
 select,
 textarea {
@@ -2390,30 +2402,40 @@ textarea {
     margin: revert;
 }
 
-section.sectionCustomCss table {
+section.sectionCustomCss table,
+div#faqSection table {
     border-collapse: revert;
 }
 
-section.sectionCustomCss th {
+section.sectionCustomCss th,
+div#faqSection th {
     font-weight: revert;
     text-align: revert;
 }
 
-section.sectionCustomCss p {
+section.sectionCustomCss p,
+div#faqSection p {
     margin: revert;
 }
 
 section.sectionCustomCss h1,
+div#faqSection h1,
 section.sectionCustomCss h2,
+div#faqSection h2,
 section.sectionCustomCss h3,
+div#faqSection h3,
 section.sectionCustomCss h4,
+div#faqSection h4,
 section.sectionCustomCss h5,
-section.sectionCustomCss h6 {
+div#faqSection h5,
+section.sectionCustomCss h6,
+div#faqSection h6 {
     font-size: revert;
     font-weight: revert;
     margin: revert;
 }
-section.sectionCustomCss blockquote {
+section.sectionCustomCss blockquote,
+div#faqSection blockquote {
     margin: revert;
     padding: revert;
 }
@@ -2571,7 +2593,7 @@ nav#breadCrumbItem {
     position: relative;
     display: block;
     color: #9b9b9b;
-    font-family: "Barlow", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .item .thumb .date {
@@ -2606,4 +2628,21 @@ p[style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; f
     line-height: 34px;
     padding: 0;
     width: 35px;
+}
+img.topperStudenHome {
+    min-height: 325px;
+    max-height: 325px;
+    width: 100%;
+    border-radius: 6px;
+}
+.about-us-img-box img {
+    max-height: 500px;
+    min-height: 500px;
+}
+.popupCustom {
+    border-radius: 10px;
+    min-width: 900px !important;
+}
+li#headerList {
+    margin-left: 25px;
 }

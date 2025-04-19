@@ -80,7 +80,7 @@ const Blog = () => {
                             {toppers?.map((blogItem) => (
                                 <CarouselItem key={blogItem.id} className="md:basis-1/2 lg:basis-1/3">
                                     <div className="blogImg">
-                                        <Link href={`/news-list/${blogItem.slug}`}>
+                                        <Link href={`/blog-list/${blogItem.slug}`}>
                                             <img
                                                 className="w-full rounded-md"
                                                 src={blogItem?.image_url}
@@ -98,7 +98,7 @@ const Blog = () => {
                                         </span>
                                         <h3>{blogItem?.title}</h3>
                                         <div className="textBtn ">
-                                            <Link href={`/news-list/${blogItem.slug}`} className="flex items-center">
+                                            <Link href={`/blog-list/${blogItem.slug}`} className="flex items-center">
                                                 <span className="mr-2">Learn MORE</span>{" "}
                                                 <span>
                                                     <FontAwesomeIcon icon={faArrowRight} width={10} />
