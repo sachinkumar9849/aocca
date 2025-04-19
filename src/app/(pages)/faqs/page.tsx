@@ -43,7 +43,7 @@ const FaqPage: React.FC = () => {
     return (
         <>
             <Breadcrumbs title="FAQ" />
-            <div className="padding">
+            <div className="padding" id="faqSection">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="md:w-1/2 w-full mx-auto">
                         {isLoading ? (

@@ -107,7 +107,7 @@ const VideoSection: React.FC = () => {
                                                     ></iframe>
                                                 ) : (
                                                     <Image
-                                                        className="w-full object-contain max-h-96"
+                                                        className="w-full object-contain"
                                                         src={highlight.image_url}
                                                         alt={`Highlight ${highlight.id}`}
                                                         width={800}
