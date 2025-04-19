@@ -24,16 +24,15 @@ interface TopperTestimonial {
     };
 }
 
-const NewsList = () => {
+const BlogList = () => {
     const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const dummyImageUrl = "https://icrier.org/wp-content/uploads/2022/09/Event-Image-Not-Found.jpg";
 
     useEffect(() => {
         const fetchToppers = async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/news-blog?type=news&status=published`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/news-blog?type=blogs&status=published`);
 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch data: ${response.status}`);
@@ -65,9 +64,7 @@ const NewsList = () => {
 
             {error && <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>}
 
-            {!loading && !error && toppers.length === 0 && (
-                <div className="text-center py-8">No topper students found</div>
-            )}
+            {!loading && !error && toppers.length === 0 && <div className="text-center py-8">No blogs found</div>}
             <section className="blogSec padding">
                 <div className="mx-auto max-w-7xl">
                     {!loading && !error && toppers.length > 0 && (
@@ -77,13 +74,13 @@ const NewsList = () => {
                                     <div className="item">
                                         <div className="thumb">
                                             <Link
-                                                href={`/news-list/${manItem.slug}`}
+                                                href={`/blog-list/${manItem.slug}`}
                                                 className="p-1 text-blue-500 hover:text-blue-700"
                                                 title="Edit"
                                             >
                                                 <img
                                                     height={500}
-                                                    src={manItem?.image_url || dummyImageUrl}
+                                                    src={manItem?.image_url}
                                                     className="img-fluid w-full"
                                                 />
                                             </Link>
@@ -101,12 +98,12 @@ const NewsList = () => {
                                                 </ul>
                                             </div>
                                             <h4>
-                                                <Link href={`/news-list/${manItem.slug}`} className="w-full">
+                                                <Link href={`/blog-list/${manItem.slug}`} className="w-full">
                                                     {manItem?.title}
                                                 </Link>
                                             </h4>
                                             <div className="textBtn">
-                                                <Link href={`/news-list/${manItem.slug}`} className="w-100">
+                                                <Link href={`/blog-list/${manItem.slug}`} className="w-100">
                                                     READ MORE{" "}
                                                     <span>
                                                         <i className="fa fa-arrow-right" />
@@ -125,4 +122,4 @@ const NewsList = () => {
     );
 };
 
-export default NewsList;
+export default BlogList;

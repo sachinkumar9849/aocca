@@ -80,7 +80,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
                                     </div>
 
                                     <div className="d-flex justify-content-between mb-3">
-                                        <span className="text-black">Published on: {formattedDate}</span>
+                                        <span className="text-gray-500 font-bold">{formattedDate}</span>
                                         <span className="badge bg-success">{newsDetail.type}</span>
                                     </div>
 

@@ -44,7 +44,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
                 <section className="about-services position-relative bg_pink padding">
                     <div className="mx-auto max-w-7xl md:px-0 px-4">
                         <div className="grid grid-cols-1">
-                            <div className="col-span-1 mx-auto text-center">
+                            <div className="col-span-1">
                                 <div className="sectionTitle w-4/5 mx-auto text-center">
                                     <p
                                         className="wow fadeInUp ml-3 text-white"
@@ -80,7 +80,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
                                     </div>
 
                                     <div className="d-flex justify-content-between mb-3">
-                                        <span className="text-black">Published on: {formattedDate}</span>
+                                        <span className="text-gray-500 font-semibold">{formattedDate}</span>
                                         <span className="badge bg-success">{newsDetail.type}</span>
                                     </div>
 

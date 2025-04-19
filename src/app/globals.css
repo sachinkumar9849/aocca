@@ -797,6 +797,7 @@ button.owl-prev {
     transition: 0.5s;
     height: 333px;
     transform: scale(1);
+    border-radius: 7px;
 }
 
 div#student {
@@ -2641,4 +2642,7 @@ img.topperStudenHome {
 .popupCustom {
     border-radius: 10px;
     min-width: 900px !important;
+}
+li#headerList {
+    margin-left: 25px;
 }
