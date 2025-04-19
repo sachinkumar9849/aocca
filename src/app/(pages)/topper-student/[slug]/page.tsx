@@ -19,7 +19,7 @@ interface NewsDetail {
 }
 
 async function getNewsDetail(slug: string): Promise<NewsDetail> {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team-by-id/${slug}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team/${slug}`, {
         next: { revalidate: 3600 },
     });
 
@@ -38,20 +38,20 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
             <div id="registrationDetail">
                 <section className="about-services position-relative bg_pink padding">
                     <div className="mx-auto max-w-7xl md:px-0 px-4">
-                        <div className="grid grid-cols-12">
-                            <div className="col-span-10 mx-auto text-center">
+                        <div className="grid grid-cols-1">
+                            <div className="col-span-1">
                                 <div className="sectionTitle w-4/5 mx-auto text-center">
                                     <p
                                         className="wow fadeInUp ml-3 text-white"
-                                        style={{ visibility: "visible", animationName: "fadeInUp" }}
+                                        style={{ visibility: "visible", animationName: "fadeInUp", color: "white" }}
                                     >
-                                        Student Detail
+                                        {newsDetail?.name}
                                     </p>
                                     <h1
                                         className="wow fadeInUp text-white"
                                         style={{ visibility: "visible", animationName: "fadeInUp" }}
                                     >
-                                        {newsDetail.title}
+                                        {newsDetail?.title}
                                     </h1>
                                 </div>
                             </div>

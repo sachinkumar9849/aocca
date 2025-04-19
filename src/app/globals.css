@@ -731,10 +731,10 @@ button.owl-prev {
     margin-bottom: 3px;
 }
 .sectionTitle h1 {
-    font-size: 40px !important;
+    font-size: 35px !important;
     font-weight: 700 !important;
     text-transform: none;
-    line-height: 50px;
+    line-height: 45px;
 }
 .padding {
     padding: 100px 0;
@@ -853,7 +853,7 @@ div#student::before {
     color: #0d569f;
 }
 .sectionTitle {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 .about-us-img-box img {
     border-radius: 15px;
@@ -1211,11 +1211,11 @@ section#news_section .news_list_des {
 }
 section#news_section .news-listing-panel .news_list_des h5 a {
     transition: 0.3s;
-    line-height: 27px;
-    font-weight: 600;
+    line-height: 28px;
+    font-weight: 400;
     margin-top: 7px;
     display: block;
-    color: white;
+    color: #c2e0ff;
     font-size: 19px !important;
 }
 .news_des h5 {
@@ -1393,7 +1393,7 @@ section#news_section::before {
     color: black;
 }
 .news_img img {
-    height: 537px;
+    height: 592px;
     width: 100%;
     transition: 0.5s;
     transform: scale(1);
@@ -1475,14 +1475,14 @@ div#topHeaderAnimatedbtn .btnRemote {
     background: white;
     border: none;
     color: #0d569f;
-    padding: 0.8rem 22px;
+    padding: 5px 10px;
     position: relative;
     cursor: pointer;
     margin: 5px;
     transition: 0.5s;
     text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 500;
 }
 div#topHeaderAnimatedbtn .border-animation::before,
 div#topHeaderAnimatedbtn .border-animation::after {
