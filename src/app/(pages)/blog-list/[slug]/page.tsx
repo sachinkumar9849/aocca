@@ -42,10 +42,10 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
         <div>
             <div id="registrationDetail">
                 <section className="about-services position-relative bg_pink padding">
-                    <div className="mx-auto max-w-xl">
-                        <div className="grid grid-cols-12">
-                            <div className="col-span-10 mx-auto text-center">
-                                <div className="sectionTitle">
+                    <div className="mx-auto max-w-7xl md:px-0 px-4">
+                        <div className="grid grid-cols-1">
+                            <div className="col-span-1 mx-auto text-center">
+                                <div className="sectionTitle w-4/5 mx-auto text-center">
                                     <p
                                         className="wow fadeInUp ml-3 text-white"
                                         style={{ visibility: "visible", animationName: "fadeInUp" }}

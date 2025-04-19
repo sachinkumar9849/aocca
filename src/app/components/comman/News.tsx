@@ -130,7 +130,9 @@ const News = () => {
                                             </h5>
 
                                             <div className="twoBtnHeader mt-3" id="topHeaderAnimatedbtn">
-                                                <button className="btnRemote border-animation">Learn more</button>
+                                                <Link href={`/news-list/${item.slug}`}>
+                                                    <button className="btnRemote border-animation">Learn more</button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
