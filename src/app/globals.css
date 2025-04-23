@@ -2646,3 +2646,20 @@ img.topperStudenHome {
 li#headerList {
     margin-left: 25px;
 }
+.dez-media.vertical-pan img {
+    border: 1px solid #80808030;
+    padding: 11px;
+    background: #fff;
+    object-fit: cover;
+    min-height: 582px;
+    max-height: 582px;
+    object-fit: cover;
+    width: 100%;
+}
+div#teamDetail {
+    background: #fff;
+    padding: 30px 30px 49px;
+    box-shadow: 0 3px 16px 0 rgb(0 0 0 / 11%);
+    z-index: 9;
+    margin-left: -100px;
+}

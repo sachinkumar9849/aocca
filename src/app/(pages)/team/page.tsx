@@ -18,6 +18,7 @@ interface TopperTestimonial {
     team_type: string;
     created_at: string;
     updated_at: string;
+    designation: string;
     seo: {
         meta_title: string;
         meta_description: string;
@@ -53,7 +54,7 @@ const Team = () => {
 
     return (
         <>
-            <Breadcrumbs title="Team" />
+            <Breadcrumbs title="Management Team" />
             {loading && <div className="text-center py-8">Loading topper students...</div>}
 
             {error && <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>}
@@ -64,37 +65,47 @@ const Team = () => {
             <section className="teamSection padding">
                 <div className="mx-auto max-w-7xl">
                     {!loading && !error && toppers.length > 0 && (
-                        <div className="grid grid-cols-4 gap-5">
+                        <div className="grid grid-cols-1 gap-5">
                             {toppers?.map((team) => (
-                                <div key={team?.id} className="col-span-1">
-                                    <div
-                                        id="teamMember"
-                                        className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                                    >
-                                        <div className="dez-media vertical-pan dez-img-effect">
-                                            <img src={team?.image_url} alt="team" width="358" height="460" />
-                                        </div>
-                                        <div className="p-a15 bg-primary text-white dez-team">
-                                            <h4 className="dez-title text-capitalize mb-2">{team?.name}</h4>
-                                            <div className="dez-separator-outer ">
-                                                <div className="dez-separator bg-white style-liner"></div>
+                                <div key={team?.id} className="col-span-1 mb-10">
+                                    <div className="grid grid-cols-2">
+                                        <div className="col-span-1">
+                                            <div className="dez-media vertical-pan ">
+                                                <img src={team?.image_url} alt="team" width="358" height="460" />
                                             </div>
-                                            <span className="dez-member-position flex justify-center">
-                                                {team?.title}
-                                            </span>
-                                            <div className="m-t10">
-                                                <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                                    <li>
-                                                        <a
-                                                            href={team.linkedin}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-white hover:text-gray-300"
-                                                        >
-                                                            <FontAwesomeIcon icon={faLinkedin} className="" />
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                        </div>
+
+                                        <div className="col-span-1 flex items-center">
+                                            <div id="teamDetail" className="rounded-md">
+                                                <div className="">
+                                                    <h4 className="text-[32px] font-semibold text-[#0e569f]">
+                                                        {team?.name}
+                                                    </h4>
+                                                    <span className="my-3 block text-[12px]">{team?.title}</span>
+
+                                                    <span className="my-3 block font-semibold capitalize">
+                                                        {team?.designation}
+                                                    </span>
+
+                                                    <div
+                                                        className="about_text"
+                                                        dangerouslySetInnerHTML={{ __html: team.description }}
+                                                    ></div>
+                                                    <div className="m-t10">
+                                                        <ul className="">
+                                                            <li>
+                                                                <a
+                                                                    href={team.linkedin}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-white hover:text-gray-300"
+                                                                >
+                                                                    <FontAwesomeIcon icon={faLinkedin} className="" />
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
