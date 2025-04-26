@@ -2663,3 +2663,8 @@ div#teamDetail {
     z-index: 9;
     margin-left: -100px;
 }
+img.teamHome {
+    min-height: 330px !important;
+    max-height: 330px !important;
+    padding: 0 !important;
+}

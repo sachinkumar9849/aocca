@@ -35,7 +35,7 @@ const Team = () => {
         const fetchToppers = async () => {
             try {
                 const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=team&status=published`,
+                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=teamTwo&status=published`,
                 );
 
                 if (!response.ok) {
@@ -59,13 +59,11 @@ const Team = () => {
                 <div className="text-center">
                     <Title title="Expert Academic Team" subTitle="Team" />
                 </div>
-                {loading && <div className="text-center py-8">Loading topper students...</div>}
+                {loading && <div className="text-center py-8">Loading team ...</div>}
 
-                {error && <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>}
+                {error && <div className="text-center py-8 text-red-500">Error loading team : {error}</div>}
 
-                {!loading && !error && toppers.length === 0 && (
-                    <div className="text-center py-8">No topper students found</div>
-                )}
+                {!loading && !error && toppers.length === 0 && <div className="text-center py-8">No team found</div>}
                 {!loading && !error && toppers.length > 0 && (
                     <Carousel>
                         <CarouselContent>
@@ -76,7 +74,13 @@ const Team = () => {
                                         className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
                                     >
                                         <div className="dez-media vertical-pan dez-img-effect">
-                                            <img src={team?.image_url} alt="team" width="358" height="460" />
+                                            <img
+                                                className="teamHome"
+                                                src={team?.image_url}
+                                                alt="team"
+                                                width="358"
+                                                height="460"
+                                            />
                                         </div>
                                         <div className="p-a15 bg-primary text-white dez-team">
                                             <h4 className="dez-title text-capitalize mb-2">{team?.name}</h4>
