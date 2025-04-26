@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "./Title";
+import Breadcrumbs from "./Breadcrumbs";
 
 interface TopperTestimonial {
     id: string | number;
@@ -26,7 +27,7 @@ interface TopperTestimonial {
     };
 }
 
-const Team = () => {
+const TeamTwo = () => {
     const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -54,21 +55,21 @@ const Team = () => {
     }, []);
 
     return (
-        <section className="teamSection padding">
-            <div className="mx-auto max-w-7xl">
-                <div className="text-center">
-                    <Title title="Expert Academic Team" subTitle="Team" />
-                </div>
-                {loading && <div className="text-center py-8">Loading team ...</div>}
+        <>
+            <Breadcrumbs title=" Team" />
+            <section className="teamSection padding">
+                <div className="mx-auto max-w-7xl">
+                    {loading && <div className="text-center py-8">Loading team ...</div>}
 
-                {error && <div className="text-center py-8 text-red-500">Error loading team : {error}</div>}
+                    {error && <div className="text-center py-8 text-red-500">Error loading team : {error}</div>}
 
-                {!loading && !error && toppers.length === 0 && <div className="text-center py-8">No team found</div>}
-                {!loading && !error && toppers.length > 0 && (
-                    <Carousel>
-                        <CarouselContent>
+                    {!loading && !error && toppers.length === 0 && (
+                        <div className="text-center py-8">No team found</div>
+                    )}
+                    {!loading && !error && toppers.length > 0 && (
+                        <div className="grid grid-cols-4">
                             {toppers?.map((team) => (
-                                <CarouselItem key={team?.id} className="basis-1/4">
+                                <div key={team?.id} className="col-span-1">
                                     <div
                                         id="teamMember"
                                         className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
@@ -106,16 +107,14 @@ const Team = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </CarouselItem>
+                                </div>
                             ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                    </Carousel>
-                )}
-            </div>
-        </section>
+                        </div>
+                    )}
+                </div>
+            </section>
+        </>
     );
 };
 
-export default Team;
+export default TeamTwo;
