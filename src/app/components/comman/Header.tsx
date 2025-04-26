@@ -156,10 +156,18 @@ const Header = () => {
 
                                         <li>
                                             <Link
-                                                href="/team"
+                                                href="/management-team"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
                                                 Management Team
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/team"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                Team
                                             </Link>
                                         </li>
                                     </ul>
