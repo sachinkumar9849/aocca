@@ -71,9 +71,9 @@ const Team = () => {
                                 <CarouselItem key={team?.id} className="basis-1/4">
                                     <div
                                         id="teamMember"
-                                        className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
+                                        className="rounded-md dez-box m-b30"
                                     >
-                                        <div className="dez-media vertical-pan dez-img-effect">
+                                        <div className="">
                                             <img
                                                 className="teamHome"
                                                 src={team?.image_url}
@@ -104,6 +104,7 @@ const Team = () => {
                                                     </li>
                                                 </ul>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </CarouselItem>

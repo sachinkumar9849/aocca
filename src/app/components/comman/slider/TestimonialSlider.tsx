@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 
 import { Autoplay, Navigation } from "swiper/modules";
+import { dummyImageUrl } from "../News";
 
 interface SliderItem {
     id: number;
@@ -111,7 +112,7 @@ export default function TestimonialSlider() {
                                 <div className="testUser">
                                     <div className="testImg">
                                         <img
-                                            src={testimonial?.image_url}
+                                            src={testimonial?.image_url || dummyImageUrl} 
                                             className="img-fluid object-cover"
                                             alt="img"
                                         />
