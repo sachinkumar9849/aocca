@@ -94,7 +94,7 @@ const Header = () => {
             >
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
                     <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <Image className="h-[73px] w-[192px]" src={logo} alt="img" width={100} height={100} />
+                        <Image className=" w-[192px]" src={logo} alt="img" width={500} height={500} />
                     </Link>
 
                     <div className="hidden w-full md:block md:w-auto" id="navbar-multi-level">
@@ -168,6 +168,14 @@ const Header = () => {
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
                                                 Team
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/gallery"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                Gallery
                                             </Link>
                                         </li>
                                     </ul>

@@ -25,12 +25,12 @@ interface TopperTestimonial {
         meta_keywords: string[];
     };
 }
+export const dummyImageUrl = "https://icrier.org/wp-content/uploads/2022/09/Event-Image-Not-Found.jpg";
 
 const News = () => {
     const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const dummyImageUrl = "https://icrier.org/wp-content/uploads/2022/09/Event-Image-Not-Found.jpg";
 
     useEffect(() => {
         const fetchToppers = async () => {
@@ -116,7 +116,7 @@ const News = () => {
                                 <div key={item?.id} className="col-span-1">
                                     <div className="news-listing-panel flex rounded-md">
                                         <div className="news_list_img">
-                                            <img className="" src={item?.image_url} alt="img" />
+                                            <img className="" src={item?.image_url || dummyImageUrl} alt="img" />
                                         </div>
                                         <div className="news_list_des px-3">
                                             <div className="time-location-panel relative z-10">
@@ -126,7 +126,9 @@ const News = () => {
                                                 </p>
                                             </div>
                                             <h5 className="relative z-10">
-                                                <Link href="">{item?.title?.slice(0, 90)}...</Link>
+                                                <Link href={`/news-list/${item.slug}`}>
+                                                    {item?.title?.slice(0, 50)}...
+                                                </Link>
                                             </h5>
                                             <div className="twoBtnHeader mt-3" id="topHeaderAnimatedbtn">
                                                 <Link href={`/news-list/${item.slug}`}>

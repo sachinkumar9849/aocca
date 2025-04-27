@@ -1,43 +1,99 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import { Carousel } from "@/components/ui/carousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 
-const page = () => {
+interface TopperTestimonial {
+    id: number;
+    name: string;
+    title: string;
+    slug: string;
+    description: string;
+    image_url: string;
+    linkedin: string;
+    status: string;
+    rating: number;
+    sort_order: number;
+    team_type: string;
+    created_at: string;
+    updated_at: string;
+    seo: {
+        meta_title: string;
+        meta_description: string;
+        meta_keywords: string[];
+    };
+}
+
+const StudentSlider = () => {
+    const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchToppers = async () => {
+            try {
+                const response = await fetch(
+                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=alumni&status=published`,
+                );
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data: ${response.status}`);
+                }
+
+                const data = await response.json();
+                setToppers(data);
+                setLoading(false);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : "An unknown error occurred");
+                setLoading(false);
+            }
+        };
+        fetchToppers();
+    }, []);
     return (
-        <section className="padding">
-            <div className="mx-auto max-w-7xl">
-                <div className="grid grid-cols-3 gap-6">
-                    <div className="col-span-1">
-                        <div className="item">
-                            <div className="info">
-                                <div className="meta">
-                                    <ul className="pb-3">
-                                        <li>
-                                            <i className="fa fa-calendar" />{" "}
-                                            <a href="" title="Visit admin’s website" rel="author external">
-                                                31-July
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4>
-                                    <a href="" className="w-full text-[25px] leading-9">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, totam,
-                                    </a>
-                                </h4>
-                                <div className="textBtn">
-                                    <a href="" className="w-full">
-                                        DOWNLOAD{" "}
-                                        <span>
-                                            <i className="fa fa-arrow-right" />
-                                        </span>
-                                    </a>
-                                </div>
+        <>
+            <Breadcrumbs title={"Alumni"} />
+            <div className="padding" id="student">
+                <div className="mx-auto max-w-7xl">
+                    {loading && <div className="text-center py-8">Loading topper students...</div>}
+
+                    {error && (
+                        <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>
+                    )}
+
+                    {!loading && !error && toppers.length === 0 && (
+                        <div className="text-center py-8">No topper students found</div>
+                    )}
+
+                    {!loading && !error && toppers.length > 0 && (
+                        <Carousel className="w-full">
+                            <div className="grid grid-cols-4 gap-7">
+                                {toppers.map((topper) => (
+                                    <div key={topper.id} className="col-span-1">
+                                        <div className="blogImg ">
+                                            <img className="object-cover" src={topper.image_url} alt={topper.name} />
+                                        </div>
+
+                                        <div className="blogContent p-4">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <span className="flex items-center">
+                                                    <FontAwesomeIcon width={10} icon={faUser} />
+                                                    <span className="ml-1 font-medium">{topper.name}</span>
+                                                </span>
+                                            </div>
+                                            <h3 className="text-lg font-bold mb-2">{topper.title}</h3>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                        </div>
-                    </div>
+                        </Carousel>
+                    )}
                 </div>
             </div>
-        </section>
+        </>
     );
 };
 
-export default page;
+export default StudentSlider;

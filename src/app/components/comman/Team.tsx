@@ -69,11 +69,8 @@ const Team = () => {
                         <CarouselContent>
                             {toppers?.map((team) => (
                                 <CarouselItem key={team?.id} className="basis-1/4">
-                                    <div
-                                        id="teamMember"
-                                        className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
-                                    >
-                                        <div className="dez-media vertical-pan dez-img-effect">
+                                    <div id="teamMember" className="rounded-md dez-box m-b30">
+                                        <div className="">
                                             <img
                                                 className="teamHome"
                                                 src={team?.image_url}

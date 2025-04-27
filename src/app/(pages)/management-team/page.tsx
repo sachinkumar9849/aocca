@@ -70,7 +70,7 @@ const Team = () => {
                                 <div key={team?.id} className="col-span-1 mb-10">
                                     <div className="grid grid-cols-2">
                                         <div className="col-span-1">
-                                            <div className="dez-media vertical-pan ">
+                                            <div className="dez-media vertical-pan" id="magagementTeamImg">
                                                 <img src={team?.image_url} alt="team" width="358" height="460" />
                                             </div>
                                         </div>
@@ -83,22 +83,18 @@ const Team = () => {
                                                     </h4>
                                                     <span className="my-3 block text-[12px]">{team?.title}</span>
 
-                                                    <span className="my-3 block font-semibold capitalize">
-                                                        {team?.designation}
-                                                    </span>
-
                                                     <div
                                                         className="about_text"
                                                         dangerouslySetInnerHTML={{ __html: team.description }}
                                                     ></div>
-                                                    <div className="m-t10">
-                                                        <ul className="">
+                                                    <div className="">
+                                                        <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
                                                             <li>
                                                                 <a
                                                                     href={team.linkedin}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    className="text-white hover:text-gray-300"
+                                                                    className=""
                                                                 >
                                                                     <FontAwesomeIcon icon={faLinkedin} className="" />
                                                                 </a>
