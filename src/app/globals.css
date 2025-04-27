@@ -2679,3 +2679,48 @@ div#magagementTeamImg img {
 div#teamMember {
     border: 1px solid #e9e4e4;
 }
+.react-images__view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* styles/GalleryImg.module.css */
+.galleryContainer {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.heading {
+    text-align: center;
+    margin: 20px 0;
+    font-family: sans-serif;
+    color: #333;
+}
+
+/* Add hover effects to gallery images */
+:global(.react-photo-gallery--gallery img) {
+    transition: transform 0.3s ease;
+}
+
+:global(.react-photo-gallery--gallery img:hover) {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+/* Optional: Add a subtle shadow around the gallery */
+:global(.react-photo-gallery--gallery) {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+img {
+}
+
+.react-photo-gallery--gallery img {
+    height: 300px;
+    object-fit: cover;
+}

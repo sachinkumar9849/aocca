@@ -69,10 +69,7 @@ const Team = () => {
                         <CarouselContent>
                             {toppers?.map((team) => (
                                 <CarouselItem key={team?.id} className="basis-1/4">
-                                    <div
-                                        id="teamMember"
-                                        className="rounded-md dez-box m-b30"
-                                    >
+                                    <div id="teamMember" className="rounded-md dez-box m-b30">
                                         <div className="">
                                             <img
                                                 className="teamHome"
@@ -104,7 +101,6 @@ const Team = () => {
                                                     </li>
                                                 </ul>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </CarouselItem>

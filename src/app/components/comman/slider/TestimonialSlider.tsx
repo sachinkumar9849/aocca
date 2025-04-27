@@ -112,7 +112,7 @@ export default function TestimonialSlider() {
                                 <div className="testUser">
                                     <div className="testImg">
                                         <img
-                                            src={testimonial?.image_url || dummyImageUrl} 
+                                            src={testimonial?.image_url || dummyImageUrl}
                                             className="img-fluid object-cover"
                                             alt="img"
                                         />

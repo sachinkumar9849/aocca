@@ -83,8 +83,6 @@ const Team = () => {
                                                     </h4>
                                                     <span className="my-3 block text-[12px]">{team?.title}</span>
 
-
-
                                                     <div
                                                         className="about_text"
                                                         dangerouslySetInnerHTML={{ __html: team.description }}
