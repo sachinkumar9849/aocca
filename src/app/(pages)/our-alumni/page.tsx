@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Carousel } from "@/components/ui/carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 
 interface TopperTestimonial {
