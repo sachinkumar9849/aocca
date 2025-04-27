@@ -1,9 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Title from "./Title";
 import Breadcrumbs from "./Breadcrumbs";
 
 interface TopperTestimonial {
