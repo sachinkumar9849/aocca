@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useCallback, useEffect } from "react";
-import Gallery from "react-photo-gallery";
+import React, { useState, useEffect } from "react";
+import type { CSSProperties } from "react";
 
-import Carousel, { Modal, ModalGateway } from "react-images";
-import type { ViewStylesBase, FooterStylesBase, HeaderStylesBase, NavigationStylesBase } from "react-images";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 interface GalleryItem {
     id: number;
@@ -15,10 +15,9 @@ interface PhotoProps {
     width: number;
     height: number;
     alt?: string;
-    srcSet?: string;
 }
 
-const customStyles = {
+const customStyles: Record<string, CSSProperties> = {
     gallery: {
         margin: "0 auto",
         maxWidth: "1200px",
@@ -35,51 +34,28 @@ const customStyles = {
         padding: "50px",
         fontSize: "18px",
     },
-    carouselStyles: {
-        view: (base: ViewStylesBase): ViewStylesBase => ({
-            ...base,
-            padding: 20,
-            height: "calc(100vh - 120px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        }),
-        footer: (base: FooterStylesBase): FooterStylesBase => ({
-            ...base,
-            color: "#fff",
-            padding: "20px 0",
-            textAlign: "center",
-        }),
-        header: (base: HeaderStylesBase): HeaderStylesBase => ({
-            ...base,
-            padding: "20px 0",
-        }),
-        navigationPrev: (base: NavigationStylesBase): NavigationStylesBase => ({
-            ...base,
-            color: "#fff",
-            background: "rgba(0, 0, 0, 0.2)",
-            borderRadius: "50%",
-            padding: 10,
-            width: 40,
-            height: 40,
-            marginLeft: 10,
-        }),
-        navigationNext: (base: NavigationStylesBase): NavigationStylesBase => ({
-            ...base,
-            color: "#fff",
-            background: "rgba(0, 0, 0, 0.2)",
-            borderRadius: "50%",
-            padding: 10,
-            width: 40,
-            height: 40,
-            marginRight: 10,
-        }),
+    imageGrid: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+        gap: "10px",
+    },
+    imageContainer: {
+        cursor: "pointer",
+        overflow: "hidden",
+        borderRadius: "4px",
+        aspectRatio: "4/3",
+    },
+    image: {
+        width: "100%",
+        height: "100%",
+        objectFit: "cover" as const,
+        transition: "transform 0.3s ease",
     },
 };
 
 export default function GalleryImg() {
-    const [currentImage, setCurrentImage] = useState<number>(0);
-    const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false);
+    const [open, setOpen] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [photos, setPhotos] = useState<PhotoProps[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -117,26 +93,16 @@ export default function GalleryImg() {
         fetchGalleryImages();
     }, []);
 
-    const openLightbox = useCallback((event: React.MouseEvent, { index }: { index: number }) => {
-        setCurrentImage(index);
-        setViewerIsOpen(true);
-    }, []);
-
-    const closeLightbox = () => {
-        setCurrentImage(0);
-        setViewerIsOpen(false);
-    };
-
-    const galleryOptions = {
-        margin: 5,
-        targetRowHeight: 250,
+    const openLightbox = (index: number) => {
+        setCurrentIndex(index);
+        setOpen(true);
     };
 
     if (loading) {
         return (
-            <div>
-                <h1>Photo Gallery</h1>
-                <div>Loading gallery images...</div>
+            <div style={customStyles.gallery}>
+                <h1 style={customStyles.heading}>Photo Gallery</h1>
+                <div style={customStyles.loading}>Loading gallery images...</div>
             </div>
         );
     }
@@ -144,7 +110,7 @@ export default function GalleryImg() {
     if (error) {
         return (
             <div style={customStyles.gallery}>
-                <h1>Photo Gallery</h1>
+                <h1 style={customStyles.heading}>Photo Gallery</h1>
                 <div>{error}</div>
             </div>
         );
@@ -153,7 +119,7 @@ export default function GalleryImg() {
     if (photos.length === 0) {
         return (
             <div style={customStyles.gallery}>
-                <h1>Photo Gallery</h1>
+                <h1 style={customStyles.heading}>Photo Gallery</h1>
                 <div>No gallery images available.</div>
             </div>
         );
@@ -161,28 +127,20 @@ export default function GalleryImg() {
 
     return (
         <div style={customStyles.gallery}>
-            <Gallery
-                photos={photos}
-                onClick={openLightbox}
-                margin={galleryOptions.margin}
-                targetRowHeight={galleryOptions.targetRowHeight}
-            />
+            <div style={customStyles.imageGrid}>
+                {photos.map((photo, index) => (
+                    <div key={index} style={customStyles.imageContainer} onClick={() => openLightbox(index)}>
+                        <img src={photo.src} alt={photo.alt || `Gallery image ${index}`} style={customStyles.image} />
+                    </div>
+                ))}
+            </div>
 
-            <ModalGateway>
-                {viewerIsOpen ? (
-                    <Modal onClose={closeLightbox}>
-                        <Carousel
-                            currentIndex={currentImage}
-                            views={photos.map((x) => ({
-                                ...x,
-                                srcset: x.srcSet,
-                                caption: x.alt,
-                            }))}
-                            styles={customStyles.carouselStyles}
-                        />
-                    </Modal>
-                ) : null}
-            </ModalGateway>
+            <Lightbox
+                open={open}
+                close={() => setOpen(false)}
+                index={currentIndex}
+                slides={photos.map((photo) => ({ src: photo.src, alt: photo.alt }))}
+            />
         </div>
     );
 }
