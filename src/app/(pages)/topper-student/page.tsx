@@ -55,7 +55,7 @@ const StudentSlider = () => {
     }, []);
     return (
         <>
-            <Breadcrumbs title={"Topper Students At CA"} />
+            <Breadcrumbs title={"Toppers from AOC"} />
             <div className="padding" id="student">
                 <div className="mx-auto max-w-7xl">
                     {loading && <div className="text-center py-8">Loading topper students...</div>}

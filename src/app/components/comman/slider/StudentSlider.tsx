@@ -58,7 +58,7 @@ const StudentSlider = () => {
         <div className="padding" id="student">
             <div className="mx-auto max-w-7xl">
                 <div className="text-center">
-                    <Title title="Topper Students At CA" subTitle="Students" />
+                    <Title title="Toppers from AOC" subTitle="Students" />
                 </div>
 
                 {loading && <div className="text-center py-8">Loading topper students...</div>}
