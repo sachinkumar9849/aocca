@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "./Title";
+import { dummyImageUrl } from "./News";
 
 interface TopperTestimonial {
     id: string | number;
@@ -73,7 +74,7 @@ const Team = () => {
                                         <div className="">
                                             <img
                                                 className="teamHome"
-                                                src={team?.image_url}
+                                                src={team?.image_url || dummyImageUrl}
                                                 alt="team"
                                                 width="358"
                                                 height="460"

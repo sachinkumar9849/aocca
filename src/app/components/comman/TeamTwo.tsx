@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Breadcrumbs from "./Breadcrumbs";
+import { dummyImageUrl } from "./News";
 
 interface TopperTestimonial {
     id: string | number;
@@ -54,9 +55,9 @@ const TeamTwo = () => {
 
     return (
         <>
-            <Breadcrumbs title=" Team" />
+            <Breadcrumbs title=" Faculties" />
             <section className="teamSection padding">
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     {loading && <div className="text-center py-8">Loading team ...</div>}
 
                     {error && <div className="text-center py-8 text-red-500">Error loading team : {error}</div>}
@@ -65,7 +66,7 @@ const TeamTwo = () => {
                         <div className="text-center py-8">No team found</div>
                     )}
                     {!loading && !error && toppers.length > 0 && (
-                        <div className="grid grid-cols-4">
+                        <div className="grid md:grid-cols-4 gap-7">
                             {toppers?.map((team) => (
                                 <div key={team?.id} className="col-span-1">
                                     <div
@@ -75,7 +76,7 @@ const TeamTwo = () => {
                                         <div className="dez-media vertical-pan dez-img-effect">
                                             <img
                                                 className="teamHome"
-                                                src={team?.image_url}
+                                                src={team?.image_url || dummyImageUrl}
                                                 alt="team"
                                                 width="358"
                                                 height="460"
