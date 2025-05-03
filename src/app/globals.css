@@ -2667,6 +2667,7 @@ img.teamHome {
     min-height: 330px !important;
     max-height: 330px !important;
     padding: 0 !important;
+    object-fit: cover;
 }
 .dez-staff:hover {
     box-shadow: unset !important;
@@ -2723,4 +2724,9 @@ img {
 .react-photo-gallery--gallery img {
     height: 300px;
     object-fit: cover;
+}
+.alumniImg img {
+    height: 179px;
+    object-fit: cover;
+    object-position: top;
 }

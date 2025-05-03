@@ -20,14 +20,14 @@ const Footer = () => {
                                 <div className="dez-separator bg-primary" />
                                 <ul>
                                     <li className="wow fadeInUp">
-                                        <Link href="/ca-foundation">Ca-Foundation</Link>
+                                        <Link href="/ca-foundation">CA Foundation</Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/ca-Intermediate">Ca-Intermediate</Link>
+                                        <Link href="/ca-Intermediate">CA Intermediate</Link>
                                     </li>
 
                                     <li className="wow fadeInUp">
-                                        <Link href="/ca-final">CA FINAL</Link>
+                                        <Link href="/ca-final">CA Final</Link>
                                     </li>
                                     <li className="wow fadeInUp">
                                         <Link href="/mandatory-training">Mandatory Training</Link>
@@ -47,7 +47,7 @@ const Footer = () => {
                                         <Link href="/news-list">News</Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/faqs">Faqs</Link>
+                                        <Link href="/faqs">FAQs</Link>
                                     </li>
                                     <li className="wow fadeInUp">
                                         <Link href="/contact">Contact</Link>
@@ -132,9 +132,9 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="copyright">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-4 mx-auto text-center">
+                    <div className="mx-auto max-w-7xl">
+                        <div className="grid grid-cols-1">
+                            <div className="col-span-1 text-center">
                                 <div className="copyright-center wow fadeInUp">
                                     <p>
                                         <i className="bx bx-copyright" /> Copyright 2025{" "}

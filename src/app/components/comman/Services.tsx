@@ -35,7 +35,6 @@ const Services = () => {
                                     </div>
                                     <div className="services_text pl-3">
                                         <h4>Enroll for Foundation</h4>
-                                        <p>Enroll for Foundation/CAP-I program with ICAI/ICAN</p>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +45,6 @@ const Services = () => {
                                     </div>
                                     <div className="services_text pl-3">
                                         <h4> Preparation of CA exams</h4>
-                                        <p>Preparation of CA exams with professional classes by experienced CAS.</p>
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +55,6 @@ const Services = () => {
                                     </div>
                                     <div className="services_text pl-3">
                                         <h4>Register for examination.</h4>
-                                        <p>Register for examination.</p>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +65,6 @@ const Services = () => {
                                     </div>
                                     <div className="services_text pl-3">
                                         <h4>Provide assistance to students</h4>
-                                        <p>Provide assistance to students to go to India for further studies.</p>
                                     </div>
                                 </div>
                             </div>

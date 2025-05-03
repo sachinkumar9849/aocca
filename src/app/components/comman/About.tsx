@@ -69,38 +69,13 @@ const About = () => {
 
                                 <div>{striptags(pageData.description).slice(0, 200)}...</div>
 
-                                <div className="aboutUlli">
-                                    <div className="aboutDivBlock">
-                                        <img
-                                            src="https://cdn-icons-png.flaticon.com/512/6005/6005592.png"
-                                            className="img-fluid"
-                                            alt=""
-                                        />
-                                        <h2>Corporate Finance</h2>
-                                    </div>
-                                    <div className="aboutDivBlock">
-                                        <img
-                                            src="https://static.thenounproject.com/png/3191169-200.png"
-                                            className="img-fluid"
-                                            alt=""
-                                        />
-                                        <h2>Accountancy</h2>
-                                    </div>
-                                    <div className="aboutDivBlock">
-                                        <img
-                                            src="https://static.vecteezy.com/system/resources/previews/009/588/968/non_2x/graph-analysis-business-growth-transparent-free-png.png"
-                                            className="img-fluid"
-                                            alt=""
-                                        />
-                                        <h2>Auditing</h2>
-                                    </div>
+                                <div className="mt-5">
+                                    <Link href="/about">
+                                        <Button>
+                                            View All <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />
+                                        </Button>
+                                    </Link>
                                 </div>
-                                <Link href="/about">
-                                    <Button>
-                                        View All <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />
-                                    </Button>
-                                </Link>
-                                <div className="servicesButtom wow fadeInUp text-left"></div>
                             </div>
                         </div>
                     </div>

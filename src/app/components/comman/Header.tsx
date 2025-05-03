@@ -181,7 +181,7 @@ const Header = () => {
                                     onMouseEnter={() => setDropdownOpent(true)}
                                     onMouseLeave={() => setDropdownOpent(false)}
                                 >
-                                    Ca Courses{" "}
+                                    CA Courses{" "}
                                     <svg
                                         className="w-2.5 h-2.5 ms-2.5"
                                         aria-hidden="true"
@@ -216,7 +216,7 @@ const Header = () => {
                                                 href="/ca-foundation"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                Ca - Foundation
+                                                CA Foundation
                                             </Link>
                                         </li>
 
@@ -225,7 +225,7 @@ const Header = () => {
                                                 href="/ca-Intermediate"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                Ca - Intermediate
+                                                CA Intermediate
                                             </Link>
                                         </li>
 
@@ -234,7 +234,7 @@ const Header = () => {
                                                 href="/ca-final"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                CA FINAL
+                                                CA Final
                                             </Link>
                                         </li>
                                         <li>
@@ -242,7 +242,7 @@ const Header = () => {
                                                 href="/mandatory-training"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                Mandatory - Training
+                                                Mandatory Training
                                             </Link>
                                         </li>
                                         <li>
@@ -250,7 +250,7 @@ const Header = () => {
                                                 href="/faqs"
                                                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                FaqS
+                                                FAQs
                                             </Link>
                                         </li>
                                     </ul>
