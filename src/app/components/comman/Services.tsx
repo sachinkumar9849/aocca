@@ -2,6 +2,7 @@ import React from "react";
 import enroll from "@/app/assets/img/enroll.png";
 import exam from "@/app/assets/img/exam.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const Services = () => {
     return (
@@ -29,44 +30,58 @@ const Services = () => {
                     <div className="col-span-5">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="col-span-1">
-                                <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
-                                    <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
-                                        <Image width={20} height={20} alt="img" src={enroll} className="img-fluid" />
+                                <Link href="/contact">
+                                    <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
+                                        <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
+                                            <Image
+                                                width={20}
+                                                height={20}
+                                                alt="img"
+                                                src={enroll}
+                                                className="img-fluid"
+                                            />
+                                        </div>
+                                        <div className="services_text pl-3">
+                                            <h4>Enroll for Foundation</h4>
+                                        </div>
                                     </div>
-                                    <div className="services_text pl-3">
-                                        <h4>Enroll for Foundation</h4>
-                                    </div>
-                                </div>
+                                </Link>
                             </div>
                             <div className="col-span-1">
-                                <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
-                                    <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
-                                        <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                <Link href="/contact">
+                                    <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
+                                        <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
+                                            <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                        </div>
+                                        <div className="services_text pl-3">
+                                            <h4> Preparation of CA exams</h4>
+                                        </div>
                                     </div>
-                                    <div className="services_text pl-3">
-                                        <h4> Preparation of CA exams</h4>
-                                    </div>
-                                </div>
+                                </Link>
                             </div>
                             <div className="col-span-1">
-                                <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
-                                    <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
-                                        <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                <Link href="/contact">
+                                    <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
+                                        <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
+                                            <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                        </div>
+                                        <div className="services_text pl-3">
+                                            <h4>Register for examination.</h4>
+                                        </div>
                                     </div>
-                                    <div className="services_text pl-3">
-                                        <h4>Register for examination.</h4>
-                                    </div>
-                                </div>
+                                </Link>
                             </div>
                             <div className="col-span-1">
-                                <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
-                                    <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
-                                        <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                <Link href="/contact">
+                                    <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
+                                        <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
+                                            <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                        </div>
+                                        <div className="services_text pl-3">
+                                            <h4>Provide assistance to students</h4>
+                                        </div>
                                     </div>
-                                    <div className="services_text pl-3">
-                                        <h4>Provide assistance to students</h4>
-                                    </div>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

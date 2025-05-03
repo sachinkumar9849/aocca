@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 
 interface FaqItem {
     id: number;
@@ -39,10 +38,10 @@ const FaqPage: React.FC = () => {
 
         fetchFaqData();
     }, []);
-
+    if (isLoading) <p>loadding...</p>;
+    if (error) <p>loadding...</p>;
     return (
         <>
-            {/* <Breadcrumbs title="FAQs" /> */}
             <div className="padding position-relative class-section pt-5 " id="faqSection">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="grid grid-cols-12">
