@@ -69,21 +69,26 @@ const StudentSlider = () => {
 
                     {!loading && !error && toppers.length > 0 && (
                         <Carousel className="w-full">
-                            <div className="grid grid-cols-4 gap-7">
+                            <div className="grid grid-cols-6 gap-7">
                                 {toppers.map((topper) => (
                                     <div key={topper.id} className="col-span-1">
-                                        <div className="blogImg ">
+                                        <div className="blogImg alumniImg">
                                             <img className="object-cover" src={topper.image_url} alt={topper.name} />
                                         </div>
 
                                         <div className="blogContent p-4">
-                                            <div className="flex items-center justify-between mb-2">
+                                            <div className="flex items-center justify-center text-center mb-2">
                                                 <span className="flex items-center">
                                                     <FontAwesomeIcon width={10} icon={faUser} />
                                                     <span className="ml-1 font-medium">{topper.name}</span>
                                                 </span>
                                             </div>
-                                            <h3 className="text-lg font-bold mb-2">{topper.title}</h3>
+                                            <h3
+                                                style={{ fontSize: "17px", lineHeight: "23px" }}
+                                                className="text-center font-bold mb-2"
+                                            >
+                                                {topper.title}
+                                            </h3>
                                         </div>
                                     </div>
                                 ))}
