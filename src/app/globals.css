@@ -2205,7 +2205,7 @@ header.site-header.header-primary {
 
 .class-block {
     border-left: 10px solid #0d569f;
-    padding: 20px;
+
     box-shadow:
         #0d569f 0 50px 100px -20px,
         #0d569f 0 30px 60px -30px,
@@ -2729,4 +2729,15 @@ img {
     height: 179px;
     object-fit: cover;
     object-position: top;
+}
+div#faqSection h3.flex {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.border-b {
+    padding: 9px 30px;
+}
+.border-b[data-state="open"] {
+    border-bottom: 2px solid #d38c93;
+    background: #fde9eb;
 }

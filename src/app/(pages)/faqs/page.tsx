@@ -42,28 +42,22 @@ const FaqPage: React.FC = () => {
 
     return (
         <>
-            <Breadcrumbs title="FAQ" />
-            <div className="padding" id="faqSection">
+            {/* <Breadcrumbs title="FAQs" /> */}
+            <div className="padding position-relative class-section pt-5 " id="faqSection">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
-                    <div className="md:w-1/2 w-full mx-auto">
-                        {isLoading ? (
-                            <div className="text-center py-8">
-                                <p>Loading FAQ items...</p>
+                    <div className="grid grid-cols-12">
+                        <div className="col-span-4">
+                            <div className="sectionTitle">
+                                <p className="wow fadeInUp">Any questions?</p>
+                                <h1 className="wow fadeInUp">Your questions answered here. </h1>
                             </div>
-                        ) : error ? (
-                            <div className="text-center py-8 text-red-500">
-                                <p>{error}</p>
-                            </div>
-                        ) : faqItems.length === 0 ? (
-                            <div className="text-center py-8">
-                                <p>No FAQ items available at the moment.</p>
-                            </div>
-                        ) : (
-                            <Accordion type="single" collapsible className="w-full">
+                        </div>
+                        <div className="col-span-8">
+                            <Accordion type="single" collapsible className="w-full class-block">
                                 {faqItems.map((faq) => (
                                     <AccordionItem key={faq.id} value={`item-${faq.id}`}>
-                                        <AccordionTrigger className="text-left font-medium">
-                                            {faq.title}
+                                        <AccordionTrigger className="p-0 m-0">
+                                            <p className="text-left font-bold text-[20px]">{faq.title}</p>
                                         </AccordionTrigger>
                                         <AccordionContent>
                                             <div dangerouslySetInnerHTML={{ __html: faq.description }} />
@@ -71,7 +65,7 @@ const FaqPage: React.FC = () => {
                                     </AccordionItem>
                                 ))}
                             </Accordion>
-                        )}
+                        </div>
                     </div>
                 </div>
             </div>
