@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Carousel } from "@/components/ui/carousel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 
 interface TopperTestimonial {
@@ -72,23 +70,22 @@ const StudentSlider = () => {
                             <div className="grid grid-cols-6 gap-7">
                                 {toppers.map((topper) => (
                                     <div key={topper.id} className="col-span-1">
-                                        <div className="blogImg alumniImg">
+                                        <div className="blogImg alumniImg mb-3">
                                             <img className="object-cover" src={topper.image_url} alt={topper.name} />
                                         </div>
 
-                                        <div className="blogContent p-4">
-                                            <div className="flex items-center justify-center text-center mb-2">
-                                                <span className="flex items-center">
-                                                    <FontAwesomeIcon width={10} icon={faUser} />
-                                                    <span className="ml-1 font-medium">{topper.name}</span>
+                                        <div className="blogContent py-4" style={{ padding: "0px" }}>
+                                            <h3
+                                                style={{ fontSize: "14px", lineHeight: "20px", margin: "0" }}
+                                                className=" font-bold"
+                                            >
+                                                {topper.name}
+                                            </h3>
+                                            <div className="flex   mt-1">
+                                                <span className="flex items-left">
+                                                    <span className="ml-1 font-medium"> {topper.title}</span>
                                                 </span>
                                             </div>
-                                            <h3
-                                                style={{ fontSize: "17px", lineHeight: "23px" }}
-                                                className="text-center font-bold mb-2"
-                                            >
-                                                {topper.title}
-                                            </h3>
                                         </div>
                                     </div>
                                 ))}
