@@ -23,7 +23,7 @@ const VideoSection: React.FC = () => {
     useEffect(() => {
         const fetchHighlights = async () => {
             try {
-                const response = await fetch("http://156.67.104.182:8081/api/v1/toper-testimonial-team?type=highlight");
+                const response = await fetch("https://api.aoc.edu.np/api/v1/toper-testimonial-team?type=highlight");
 
                 if (!response.ok) {
                     throw new Error(`Error fetching highlights: ${response.status}`);

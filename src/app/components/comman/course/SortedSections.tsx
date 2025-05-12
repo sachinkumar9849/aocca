@@ -19,7 +19,7 @@ const SortedSections: React.FC = () => {
         const fetchSections = async () => {
             try {
                 const response = await fetch(
-                    "http://156.67.104.182:8081/api/v1/toper-testimonial-team?type=cap-i&status=published",
+                    "https://api.aoc.edu.np/api/v1/toper-testimonial-team?type=cap-i&status=published",
                 );
 
                 if (!response.ok) {
