@@ -117,7 +117,9 @@ const StudentSlider = () => {
                     <div className="col-span-1">
                         <div className="servicesButtom z-10 relative">
                             <span>
-                                <span className="pr-2 mb-md-0 mb-2">See all AOC CA Topper students.</span>
+                                <span className="pr-2 mb-md-0 mb-2 md:block hidden">
+                                    See all AOC CA Topper students.
+                                </span>
                                 <Link href="/topper-student">
                                     <Button>
                                         View All <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />

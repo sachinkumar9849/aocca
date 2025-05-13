@@ -9,8 +9,8 @@ const Footer = () => {
         <section className="footer section-padding" id="footerId">
             <div className="footer-desc text-white">
                 <div className="mx-auto max-w-7xl md:px-0 px-4 mb-5 z-10 relative">
-                    <div className="grid grid-cols-4">
-                        <div className="col-span-1">
+                    <div className="grid md:grid-cols-4">
+                        <div className="col-span-1 md:mb-0 mb-3">
                             <Link href={"/"}>
                                 <Image src={logo} alt="logo" width={200} height={200} />
                             </Link>

@@ -63,12 +63,12 @@ const VideoSection: React.FC = () => {
                 <Carousel>
                     <CarouselContent>
                         {highlights.map((highlight) => (
-                            <CarouselItem className="basis-1/4" key={highlight.id}>
+                            <CarouselItem className="md:basis-1/4" key={highlight.id}>
                                 <Dialog>
                                     <DialogTrigger>
-                                        <div className="relative w-full min-h-[400px] max-h-[400px] rounded-md overflow-hidden">
+                                        <div className="relative w-full md:min-h-[400px] min-h-[300px] md:max-h-[400px] max-h-[300px] rounded-md overflow-hidden">
                                             <Image
-                                                className="w-full h-full object-cover highlightImg min-h-[400px] max-h-[400px]"
+                                                className="w-full h-full object-cover highlightImg md:min-h-[400px] min-h-[300px] md:max-h-[400px] max-h-[300px]"
                                                 src={highlight.image_url}
                                                 alt={`Highlight ${highlight.id}`}
                                                 width={400}

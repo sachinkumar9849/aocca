@@ -75,7 +75,8 @@ export default function SliderBanner() {
                     <SwiperSlide key={item.id}>
                         <div className="imgBanner">
                             <Image
-                                width={2000} height={2000}
+                                width={2000}
+                                height={2000}
                                 className="object-contain"
                                 src={item.image_url}
                                 alt={`Slider image ${item.id}`}

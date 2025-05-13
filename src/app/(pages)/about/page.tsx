@@ -49,15 +49,15 @@ const About = () => {
             <Breadcrumbs title="About Us" />
             <div className="padding">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
-                    <div className="grid grid-cols-12 items-center md:gap-10 gap-5">
-                        <div className="col-span-4">
+                    <div className="grid md:grid-cols-12 grid-cols-1 items-center md:gap-10 gap-5">
+                        <div className="md:col-span-4 col-span-1 md:order-1 order-2">
                             <div className="aboutImgWrap relative">
                                 <div className="about-us-img-box">
                                     <img width={300} height={300} src={pageData.image_url} alt="Example Image" />
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-8">
+                        <div className="md:col-span-8 col-span-1 md:order-2 order-1">
                             <div className="about-us-text-box">
                                 <div className="sec-title mb-0">
                                     <div className="sectionTitle">

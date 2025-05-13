@@ -90,7 +90,7 @@ export default function GalleryImgFooter() {
     const displayedPhots = photos.slice(0, 6);
     return (
         <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            <div className="grid  md:grid-cols-3 grid-cols-2 gap-5">
                 {displayedPhots.map((photo, index) => (
                     <div
                         key={index}

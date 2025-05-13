@@ -255,20 +255,6 @@ body {
     overflow-x: hidden;
 }
 
-@media (max-width: 640px) {
-    .provinceNewsTitle {
-        font-size: 16px;
-        line-height: 22px;
-    }
-    .largeScreenMenu {
-        display: none;
-    }
-    .headerSmall {
-        height: 76px;
-        z-index: 9;
-        border-bottom: 1px solid #e8e8e8;
-    }
-}
 .dateCenter {
     position: absolute;
     top: 50%;
@@ -2795,4 +2781,128 @@ table table td:nth-child(2) {
 table table td:last-child {
     width: 20%;
     text-align: center;
+}
+@media (max-width: 640px) {
+    .provinceNewsTitle {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .largeScreenMenu {
+        display: none;
+    }
+    .headerSmall {
+        height: 76px;
+        z-index: 9;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    .sliderWrap {
+        margin-top: 0px;
+    }
+    .hp-hero__cta-item-title {
+        font-size: 19px;
+        line-height: 30px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .hp-hero__cta-item {
+        border-top: 1px solid #ffffff;
+        color: #ffffff;
+        cursor: pointer;
+        display: block;
+        font-family: var(--font-sans);
+        height: 73px;
+        margin-top: 0;
+        min-height: 73px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        width: 100%;
+    }
+    .hp-hero__cta-items {
+        display: block;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    .hp-hero__cta-item-container img {
+        height: 73px;
+        width: 100% !important;
+    }
+
+    li.hp-hero__cta-item.wow.fadeInUp {
+        width: 100%;
+    }
+    .hp-hero__cta-item-mask {
+        background-color: #0a3058 !important;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .padding {
+        padding: 59px 0;
+    }
+    .sectionTitle h1 {
+        font-size: 29px !important;
+        font-weight: 700 !important;
+        text-transform: none;
+        line-height: 33px;
+    }
+    .about-us-img-box img {
+        max-height: 300px;
+        min-height: 300px;
+    }
+    .services_text h4 {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 500;
+    }
+    .slick-slide {
+        margin: 0;
+    }
+    .testimonialPadding {
+        padding-bottom: 0;
+    }
+
+    .footer {
+        padding: 55px 0px 0px;
+    }
+    img.logoMobile {
+        width: 200px;
+    }
+    .innerBanner {
+        margin-top: 0;
+        height: 72vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .innerBanner {
+        margin-top: 0;
+        height: 27vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    nav#breadCrumbItem {
+        margin-top: 0;
+    }
+    div#magagementTeamImg img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    div#teamDetail {
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 3px 16px 0 rgb(0 0 0 / 11%);
+        z-index: 9;
+        margin-left: 0;
+        text-align: center;
+    }
 }
