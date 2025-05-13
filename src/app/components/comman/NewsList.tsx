@@ -69,7 +69,7 @@ const NewsList = () => {
                 <div className="text-center py-8">No topper students found</div>
             )}
             <section className="blogSec padding">
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     {!loading && !error && toppers.length > 0 && (
                         <div className="grid grid-cols-3 gap-6">
                             {toppers?.map((manItem) => (

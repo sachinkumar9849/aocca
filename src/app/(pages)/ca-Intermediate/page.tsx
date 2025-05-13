@@ -78,7 +78,7 @@ const CapIPage: React.FC = () => {
                             }`}
                             id={item.slug}
                         >
-                            <div className="mx-auto max-w-7xl">
+                            <div className="mx-auto max-w-7xl md:px-0 px-4">
                                 {isEvenSection ? (
                                     <div className="grid grid-cols-12">
                                         <div className="col-span-4">

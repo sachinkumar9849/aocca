@@ -48,7 +48,7 @@ const About = () => {
         <>
             <Breadcrumbs title="About Us" />
             <div className="padding">
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="grid grid-cols-12 items-center md:gap-10 gap-5">
                         <div className="col-span-4">
                             <div className="aboutImgWrap relative">

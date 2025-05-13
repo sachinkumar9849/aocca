@@ -46,7 +46,7 @@ const Header = () => {
         <>
             <div className="top-header" ref={topHeaderRef}>
                 <p className="hidden">{headerHeight}</p>
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="grid grid-cols-1">
                         <div className="col-span-1">
                             <div className="topHeaderBlock">

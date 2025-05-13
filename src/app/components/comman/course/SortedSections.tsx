@@ -50,7 +50,7 @@ const SortedSections: React.FC = () => {
             case "course structure":
                 return (
                     <section key={section.id} className="about relative class-section pt-5 padding" id="Requirements">
-                        <div className="mx-auto max-w-7xl">
+                        <div className="mx-auto max-w-7xl md:px-0 px-4">
                             <div className="grid grid-cols-12">
                                 <div className="col-span-4">
                                     <div className="sectionTitle">
@@ -75,7 +75,7 @@ const SortedSections: React.FC = () => {
                 return (
                     <div key={section.id} id="registrationDetail">
                         <section className="about-services position-relative bg_pink padding">
-                            <div className="mx-auto max-w-7xl">
+                            <div className="mx-auto max-w-7xl md:px-0 px-4">
                                 <div className="grid grid-cols-1">
                                     <div className="col-span-1 text-center">
                                         <div className="sectionTitle">
@@ -87,7 +87,7 @@ const SortedSections: React.FC = () => {
                             </div>
                         </section>
                         <section className="service-section-details position-relative bg_gray pb-5">
-                            <div className="mx-auto max-w-7xl">
+                            <div className="mx-auto max-w-7xl md:px-0 px-4">
                                 <div className="grid grid-cols-1">
                                     <div className="col-span-1">
                                         <div className="div-block bg-white">
@@ -106,7 +106,7 @@ const SortedSections: React.FC = () => {
             case "registration deadlines":
                 return (
                     <section key={section.id} className="padding" id="Cost">
-                        <div className="mx-auto max-w-7xl">
+                        <div className="mx-auto max-w-7xl md:px-0 px-4">
                             <div className="grid grid-cols-12 gap-20">
                                 <div className="col-span-4">
                                     <div className="sectionTitle">
@@ -128,7 +128,7 @@ const SortedSections: React.FC = () => {
             default:
                 return (
                     <section key={section.id} className="sectionCustomCss class-section  padding">
-                        <div className="mx-auto max-w-7xl z-20">
+                        <div className="mx-auto max-w-7xl md:px-0 px-4 z-20">
                             <div className="grid grid-cols-12 gap-8">
                                 <div className="col-span-4">
                                     <div className="sectionTitle">

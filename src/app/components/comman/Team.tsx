@@ -56,7 +56,7 @@ const Team = () => {
 
     return (
         <section className="teamSection padding">
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-7xl md:px-0 px-4">
                 <div className="text-center">
                     <Title title="Expert Academic Team" subTitle="Team" />
                 </div>

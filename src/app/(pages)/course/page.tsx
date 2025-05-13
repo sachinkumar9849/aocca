@@ -4,7 +4,7 @@ const page = () => {
     return (
         <>
             <section className="about relative class-section pt-5 padding" id="Requirements">
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="grid grid-cols-12">
                         <div className="col-span-4">
                             <div className="sectionTitle">
@@ -94,7 +94,7 @@ const page = () => {
                     </div>
                 </section>
                 <section className="service-section-details position-relative bg_gray pb-5">
-                    <div className="mx-auto max-w-7xl">
+                    <div className="mx-auto max-w-7xl md:px-0 px-4">
                         <div className="grid grid-cols-1">
                             <div className="col-span-1">
                                 <div className="div-block bg-white">
@@ -129,7 +129,7 @@ const page = () => {
             </div>
 
             <section className="padding" id="Cost">
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="grid grid-cols-12 gap-20">
                         <div className="col-span-4">
                             <div className="sectionTitle">

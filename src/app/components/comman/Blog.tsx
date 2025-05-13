@@ -62,7 +62,7 @@ const Blog = () => {
     return (
         <>
             <div className="blogSection padding" id="student">
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="text-center">
                         <Title title="Latest From Our Blogs" subTitle="Our blog" />
                     </div>

@@ -56,7 +56,7 @@ const StudentSlider = () => {
     }, []);
     return (
         <div className="padding" id="student">
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-7xl md:px-0 px-4">
                 <div className="text-center">
                     <Title title="Toppers from AOC" subTitle="Students" />
                 </div>

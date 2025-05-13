@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import Image from "next/image";
 
 interface SliderItem {
     id: number;
@@ -73,8 +74,9 @@ export default function SliderBanner() {
                 {sliderItems.map((item) => (
                     <SwiperSlide key={item.id}>
                         <div className="imgBanner">
-                            <img
-                                className="object-cover w-full h-[90vh]"
+                            <Image
+                                width={2000} height={2000}
+                                className="object-contain"
                                 src={item.image_url}
                                 alt={`Slider image ${item.id}`}
                             />

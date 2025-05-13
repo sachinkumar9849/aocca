@@ -7,7 +7,7 @@ import Link from "next/link";
 const Services = () => {
     return (
         <section id="services" className="services bg_img2 padding position-relative">
-            <div className="mx-auto max-w-7xl z-10 relative">
+            <div className="mx-auto max-w-7xl md:px-0 px-4 z-10 relative">
                 <div className="grid grid-cols-8 gap-8">
                     <div className="col-span-3">
                         <div className="about-us-text-box">

@@ -50,8 +50,8 @@ const About = () => {
     if (!pageData) return <div className="padding">No data available</div>;
     return (
         <div className="padding">
-            <div className="mx-auto max-w-7xl">
-                <div className="grid grid-cols-2 items-center md:gap-10 gap-5">
+            <div className="mx-auto max-w-7xl md:px-0 px-4">
+                <div className="grid md:grid-cols-2 items-center md:gap-10 gap-5">
                     <div className="col-span-1">
                         <div className="aboutImgWrap relative">
                             <div className="about-us-img-box">
