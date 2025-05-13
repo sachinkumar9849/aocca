@@ -7,7 +7,7 @@ const ContactPage = () => {
         <>
             <Breadcrumbs title="Contact Us" />
             <div className="bg-gray-50 py-16">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-7xl md:px-0 px-4 px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                         <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
                             <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">

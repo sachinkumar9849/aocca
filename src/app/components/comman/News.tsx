@@ -62,7 +62,7 @@ const News = () => {
     return (
         <section id="news_section" className="padding bg_gray news_section">
             <Image className="home-shape" src={newsAnimation} alt="img" />
-            <div className="mx-auto max-w-7xl md:px-0 px-4">
+            <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
                 <div className="text-center">
                     <Title title="News & Notice" subTitle="News" />
                 </div>

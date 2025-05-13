@@ -57,7 +57,7 @@ const TeamTwo = () => {
         <>
             <Breadcrumbs title=" Faculties" />
             <section className="teamSection padding">
-                <div className="mx-auto max-w-7xl md:px-0 px-4">
+                <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
                     {loading && <div className="text-center py-8">Loading team ...</div>}
 
                     {error && <div className="text-center py-8 text-red-500">Error loading team : {error}</div>}

@@ -43,7 +43,7 @@ const FaqPage: React.FC = () => {
     return (
         <>
             <div className="padding position-relative class-section pt-5 " id="faqSection">
-                <div className="mx-auto max-w-7xl md:px-0 px-4">
+                <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
                     <div className="grid grid-cols-12">
                         <div className="col-span-4">
                             <div className="sectionTitle">

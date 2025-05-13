@@ -63,12 +63,12 @@ const Team = () => {
                 <div className="text-center py-8">No topper students found</div>
             )}
             <section className="teamSection padding">
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     {!loading && !error && toppers.length > 0 && (
                         <div className="grid grid-cols-1 gap-5">
                             {toppers?.map((team) => (
                                 <div key={team?.id} className="col-span-1 mb-10">
-                                    <div className="grid grid-cols-2">
+                                    <div className="grid md:grid-cols-2">
                                         <div className="col-span-1">
                                             <div className="dez-media vertical-pan" id="magagementTeamImg">
                                                 <img src={team?.image_url} alt="team" width="358" height="460" />
@@ -78,7 +78,7 @@ const Team = () => {
                                         <div className="col-span-1 flex items-center">
                                             <div id="teamDetail" className="rounded-md">
                                                 <div className="">
-                                                    <h4 className="text-[32px] font-semibold text-[#0e569f]">
+                                                    <h4 className="md:text-[32px] text-[20px] font-semibold text-[#0e569f]">
                                                         {team?.name}
                                                     </h4>
                                                     <span className="my-3 block text-[12px]">{team?.title}</span>

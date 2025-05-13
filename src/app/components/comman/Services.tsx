@@ -7,10 +7,10 @@ import Link from "next/link";
 const Services = () => {
     return (
         <section id="services" className="services bg_img2 padding position-relative">
-            <div className="mx-auto max-w-7xl z-10 relative">
-                <div className="grid grid-cols-8 gap-8">
-                    <div className="col-span-3">
-                        <div className="about-us-text-box">
+            <div className="mx-auto max-w-7xl md:px-0 px-4 z-10 relative">
+                <div className="grid md:grid-cols-8 grid-cols-1 gap-8">
+                    <div className="md:col-span-3 col-span-1">
+                        <div className="md:text-left text-center about-us-text-box">
                             <div className="sec-title mb-0">
                                 <div className="sectionTitle">
                                     <p className="wow fadeInUp ml-4">Services</p>
@@ -27,8 +27,8 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-5">
-                        <div className="grid grid-cols-2 gap-4">
+                    <div className="md:col-span-5 col-span-1">
+                        <div className="grid md:grid-cols-2 gap-4">
                             <div className="col-span-1">
                                 <Link href="/contact">
                                     <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">

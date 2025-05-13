@@ -37,7 +37,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
         <div>
             <div id="registrationDetail">
                 <section className="about-services position-relative bg_pink padding">
-                    <div className="mx-auto max-w-7xl md:px-0 px-4">
+                    <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
                         <div className="grid grid-cols-1">
                             <div className="col-span-1">
                                 <div className="sectionTitle w-4/5 mx-auto text-center">
@@ -60,7 +60,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
                 </section>
 
                 <section className="service-section-details position-relative bg_gray pb-5 mt-[-60px]">
-                    <div className="mx-auto max-w-7xl">
+                    <div className="mx-auto max-w-7xl md:px-0 px-4">
                         <div className="row">
                             <div className="col-12">
                                 <div className="div-block bg-white p-4">

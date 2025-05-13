@@ -28,7 +28,6 @@ const FourColumn = () => {
 
                                 <div className="hp-hero__cta-item-mask" />
                                 <div className="hp-hero__cta-item-title">Ca-Foundation</div>
-                                <div className="hp-hero__cta-item-caption"></div>
                             </div>
                         </Link>
                     </li>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import MobileMenu from "./MobileMenu";
 
 const Header = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -44,9 +45,12 @@ const Header = () => {
 
     return (
         <>
-            <div className="top-header" ref={topHeaderRef}>
+            <div className="md:hidden block">
+                <MobileMenu />
+            </div>
+            <div className="top-header md:block hidden" ref={topHeaderRef}>
                 <p className="hidden">{headerHeight}</p>
-                <div className="mx-auto max-w-7xl">
+                <div className="mx-auto max-w-7xl md:px-0 px-4">
                     <div className="grid grid-cols-1">
                         <div className="col-span-1">
                             <div className="topHeaderBlock">
@@ -88,12 +92,12 @@ const Header = () => {
             </div>
             <nav
                 ref={navRef}
-                className={`headerNav w-full z-50 border-gray-200 bg-white dark:border-gray-700 py-[8px] ${
+                className={`md:block hidden headerNav w-full z-50 border-gray-200 bg-white dark:border-gray-700 py-[8px] ${
                     isSticky ? "fixed top-0 left-0 shadow-md transition-all duration-300" : "relative"
                 }`}
             >
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
-                    <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse md:pl-0 pl-2">
                         <Image className=" w-[192px]" src={logo} alt="img" width={500} height={500} />
                     </Link>
 

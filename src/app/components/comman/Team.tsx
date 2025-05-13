@@ -56,7 +56,7 @@ const Team = () => {
 
     return (
         <section className="teamSection padding">
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-7xl md:px-0 px-4">
                 <div className="text-center">
                     <Title title="Expert Academic Team" subTitle="Team" />
                 </div>
@@ -69,7 +69,7 @@ const Team = () => {
                     <Carousel>
                         <CarouselContent>
                             {toppers?.map((team) => (
-                                <CarouselItem key={team?.id} className="basis-1/4">
+                                <CarouselItem key={team?.id} className="md:basis-1/4">
                                     <div id="teamMember" className="rounded-md dez-box m-b30">
                                         <div className="">
                                             <img
