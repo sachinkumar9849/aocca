@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -55,7 +56,7 @@ const About = () => {
                     <div className="col-span-1 md:order-1 order-2">
                         <div className="aboutImgWrap relative">
                             <div className="about-us-img-box">
-                                <img width={300} height={300} src={pageData.image_url} alt="Example Image" />
+                                <Image width={300} height={300} src={pageData.image_url} alt="About Image" />
                             </div>
                         </div>
                     </div>

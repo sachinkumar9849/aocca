@@ -1,5 +1,6 @@
 "use client";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -78,10 +79,12 @@ const BlogList = () => {
                                                 className="p-1 text-blue-500 hover:text-blue-700"
                                                 title="Edit"
                                             >
-                                                <img
+                                                <Image
                                                     height={500}
+                                                    width={800}
                                                     src={manItem?.image_url}
-                                                    className="img-fluid w-full"
+                                                    className="img-fluid w-full object-cover"
+                                                    alt={manItem?.title || "Blog Image"}
                                                 />
                                             </Link>
                                             <div className="date">{formatDate(manItem.created_at)}</div>
