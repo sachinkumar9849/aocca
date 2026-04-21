@@ -1812,9 +1812,54 @@ section.partnerHome {
     text-align: center;
     margin: 0px auto;
 }
-/* .sliderWrap {
+.sliderWrap {
     margin-bottom: -121px;
-} */
+}
+
+/* Premium Swiper Styles */
+.mySwiper .swiper-button-next,
+.mySwiper .swiper-button-prev {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+.mySwiper .swiper-button-next::after,
+.mySwiper .swiper-button-prev::after {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.group:hover .mySwiper .swiper-button-next,
+.group:hover .mySwiper .swiper-button-prev {
+    opacity: 1;
+}
+
+.mySwiper .swiper-button-next:hover,
+.mySwiper .swiper-button-prev:hover {
+    background: #10529d;
+    border-color: #10529d;
+    transform: scale(1.1);
+}
+
+.mySwiper .swiper-pagination-bullet {
+    background: white !important;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+    background: #10529d !important;
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
+}
 .blogSection {
     padding-top: 173px;
     margin-top: -100px;

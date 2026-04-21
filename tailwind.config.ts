@@ -332,7 +332,11 @@ const config: Config = {
     		animation: {
     			'accordion-down': 'accordion-down 0.2s ease-out',
     			'accordion-up': 'accordion-up 0.2s ease-out'
-    		}
+    		},
+            boxShadow: {
+                'premium': '0 10px 40px -10px rgba(0, 0, 0, 0.1)',
+                'premium-hover': '0 20px 50px -12px rgba(0, 0, 0, 0.15)',
+            }
     	}
     },
     plugins: [require("tailwindcss-animate")],
