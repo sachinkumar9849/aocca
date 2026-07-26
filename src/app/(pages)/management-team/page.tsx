@@ -1,8 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { getBaseUrl, getArchiveSEO, generateMetadataFromSEO, SchemaMarkup } from "@/app/utils/seo";
+import type { SEOFields } from "@/app/utils/seo";
 
 interface TopperTestimonial {
     id: string | number;
@@ -19,52 +20,49 @@ interface TopperTestimonial {
     created_at: string;
     updated_at: string;
     designation: string;
-    seo: {
-        meta_title: string;
-        meta_description: string;
-        meta_keywords: string[];
-    };
+    seo: SEOFields;
 }
-const Team = () => {
-    const [toppers, setToppers] = useState<TopperTestimonial[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchToppers = async () => {
-            try {
-                const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=team&status=published`,
-                );
+async function getTeamData(): Promise<TopperTestimonial[]> {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/toper-testimonial-team?type=team&status=published`, {
+        next: { revalidate: 3600 },
+    });
 
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch data: ${response.status}`);
-                }
+    if (!response.ok) {
+        throw new Error(`Failed to fetch data: ${response.status}`);
+    }
 
-                const data = await response.json();
-                setToppers(data);
-                setLoading(false);
-            } catch (err) {
-                setError(err instanceof Error ? err.message : "An unknown error occurred");
-                setLoading(false);
-            }
-        };
-        fetchToppers();
-    }, []);
+    return response.json();
+}
+
+export async function generateMetadata() {
+    const seo = await getArchiveSEO("management-team");
+    return generateMetadataFromSEO(seo);
+}
+
+const Team = async () => {
+    let toppers: TopperTestimonial[] = [];
+    let error: string | null = null;
+    const seo = await getArchiveSEO("management-team");
+
+    try {
+        toppers = await getTeamData();
+    } catch (err) {
+        error = err instanceof Error ? err.message : "An unknown error occurred";
+    }
 
     return (
         <>
+            <SchemaMarkup schemaJson={seo?.schema_json} />
             <Breadcrumbs title="Management Team" />
-            {loading && <div className="text-center py-8">Loading topper students...</div>}
 
-            {error && <div className="text-center py-8 text-red-500">Error loading topper students: {error}</div>}
+            {error && <div className="text-center py-8 text-red-500">Error loading team: {error}</div>}
 
-            {!loading && !error && toppers.length === 0 && (
-                <div className="text-center py-8">No topper students found</div>
-            )}
+            {!error && toppers.length === 0 && <div className="text-center py-8">No team members found</div>}
             <section className="teamSection padding">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
-                    {!loading && !error && toppers.length > 0 && (
+                    {!error && toppers.length > 0 && (
                         <div className="grid grid-cols-1 gap-5">
                             {toppers?.map((team) => (
                                 <div key={team?.id} className="col-span-1 mb-10">
