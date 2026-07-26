@@ -1,21 +1,18 @@
-import TeamTwo from "@/app/components/comman/TeamTwo";
 import React from "react";
 import { getArchiveSEO, generateMetadataFromSEO, SchemaMarkup } from "@/app/utils/seo";
 
 export async function generateMetadata() {
-    const seo = await getArchiveSEO("faculties");
+    const seo = await getArchiveSEO("routine");
     return generateMetadataFromSEO(seo);
 }
 
-const page = async () => {
-    const seo = await getArchiveSEO("faculties");
+export default async function RoutineLayout({ children }: { children: React.ReactNode }) {
+    const seo = await getArchiveSEO("routine");
 
     return (
-        <div>
+        <>
             <SchemaMarkup schemaJson={seo?.schema_json} />
-            <TeamTwo />
-        </div>
+            {children}
+        </>
     );
-};
-
-export default page;
+}

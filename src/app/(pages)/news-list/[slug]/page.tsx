@@ -1,4 +1,6 @@
 import React from "react";
+import { generateMetadataFromSEO, getBaseUrl, SchemaMarkup } from "@/app/utils/seo";
+import type { SEOFields } from "@/app/utils/seo";
 
 interface NewsDetail {
     id: number;
@@ -10,15 +12,12 @@ interface NewsDetail {
     type: string;
     created_at: string;
     updated_at: string;
-    seo: {
-        meta_title: string;
-        meta_description: string;
-        meta_keywords: string[];
-    };
+    seo?: SEOFields;
 }
 
 async function getNewsDetail(slug: string): Promise<NewsDetail> {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/news-blog/${slug}`, {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/news-blog/${slug}`, {
         next: { revalidate: 3600 },
     });
 
@@ -27,6 +26,16 @@ async function getNewsDetail(slug: string): Promise<NewsDetail> {
     }
 
     return response.json();
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    try {
+        const newsDetail = await getNewsDetail(params.slug);
+        return generateMetadataFromSEO(newsDetail.seo);
+    } catch (err) {
+        console.error("Error generating metadata for news detail:", err);
+        return {};
+    }
 }
 
 export default async function NewsDetailPage({ params }: { params: { slug: string } }) {
@@ -40,6 +49,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
 
     return (
         <div>
+            <SchemaMarkup schemaJson={newsDetail.seo?.schema_json} />
             <div id="registrationDetail">
                 <section className="about-services position-relative bg_pink padding">
                     <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">

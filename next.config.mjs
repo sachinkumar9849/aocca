@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     domains: [
       'api.aoc.edu.np',
-      'placehold.co'
+      'placehold.co',
+      'icrier.org'
     ],
     remotePatterns: [
       {
@@ -14,6 +15,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'placehold.co',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'icrier.org',
         port: '',
         pathname: '/**',
       }

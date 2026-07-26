@@ -1,6 +1,7 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
+import { getBaseUrl, generateMetadataFromSEO, SchemaMarkup } from "@/app/utils/seo";
+import type { SEOFields } from "@/app/utils/seo";
 
 interface PageData {
     id: number;
@@ -12,40 +13,49 @@ interface PageData {
     status: string;
     created_at: string;
     updated_at: string;
+    seo?: SEOFields;
 }
 
-const About = () => {
-    const [pageData, setPageData] = useState<PageData | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+async function getAboutPageData(): Promise<PageData> {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/page-by-id/1`, {
+        next: { revalidate: 3600 },
+    });
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/page-by-id/1`);
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
+    return response.json();
+}
 
-                const data = await response.json();
-                setPageData(data);
-            } catch (err) {
-                setError("Failed to fetch page data. Please try again later.");
-                console.error("Error fetching data:", err);
-            } finally {
-                setLoading(false);
-            }
-        };
+export async function generateMetadata() {
+    try {
+        const pageData = await getAboutPageData();
+        return generateMetadataFromSEO(pageData.seo);
+    } catch (err) {
+        console.error("Error generating metadata for About page:", err);
+        return {};
+    }
+}
 
-        fetchData();
-    }, []);
+const About = async () => {
+    let pageData: PageData | null = null;
+    let error: string | null = null;
 
-    if (loading) return <div className="padding flex justify-center">Loading...</div>;
+    try {
+        pageData = await getAboutPageData();
+    } catch (err) {
+        error = "Failed to fetch page data. Please try again later.";
+        console.error("Error fetching data:", err);
+    }
+
     if (error) return <div className="padding text-red-500">{error}</div>;
     if (!pageData) return <div className="padding">No data available</div>;
+
     return (
         <>
+            <SchemaMarkup schemaJson={pageData.seo?.schema_json} />
             <Breadcrumbs title="About Us" />
             <div className="padding">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
