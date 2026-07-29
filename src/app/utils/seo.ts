@@ -64,7 +64,7 @@ export async function getArchiveSEO(slug: string): Promise<SEOFields | null> {
     try {
         const baseUrl = getBaseUrl();
         const response = await fetch(`${baseUrl}/seo/archive/${slug}`, {
-            next: { revalidate: 3600 },
+            next: { revalidate: 60, tags: ["seo", `seo-${slug}`] },
         });
         if (!response.ok) {
             return null;
