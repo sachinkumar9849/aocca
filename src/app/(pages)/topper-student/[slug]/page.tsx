@@ -20,7 +20,7 @@ interface NewsDetail {
 
 async function getNewsDetail(slug: string): Promise<NewsDetail> {
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team/${slug}`, {
-        next: { revalidate: 3600 },
+        cache: "no-store",
     });
 
     if (!response.ok) {

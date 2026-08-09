@@ -18,7 +18,7 @@ interface NewsDetail {
 async function getNewsDetail(slug: string): Promise<NewsDetail> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/news-blog/${slug}`, {
-        next: { revalidate: 3600 },
+        cache: "no-store",
     });
 
     if (!response.ok) {
