@@ -88,7 +88,7 @@ export default function TestimonialSlider() {
                         slidesPerView: 2,
                     },
                 }}
-                loop={true}
+                loop={sliderItems.length > 2}
                 autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
@@ -138,6 +138,9 @@ export default function TestimonialSlider() {
                                     <div className="testImg w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
                                         <img
                                             src={testimonial?.image_url || dummyImageUrl}
+                                            onError={(e) => {
+                                                e.currentTarget.src = dummyImageUrl;
+                                            }}
                                             className="w-full h-full object-cover"
                                             alt={`${testimonial?.name} profile`}
                                         />

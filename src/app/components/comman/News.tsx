@@ -61,7 +61,7 @@ const News = () => {
     };
     return (
         <section id="news_section" className="padding bg_gray news_section">
-            <Image className="home-shape" src={newsAnimation} alt="img" />
+            <Image className="home-shape" style={{ width: "auto", height: "auto" }} src={newsAnimation} alt="img" />
             <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
                 <div className="text-center">
                     <Title title="News & Notice" subTitle="News" />
@@ -87,6 +87,9 @@ const News = () => {
                                             <img
                                                 className="w-full  rounded-md"
                                                 src={manItem?.image_url || dummyImageUrl}
+                                                onError={(e) => {
+                                                    e.currentTarget.src = dummyImageUrl;
+                                                }}
                                                 alt="img"
                                                 width={500}
                                                 height={400}
@@ -116,7 +119,14 @@ const News = () => {
                                 <div key={item?.id} className="col-span-1">
                                     <div className="news-listing-panel flex rounded-md">
                                         <div className="news_list_img">
-                                            <img className="" src={item?.image_url || dummyImageUrl} alt="img" />
+                                            <img
+                                                className=""
+                                                src={item?.image_url || dummyImageUrl}
+                                                onError={(e) => {
+                                                    e.currentTarget.src = dummyImageUrl;
+                                                }}
+                                                alt="img"
+                                            />
                                         </div>
                                         <div className="news_list_des px-3">
                                             <div className="time-location-panel relative z-10">

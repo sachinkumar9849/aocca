@@ -74,7 +74,7 @@ export default function SliderBanner() {
                 spaceBetween={0}
                 centeredSlides={true}
                 effect={"fade"}
-                loop={true}
+                loop={sliderItems.length > 1}
                 speed={1000}
                 autoplay={{
                     delay: 5000,

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { dummyImageUrl } from "../News";
 
 interface TopperTestimonial {
     id: number;
@@ -78,7 +79,10 @@ const StudentSlider = () => {
                                         <Link href={`/topper-student/${topper.slug}`}>
                                             <img
                                                 className="topperStudenHome object-cover"
-                                                src={topper.image_url}
+                                                src={topper.image_url || dummyImageUrl}
+                                                onError={(e) => {
+                                                    e.currentTarget.src = dummyImageUrl;
+                                                }}
                                                 alt={topper.name}
                                             />
                                         </Link>
