@@ -78,7 +78,7 @@ const VideoSection: React.FC = () => {
                                                 <div className="absolute inset-0 flex items-center justify-center">
                                                     <div className="bg-black bg-opacity-30 rounded-full p-3">
                                                         <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns="https://www.w3.org/2000/svg"
                                                             width="24"
                                                             height="24"
                                                             viewBox="0 0 24 24"

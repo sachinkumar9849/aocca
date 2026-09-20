@@ -21,7 +21,7 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ title }) => {
                             <svg
                                 className="w-4 h-4 me-2.5"
                                 aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns="https://www.w3.org/2000/svg"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                             >
@@ -35,7 +35,7 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ title }) => {
                             <svg
                                 className="rtl:rotate-180 w-4 h-4 text-white mx-1"
                                 aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns="https://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 6 10"
                             >

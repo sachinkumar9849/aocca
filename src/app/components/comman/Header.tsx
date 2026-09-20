@@ -123,7 +123,7 @@ const Header = () => {
                                     <svg
                                         className="w-2.5 h-2.5 ms-2.5"
                                         aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlns="https://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 10 6"
                                     >
@@ -189,7 +189,7 @@ const Header = () => {
                                     <svg
                                         className="w-2.5 h-2.5 ms-2.5"
                                         aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlns="https://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 10 6"
                                     >

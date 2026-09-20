@@ -1,5 +1,5 @@
 (async () => {
-    const { createServer } = await import("http");
+    const { createServer } = await import("https");
     const { parse } = await import("url");
     const next = (await import("next")).default;
 
@@ -14,6 +14,6 @@
             handle(request, response, parsedUrl);
         }).listen(port);
 
-        console.info(`> Server listening at http://localhost:${port} as ${dev ? "development" : process.env.NODE_ENV}`);
+        console.info(`> Server listening at https://localhost:${port} as ${dev ? "development" : process.env.NODE_ENV}`);
     });
 })();
