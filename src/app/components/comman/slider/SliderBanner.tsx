@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import Image from "next/image";
-import { normalizeImageUrl } from "@/app/utils/other";
+import { getSafeImageSrc, dummyImageUrl } from "@/app/utils/other";
 
 interface SliderItem {
     id: number;
@@ -37,7 +37,7 @@ export default function SliderBanner() {
                 setSliderItems(
                     data.map((item: SliderItem) => ({
                         ...item,
-                        image_url: normalizeImageUrl(item.image_url),
+                        image_url: getSafeImageSrc(item.image_url),
                     })),
                 );
             } catch (err) {
@@ -101,7 +101,10 @@ export default function SliderBanner() {
                                 fill
                                 priority
                                 className="object-cover transition-transform duration-[10000ms] scale-100 group-hover:scale-110"
-                                src={item.image_url}
+                                src={item.image_url || dummyImageUrl}
+                                onError={(event) => {
+                                    event.currentTarget.src = dummyImageUrl;
+                                }}
                                 alt={item.title || "Academy of Commerce Slider"}
                                 sizes="100vw"
                             />

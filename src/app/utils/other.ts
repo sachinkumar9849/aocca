@@ -9,11 +9,16 @@ export interface MetalPriceProps {
     date: string;
 }
 
+export const dummyImageUrl = "https://icrier.org/wp-content/uploads/2022/09/Event-Image-Not-Found.jpg";
+
 export const normalizeImageUrl = (url?: string | null): string => {
-    if (!url) return "";
+    if (!url) return dummyImageUrl;
 
     const trimmed = url.trim();
-    if (!trimmed) return "";
+    if (!trimmed) return dummyImageUrl;
 
-    return trimmed.startsWith("http://") ? `https://${trimmed.slice("http://".length)}` : trimmed;
+    const normalized = trimmed.startsWith("http://") ? `https://${trimmed.slice("http://".length)}` : trimmed;
+    return normalized || dummyImageUrl;
 };
+
+export const getSafeImageSrc = (url?: string | null): string => normalizeImageUrl(url);
