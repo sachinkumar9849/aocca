@@ -26,7 +26,7 @@ interface TopperTestimonial {
 async function getTeamData(): Promise<TopperTestimonial[]> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/toper-testimonial-team?type=team&status=published`, {
-        cache: "no-store",
+        next: { revalidate: 60 },
     });
 
     if (!response.ok) {

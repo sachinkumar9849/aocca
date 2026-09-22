@@ -1890,6 +1890,9 @@ section.partnerHome {
 }
 
 .footer-desc {
+    position: relative;
+    z-index: 1;
+    color: #edf4ff;
 }
 
 .footer-list h3 {
@@ -1910,10 +1913,15 @@ section.partnerHome {
 }
 
 .footer-list ul li a {
-    color: rgb(255, 255, 255);
-    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 500;
     font-size: 14px;
     transition: 0.4s;
+    text-decoration: none;
+}
+
+.footer-list ul li a:hover {
+    color: #f9d66d;
 }
 
 .footer-list ul li a i {
@@ -1951,18 +1959,19 @@ section.partnerHome {
     z-index: 999;
     padding-bottom: 30px;
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(9, 18, 28, 0.52);
 }
 
 .copyright-center {
     font-size: 15px;
     text-align: center;
-    color: white !important;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .copyright-center p {
     margin-bottom: 0px;
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .copyright-right {
@@ -2003,16 +2012,15 @@ li.breadcrumb-item a {
     color: rgb(255, 255, 255);
 }
 .footer {
-    background-color: rgba(0, 0, 0, 0.8);
-    background-size: cover;
     position: relative;
-    background-position: bottom;
-    padding: 100px 0px 0px;
-    background-image: url(/footerBg.jpg);
-    z-index: 9;
-    background-size: auto auto;
-    /* clip-path: polygon(50% 0%, 83% 0, 100% 13%, 100% 70%, 100% 100%, 50% 100%, 28% 100%, 0 100%, 0 14%, 16% 0); */
+    background-color: rgba(8, 20, 31, 0.96);
+    background-image: linear-gradient(180deg, rgba(8, 20, 31, 0.82), rgba(8, 20, 31, 0.88)), url(/footerBg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+    padding: 100px 0px 0px;
+    z-index: 9;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .widget ul {
     /* list-style: none; */
@@ -2038,14 +2046,18 @@ li.breadcrumb-item a {
     object-fit: cover;
 }
 #footerId .bg-primary {
-    background-color: #0d569f !important;
+    background-color: #f3c76a !important;
+    height: 3px;
+    border-radius: 999px;
 }
 .footer-list ul li {
-    border-bottom: 1px dashed rgba(102, 102, 102, 0.3);
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
     padding-bottom: 8px;
 }
 h4.m-b15.text-uppercase {
     font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 0.04em;
 }
 .recent-posts-entry .widget-post-bx:last-child {
     border-bottom: none;

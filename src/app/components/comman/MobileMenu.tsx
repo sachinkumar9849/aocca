@@ -83,19 +83,19 @@ export default function MobileMenu() {
         {
             title: "CA Courses",
             children: [
-                { title: "CA Foundation", href: "" },
-                { title: "CA Intermediate", href: "" },
-                { title: "CA Final", href: "" },
-                { title: "Mandatory Training", href: "" },
+                { title: "CA Foundation", href: "/ca-foundation" },
+                { title: "CA Intermediate", href: "/ca-Intermediate" },
+                { title: "CA Final", href: "/ca-final" },
+                { title: "Mandatory Training", href: "/mandatory-training" },
             ],
         },
-        { title: "News", href: "" },
-        { title: "FAQs", href: "" },
-        { title: "Blog", href: "" },
-        { title: "Routine", href: "" },
-        { title: "Our Alumni", href: "" },
-        { title: "Gallery", href: "" },
-        { title: "Contact", href: "" },
+        { title: "News", href: "/news-list" },
+        { title: "FAQs", href: "/faqs" },
+        { title: "Blog", href: "/blog-list" },
+        { title: "Routine", href: "/routine" },
+        { title: "Our Alumni", href: "/our-alumni" },
+        { title: "Gallery", href: "/gallery" },
+        { title: "Contact", href: "/contact" },
     ];
 
     return (
