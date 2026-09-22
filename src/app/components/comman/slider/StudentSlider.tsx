@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Title from "../Title";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -83,13 +84,15 @@ const StudentSlider = () => {
                                 <CarouselItem key={topper.id} className="md:basis-1/2 lg:basis-1/4">
                                     <div className="">
                                         <Link href={`/topper-student/${topper.slug}`}>
-                                            <img
+                                            <Image
                                                 className="topperStudenHome object-cover"
                                                 src={topper.image_url || dummyImageUrl}
                                                 onError={(e) => {
                                                     e.currentTarget.src = dummyImageUrl;
                                                 }}
                                                 alt={topper.name}
+                                                width={400}
+                                                height={300}
                                             />
                                         </Link>
 

@@ -47,9 +47,9 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ title }) => {
                                     d="m1 9 4-4-4-4"
                                 />
                             </svg>
-                            <a href="#" className="ms-1  text-[20px] text-white ">
+                            <span className="ms-1 text-[20px] text-white" aria-current="page">
                                 {title}
-                            </a>
+                            </span>
                         </div>
                     </li>
                 </ol>

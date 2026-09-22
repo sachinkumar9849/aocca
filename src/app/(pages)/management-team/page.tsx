@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -69,7 +70,13 @@ const Team = async () => {
                                     <div className="grid md:grid-cols-2">
                                         <div className="col-span-1">
                                             <div className="dez-media vertical-pan" id="magagementTeamImg">
-                                                <img src={team?.image_url} alt="team" width="358" height="460" />
+                                                <Image
+                                                    src={team?.image_url}
+                                                    alt={team?.name || "Management team member"}
+                                                    width={358}
+                                                    height={460}
+                                                    className="w-full h-auto object-cover"
+                                                />
                                             </div>
                                         </div>
 

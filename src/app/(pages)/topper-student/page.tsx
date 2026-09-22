@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { Carousel } from "@/components/ui/carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -75,10 +76,12 @@ const StudentSlider = () => {
                                     <div key={topper.id} className="col-span-1">
                                         <div className="blogImg ">
                                             <Link href={`/topper-student/${topper.slug}`}>
-                                                <img
+                                                <Image
                                                     className="object-cover"
                                                     src={topper.image_url}
                                                     alt={topper.name}
+                                                    width={400}
+                                                    height={300}
                                                 />
                                             </Link>
                                         </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -98,10 +99,11 @@ export default function GalleryImgFooter() {
                         className="cursor-pointer overflow-hidden rounded aspect-4/3"
                         onClick={() => openLightbox(index)}
                     >
-                        <img
-                            style={{ height: "100px" }}
+                        <Image
                             src={photo.src}
                             alt={photo.alt || `Gallery image ${index}`}
+                            width={300}
+                            height={200}
                             className="w-full h-[200px] object-cover transition-transform duration-300 hover:scale-110"
                         />
                     </div>

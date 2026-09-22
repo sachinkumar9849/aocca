@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { generateMetadataFromSEO, getBaseUrl, SchemaMarkup } from "@/app/utils/seo";
 import type { SEOFields } from "@/app/utils/seo";
 
@@ -81,10 +82,12 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
                                 <div className="div-block bg-white p-4">
                                     <div className="mb-3">
                                         {newsDetail.image_url && (
-                                            <img
+                                            <Image
                                                 src={newsDetail.image_url}
                                                 className="img-fluid w-100"
                                                 alt={newsDetail.title}
+                                                width={1200}
+                                                height={700}
                                             />
                                         )}
                                     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import { getBaseUrl, generateMetadataFromSEO, SchemaMarkup } from "@/app/utils/seo";
 import type { SEOFields } from "@/app/utils/seo";
@@ -63,7 +64,13 @@ const About = async () => {
                         <div className="md:col-span-4 col-span-1 md:order-1 order-2">
                             <div className="aboutImgWrap relative">
                                 <div className="about-us-img-box">
-                                    <img width={300} height={300} src={pageData.image_url} alt="Example Image" />
+                                    <Image
+                                        width={300}
+                                        height={300}
+                                        src={pageData.image_url}
+                                        alt={pageData.title || "About Academy of Commerce"}
+                                        className="w-full object-cover"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -72,7 +79,7 @@ const About = async () => {
                                 <div className="sec-title mb-0">
                                     <div className="sectionTitle">
                                         <p className="wow fadeInUp">{pageData.subtitle}</p>
-                                        <h1 className="wow fadeInUp">{pageData.title} </h1>
+                                        <h1 className="wow fadeInUp">{pageData.title}</h1>
                                     </div>
 
                                     <div dangerouslySetInnerHTML={{ __html: pageData.description }} />

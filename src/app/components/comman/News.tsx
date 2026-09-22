@@ -89,14 +89,14 @@ const News = () => {
                                     className="news_men position-relative mb-lg-0 mb-4  rounded-md overflow-hidden"
                                 >
                                     <Link href={`/news-list/${manItem.slug}`}>
-                                        <div className="news_img  rounded-md">
-                                            <img
-                                                className="w-full  rounded-md"
+                                        <div className="news_img rounded-md relative overflow-hidden">
+                                            <Image
+                                                className="w-full rounded-md object-cover"
                                                 src={manItem?.image_url || dummyImageUrl}
                                                 onError={(e) => {
                                                     e.currentTarget.src = dummyImageUrl;
                                                 }}
-                                                alt="img"
+                                                alt={manItem.title || "News image"}
                                                 width={500}
                                                 height={400}
                                             />
@@ -124,14 +124,16 @@ const News = () => {
                             {toppers.slice(1, 4).map((item) => (
                                 <div key={item?.id} className="col-span-1">
                                     <div className="news-listing-panel flex rounded-md">
-                                        <div className="news_list_img">
-                                            <img
-                                                className=""
+                                        <div className="news_list_img relative overflow-hidden">
+                                            <Image
+                                                className="object-cover"
                                                 src={item?.image_url || dummyImageUrl}
                                                 onError={(e) => {
                                                     e.currentTarget.src = dummyImageUrl;
                                                 }}
-                                                alt="img"
+                                                alt={item.title || "News image"}
+                                                width={200}
+                                                height={140}
                                             />
                                         </div>
                                         <div className="news_list_des px-3">

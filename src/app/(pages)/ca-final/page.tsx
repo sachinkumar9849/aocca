@@ -93,12 +93,12 @@ export default async function CapFinalPage() {
                                             >
                                                 CA-FINAL
                                             </p>
-                                            <h1
+                                            <h2
                                                 className="wow fadeInUp"
                                                 style={{ visibility: "visible", animationName: "fadeInUp" }}
                                             >
                                                 {item.title}
-                                            </h1>
+                                            </h2>
                                         </div>
                                     </div>
                                     <div className="col-span-8">
@@ -121,12 +121,12 @@ export default async function CapFinalPage() {
                                                 >
                                                     CA-FINAL
                                                 </p>
-                                                <h1
+                                                <h2
                                                     className="wow fadeInUp text-white"
                                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                                 >
                                                     {item.title}
-                                                </h1>
+                                                </h2>
                                             </div>
                                         </div>
                                     </div>

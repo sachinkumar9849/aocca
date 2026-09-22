@@ -55,7 +55,7 @@ const SortedSections: React.FC = () => {
                                 <div className="col-span-4">
                                     <div className="sectionTitle">
                                         <p className="wow fadeInUp ml-3">CAP I</p>
-                                        <h1 className="wow fadeInUp">{section.title}</h1>
+                                        <h2 className="wow fadeInUp">{section.title}</h2>
                                     </div>
                                 </div>
                                 <div className="col-span-8 bg-white z-10">
@@ -80,7 +80,7 @@ const SortedSections: React.FC = () => {
                                     <div className="col-span-1 text-center">
                                         <div className="sectionTitle">
                                             <p className="wow fadeInUp ml-3 text-white">CAP I</p>
-                                            <h1 className="wow fadeInUp text-white">{section.title}</h1>
+                                            <h2 className="wow fadeInUp text-white">{section.title}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@ const SortedSections: React.FC = () => {
                                 <div className="col-span-4">
                                     <div className="sectionTitle">
                                         <p className="wow fadeInUp ml-3">CAP I</p>
-                                        <h1 className="wow fadeInUp">{section.title}</h1>
+                                        <h2 className="wow fadeInUp">{section.title}</h2>
                                     </div>
                                 </div>
                                 <div className="col-span-8">
@@ -133,9 +133,9 @@ const SortedSections: React.FC = () => {
                                 <div className="col-span-4">
                                     <div className="sectionTitle">
                                         <p className="wow fadeInUp ml-3">CAP I</p>
-                                        <h1 style={{ padding: "0px", margin: "0px" }} className="wow fadeInUp p-0 m-0">
+                                        <h2 style={{ padding: "0px", margin: "0px" }} className="wow fadeInUp p-0 m-0">
                                             {section.title}
-                                        </h1>
+                                        </h2>
                                     </div>
                                 </div>
                                 <div className="col-span-8">

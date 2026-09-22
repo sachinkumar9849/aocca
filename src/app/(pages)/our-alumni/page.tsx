@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { Carousel } from "@/components/ui/carousel";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 
@@ -71,7 +72,13 @@ const StudentSlider = () => {
                                 {toppers.map((topper) => (
                                     <div key={topper.id} className="col-span-1">
                                         <div className="blogImg alumniImg mb-3">
-                                            <img className="object-cover" src={topper.image_url} alt={topper.name} />
+                                            <Image
+                                                className="object-cover"
+                                                src={topper.image_url}
+                                                alt={topper.name}
+                                                width={600}
+                                                height={400}
+                                            />
                                         </div>
 
                                         <div className="blogContent py-4" style={{ padding: "0px" }}>
