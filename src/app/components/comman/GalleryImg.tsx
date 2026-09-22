@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import type { CSSProperties } from "react";
-
+import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
@@ -130,7 +130,14 @@ export default function GalleryImg() {
             <div style={customStyles.imageGrid}>
                 {photos.map((photo, index) => (
                     <div key={index} style={customStyles.imageContainer} onClick={() => openLightbox(index)}>
-                        <img src={photo.src} alt={photo.alt || `Gallery image ${index}`} style={customStyles.image} />
+                        <Image
+                            src={photo.src}
+                            alt={photo.alt || `Gallery image ${index}`}
+                            width={800}
+                            height={600}
+                            style={customStyles.image}
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                        />
                     </div>
                 ))}
             </div>

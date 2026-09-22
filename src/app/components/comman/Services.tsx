@@ -14,7 +14,7 @@ const Services = () => {
                             <div className="sec-title mb-0">
                                 <div className="sectionTitle">
                                     <p className="wow fadeInUp ml-4">Services</p>
-                                    <h1 className="wow fadeInUp text-white">Students Service</h1>
+                                    <h2 className="wow fadeInUp text-white">Students Service</h2>
                                 </div>
                                 <p className="text-white font-normal">
                                     We will serve you in the best way possible. Our well qualified and dedicated staff

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Breadcrumbs from "./Breadcrumbs";
@@ -74,12 +75,12 @@ const TeamTwo = () => {
                                         className="rounded-md dez-box m-b30 dez-img-effect vertical-pan dez-staff"
                                     >
                                         <div className="dez-media vertical-pan dez-img-effect">
-                                            <img
+                                            <Image
                                                 className="teamHome"
                                                 src={team?.image_url || dummyImageUrl}
-                                                alt="team"
-                                                width="358"
-                                                height="460"
+                                                alt={team?.name || "team"}
+                                                width={358}
+                                                height={460}
                                             />
                                         </div>
                                         <div className="p-a15 bg-primary text-white dez-team">

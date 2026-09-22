@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -142,13 +143,15 @@ export default function TestimonialSlider() {
                                 </div>
                                 <div className="testUser flex items-center mt-4">
                                     <div className="testImg w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
-                                        <img
+                                        <Image
                                             src={testimonial?.image_url || dummyImageUrl}
                                             onError={(e) => {
                                                 e.currentTarget.src = dummyImageUrl;
                                             }}
                                             className="w-full h-full object-cover"
                                             alt={`${testimonial?.name} profile`}
+                                            width={48}
+                                            height={48}
                                         />
                                     </div>
                                     <div className="testContent ml-3">

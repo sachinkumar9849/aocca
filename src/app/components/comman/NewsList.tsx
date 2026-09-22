@@ -97,9 +97,13 @@ const NewsList = () => {
                                                 <ul>
                                                     <li>
                                                         <i className="fas fa-user" />{" "}
-                                                        <a href="" title="Visit admin’s website" rel="author external">
-                                                            admin
-                                                        </a>
+                                                        <Link
+                                                            href="/about"
+                                                            title="About Academy of Commerce"
+                                                            rel="author"
+                                                        >
+                                                            Academy of Commerce
+                                                        </Link>
                                                     </li>
                                                 </ul>
                                             </div>

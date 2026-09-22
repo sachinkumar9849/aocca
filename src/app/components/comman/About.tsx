@@ -65,7 +65,7 @@ const About = () => {
                             <div className="sec-title mb-0">
                                 <div className="sectionTitle">
                                     <p className="wow fadeInUp">{pageData.subtitle}</p>
-                                    <h1 className="wow fadeInUp">{pageData.title} </h1>
+                                    <h2 className="wow fadeInUp">{pageData.title}</h2>
                                 </div>
 
                                 <div>{striptags(pageData.description).slice(0, 200)}...</div>

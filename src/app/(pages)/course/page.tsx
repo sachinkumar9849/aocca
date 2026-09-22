@@ -14,12 +14,12 @@ const page = () => {
                                 >
                                     CAP II
                                 </p>
-                                <h1
+                                <h2
                                     className="wow fadeInUp"
                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                 >
                                     Course structure
-                                </h1>
+                                </h2>
                             </div>
                         </div>
                         <div className="col-span-8 bg-white z-10">
@@ -82,12 +82,12 @@ const page = () => {
                                     >
                                         CAP II
                                     </p>
-                                    <h1
+                                    <h2
                                         className="wow fadeInUp text-white"
                                         style={{ visibility: "visible", animationName: "fadeInUp", color: "white" }}
                                     >
                                         Registration Eligibility
-                                    </h1>
+                                    </h2>
                                 </div>
                             </div>
                         </div>
@@ -139,13 +139,13 @@ const page = () => {
                                 >
                                     CAP II
                                 </p>
-                                <h1
+                                <h2
                                     className="wow fadeInUp"
                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                 >
                                     {" "}
                                     Registration Deadlines
-                                </h1>
+                                </h2>
                             </div>
                         </div>
                         <div className="col-span-8">
