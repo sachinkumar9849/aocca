@@ -1,5 +1,36 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { generateMetadataFromSEO, getArchiveSEO } from "@/app/utils/seo";
+
+export async function generateMetadata() {
+    const slug = "ca-final";
+    const seo = await getArchiveSEO(slug);
+    const metadata = generateMetadataFromSEO(seo);
+    const title = seo?.meta_title || "CA Final Course in Nepal | Academy of Commerce";
+    const description =
+        seo?.meta_description ||
+        "Prepare for CA Final with expert guidance, coaching support, and exam-focused learning at Academy of Commerce.";
+
+    return {
+        ...metadata,
+        title,
+        description,
+        alternates: {
+            canonical: `https://aoc.edu.np/${slug}`,
+        },
+        openGraph: {
+            ...(metadata.openGraph ?? {}),
+            title,
+            description,
+            url: `https://aoc.edu.np/${slug}`,
+            type: "website",
+        },
+        twitter: {
+            ...(metadata.twitter ?? {}),
+            title,
+            description,
+        },
+    };
+}
 
 interface CourseItem {
     id: string;
@@ -10,37 +41,23 @@ interface CourseItem {
     status: string;
 }
 
-const CapIPage: React.FC = () => {
-    const [courseData, setCourseData] = useState<CourseItem[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+async function getCourseData(): Promise<CourseItem[]> {
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=ca-final&status=published`,
+        {
+            next: { revalidate: 60 },
+        },
+    );
 
-    useEffect(() => {
-        const fetchCourseData = async (): Promise<void> => {
-            try {
-                const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=ca-final&status=published`,
-                );
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data");
-                }
-                const data: CourseItem[] = await response.json();
-                setCourseData(data);
-                setLoading(false);
-            } catch (error) {
-                console.error("Error fetching data:", error instanceof Error ? error.message : String(error));
-                setLoading(false);
-            }
-        };
+    if (!response.ok) {
+        throw new Error("Failed to fetch data");
+    }
 
-        fetchCourseData();
-    }, []);
+    return response.json();
+}
 
-    const scrollToSection = (id: string): void => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+export default async function CapFinalPage() {
+    const courseData = await getCourseData();
 
     return (
         <>
@@ -48,99 +65,83 @@ const CapIPage: React.FC = () => {
                 <ul>
                     {courseData.map((item) => (
                         <li key={item.id}>
-                            <a
-                                href={`#${item.slug}`}
-                                onClick={(e: React.MouseEvent<HTMLAnchorElement>): void => {
-                                    e.preventDefault();
-                                    scrollToSection(item.slug);
-                                }}
-                            >
-                                {item.title}
-                            </a>
+                            <a href={`#${item.slug}`}>{item.title}</a>
                         </li>
                     ))}
                 </ul>
             </div>
 
-            {loading ? (
-                <div className="text-center py-10">
-                    <p>Loading course information...</p>
-                </div>
-            ) : (
-                courseData.map((item, index) => {
-                    const isEvenSection = index % 2 === 0;
+            {courseData.map((item, index) => {
+                const isEvenSection = index % 2 === 0;
 
-                    return (
-                        <section
-                            key={item.id}
-                            className={`padding position-relative class-section pt-5 ${
-                                isEvenSection ? "" : "about-services position-relative bg_pink"
-                            }`}
-                            id={item.slug}
-                        >
-                            <div className="mx-auto max-w-7xl md:px-0 px-4">
-                                {isEvenSection ? (
+                return (
+                    <section
+                        key={item.id}
+                        className={`padding position-relative class-section pt-5 ${
+                            isEvenSection ? "" : "about-services position-relative bg_pink"
+                        }`}
+                        id={item.slug}
+                    >
+                        <div className="mx-auto max-w-7xl md:px-0 px-4">
+                            {isEvenSection ? (
+                                <div className="grid grid-cols-12">
+                                    <div className="col-span-4">
+                                        <div className="sectionTitle">
+                                            <p
+                                                className="wow fadeInUp ml-3"
+                                                style={{ visibility: "visible", animationName: "fadeInUp" }}
+                                            >
+                                                CA-FINAL
+                                            </p>
+                                            <h1
+                                                className="wow fadeInUp"
+                                                style={{ visibility: "visible", animationName: "fadeInUp" }}
+                                            >
+                                                {item.title}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div className="col-span-8">
+                                        <div className="class-block">
+                                            <div
+                                                className="about_text"
+                                                dangerouslySetInnerHTML={{ __html: item.description }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <>
                                     <div className="grid grid-cols-12">
-                                        <div className="col-span-4">
+                                        <div className="col-span-12 text-center">
                                             <div className="sectionTitle">
                                                 <p
-                                                    className="wow fadeInUp ml-3"
+                                                    className="wow fadeInUp ml-3 text-white"
                                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                                 >
                                                     CA-FINAL
                                                 </p>
                                                 <h1
-                                                    className="wow fadeInUp"
+                                                    className="wow fadeInUp text-white"
                                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                                 >
                                                     {item.title}
                                                 </h1>
                                             </div>
                                         </div>
-                                        <div className="col-span-8">
-                                            <div className="class-block">
-                                                <div
-                                                    className="about_text"
-                                                    dangerouslySetInnerHTML={{ __html: item.description }}
-                                                ></div>
-                                            </div>
-                                        </div>
                                     </div>
-                                ) : (
-                                    <>
-                                        <div className="grid grid-cols-12">
-                                            <div className="col-span-12 text-center">
-                                                <div className="sectionTitle">
-                                                    <p
-                                                        className="wow fadeInUp ml-3 text-white"
-                                                        style={{ visibility: "visible", animationName: "fadeInUp" }}
-                                                    >
-                                                        CA-FINAL
-                                                    </p>
-                                                    <h1
-                                                        className="wow fadeInUp text-white"
-                                                        style={{ visibility: "visible", animationName: "fadeInUp" }}
-                                                    >
-                                                        {item.title}
-                                                    </h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="div-block bg-white">
-                                            <div
-                                                className="about_text"
-                                                dangerouslySetInnerHTML={{ __html: item.description }}
-                                            ></div>
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                        </section>
-                    );
-                })
-            )}
+                                    <div className="div-block bg-white">
+                                        <div
+                                            className="about_text"
+                                            dangerouslySetInnerHTML={{ __html: item.description }}
+                                        ></div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    </section>
+                );
+            })}
         </>
     );
-};
-
-export default CapIPage;
+}

@@ -19,7 +19,7 @@ interface PageData {
 async function getAboutPageData(): Promise<PageData> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/page-by-id/1`, {
-        cache: "no-store",
+        next: { revalidate: 60 },
     });
 
     if (!response.ok) {
