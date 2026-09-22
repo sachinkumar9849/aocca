@@ -4,7 +4,7 @@ import Title from "./Title";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Image from "next/image";
-import { normalizeImageUrl } from "@/app/utils/other";
+import { getSafeImageSrc, dummyImageUrl } from "@/app/utils/other";
 
 interface Highlight {
     id: number;
@@ -34,7 +34,7 @@ const VideoSection: React.FC = () => {
                 setHighlights(
                     data.map((item: Highlight) => ({
                         ...item,
-                        image_url: normalizeImageUrl(item.image_url),
+                        image_url: getSafeImageSrc(item.image_url),
                     })),
                 );
                 setLoading(false);
@@ -75,7 +75,10 @@ const VideoSection: React.FC = () => {
                                         <div className="relative w-full md:min-h-[400px] min-h-[300px] md:max-h-[400px] max-h-[300px] rounded-md overflow-hidden">
                                             <Image
                                                 className="w-full h-full object-cover highlightImg md:min-h-[400px] min-h-[300px] md:max-h-[400px] max-h-[300px]"
-                                                src={highlight.image_url}
+                                                src={highlight.image_url || dummyImageUrl}
+                                                onError={(event) => {
+                                                    event.currentTarget.src = dummyImageUrl;
+                                                }}
                                                 alt={`Highlight ${highlight.id}`}
                                                 width={400}
                                                 height={400}
@@ -114,7 +117,10 @@ const VideoSection: React.FC = () => {
                                                 ) : (
                                                     <Image
                                                         className="w-full object-contain"
-                                                        src={highlight.image_url}
+                                                        src={highlight.image_url || dummyImageUrl}
+                                                        onError={(event) => {
+                                                            event.currentTarget.src = dummyImageUrl;
+                                                        }}
                                                         alt={`Highlight ${highlight.id}`}
                                                         width={800}
                                                         height={600}
