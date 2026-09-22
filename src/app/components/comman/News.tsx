@@ -4,6 +4,7 @@ import newsAnimation from "@/app/assets/img/newsAnimation.png";
 import Image from "next/image";
 import Title from "./Title";
 import Link from "next/link";
+import { normalizeImageUrl } from "@/app/utils/other";
 
 interface TopperTestimonial {
     id: string | number;
@@ -41,7 +42,12 @@ const News = () => {
                     throw new Error(`Failed to fetch data: ${response.status}`);
                 }
                 const data = await response.json();
-                setToppers(data);
+                setToppers(
+                    data.map((item: TopperTestimonial) => ({
+                        ...item,
+                        image_url: normalizeImageUrl(item.image_url),
+                    })),
+                );
                 setLoading(false);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "An unknown error occurred");

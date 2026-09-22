@@ -11,6 +11,7 @@ import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { dummyImageUrl } from "../News";
+import { normalizeImageUrl } from "@/app/utils/other";
 
 interface SliderItem {
     id: number;
@@ -39,7 +40,12 @@ export default function TestimonialSlider() {
                 }
 
                 const data = await response.json();
-                setSliderItems(data);
+                setSliderItems(
+                    data.map((item: SliderItem) => ({
+                        ...item,
+                        image_url: normalizeImageUrl(item.image_url),
+                    })),
+                );
             } catch (err) {
                 setError(err instanceof Error ? err.message : "An unknown error occurred");
                 console.error("Error fetching slider items:", err);

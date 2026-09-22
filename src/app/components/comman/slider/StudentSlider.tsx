@@ -7,6 +7,7 @@ import { faUser, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { dummyImageUrl } from "../News";
+import { normalizeImageUrl } from "@/app/utils/other";
 
 interface TopperTestimonial {
     id: number;
@@ -46,7 +47,12 @@ const StudentSlider = () => {
                 }
 
                 const data = await response.json();
-                setToppers(data);
+                setToppers(
+                    data.map((item: TopperTestimonial) => ({
+                        ...item,
+                        image_url: normalizeImageUrl(item.image_url),
+                    })),
+                );
                 setLoading(false);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "An unknown error occurred");

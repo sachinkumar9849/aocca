@@ -6,6 +6,7 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "./Title";
 import { dummyImageUrl } from "./News";
+import { normalizeImageUrl } from "@/app/utils/other";
 
 interface TopperTestimonial {
     id: string | number;
@@ -45,7 +46,12 @@ const Team = () => {
                 }
 
                 const data = await response.json();
-                setToppers(data);
+                setToppers(
+                    data.map((item: TopperTestimonial) => ({
+                        ...item,
+                        image_url: normalizeImageUrl(item.image_url),
+                    })),
+                );
                 setLoading(false);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "An unknown error occurred");
