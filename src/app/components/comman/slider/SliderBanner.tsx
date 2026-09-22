@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import Image from "next/image";
+import { normalizeImageUrl } from "@/app/utils/other";
 
 interface SliderItem {
     id: number;
@@ -33,7 +34,12 @@ export default function SliderBanner() {
                 }
 
                 const data = await response.json();
-                setSliderItems(data);
+                setSliderItems(
+                    data.map((item: SliderItem) => ({
+                        ...item,
+                        image_url: normalizeImageUrl(item.image_url),
+                    })),
+                );
             } catch (err) {
                 setError(err instanceof Error ? err.message : "An unknown error occurred");
                 console.error("Error fetching slider items:", err);

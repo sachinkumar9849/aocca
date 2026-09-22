@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { normalizeImageUrl } from "@/app/utils/other";
 
 interface GalleryItem {
     id: number;
@@ -38,7 +39,7 @@ export default function GalleryImgFooter() {
                 const data: GalleryItem[] = await response.json();
 
                 const formattedPhotos: PhotoProps[] = data.map((item) => ({
-                    src: item.image_url,
+                    src: normalizeImageUrl(item.image_url),
                     width: 4,
                     height: 3,
                     alt: `Gallery image ${item.id}`,

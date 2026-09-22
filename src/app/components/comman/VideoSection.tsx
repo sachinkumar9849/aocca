@@ -4,6 +4,7 @@ import Title from "./Title";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Image from "next/image";
+import { normalizeImageUrl } from "@/app/utils/other";
 
 interface Highlight {
     id: number;
@@ -30,7 +31,12 @@ const VideoSection: React.FC = () => {
                 }
 
                 const data = await response.json();
-                setHighlights(data);
+                setHighlights(
+                    data.map((item: Highlight) => ({
+                        ...item,
+                        image_url: normalizeImageUrl(item.image_url),
+                    })),
+                );
                 setLoading(false);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "Unknown error occurred");
