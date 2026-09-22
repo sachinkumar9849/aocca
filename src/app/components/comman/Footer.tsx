@@ -5,6 +5,8 @@ import Link from "next/link";
 import GalleryImgFooter from "./GalleryImgFooter";
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
         <section className="footer section-padding" id="footerId">
             <div className="footer-desc text-white">
@@ -72,7 +74,7 @@ const Footer = () => {
                             <div className="col-span-1 text-center">
                                 <div className="copyright-center wow fadeInUp">
                                     <p>
-                                        <i className="bx bx-copyright" /> Copyright 2025{" "}
+                                        <i className="bx bx-copyright" /> Copyright {currentYear}{" "}
                                         <span>Academy Of Commerce Chartered Accountant </span>. All rights reserved.
                                     </p>
                                 </div>
