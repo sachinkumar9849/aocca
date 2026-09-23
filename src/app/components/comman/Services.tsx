@@ -30,55 +30,73 @@ const Services = () => {
                     <div className="md:col-span-5 col-span-1">
                         <div className="grid md:grid-cols-2 gap-4">
                             <div className="col-span-1">
-                                <Link href="/contact">
+                                <Link href="/contact" aria-label="Enroll in CA Foundation program">
                                     <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
                                         <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
                                             <Image
                                                 width={20}
                                                 height={20}
-                                                alt="img"
+                                                alt="Enroll in CA Foundation"
                                                 src={enroll}
                                                 className="img-fluid"
                                             />
                                         </div>
                                         <div className="services_text pl-3">
-                                            <h4>Enroll for Foundation</h4>
+                                            <h3>Enroll in CA Foundation</h3>
                                         </div>
                                     </div>
                                 </Link>
                             </div>
                             <div className="col-span-1">
-                                <Link href="/contact">
+                                <Link href="/contact" aria-label="Prepare for CA exams">
                                     <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
                                         <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
-                                            <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                            <Image
+                                                width={20}
+                                                height={20}
+                                                alt="Prepare for CA exams"
+                                                src={exam}
+                                                className="img-fluid"
+                                            />
                                         </div>
                                         <div className="services_text pl-3">
-                                            <h4> Preparation of CA exams</h4>
+                                            <h3>Prepare for CA Exams</h3>
                                         </div>
                                     </div>
                                 </Link>
                             </div>
                             <div className="col-span-1">
-                                <Link href="/contact">
+                                <Link href="/contact" aria-label="Register for the CA examination">
                                     <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
                                         <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
-                                            <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                            <Image
+                                                width={20}
+                                                height={20}
+                                                alt="Register for examination"
+                                                src={exam}
+                                                className="img-fluid"
+                                            />
                                         </div>
                                         <div className="services_text pl-3">
-                                            <h4>Register for examination.</h4>
+                                            <h3>Register for CA Exams</h3>
                                         </div>
                                     </div>
                                 </Link>
                             </div>
                             <div className="col-span-1">
-                                <Link href="/contact">
+                                <Link href="/contact" aria-label="Get student support and guidance">
                                     <div className="services_block rounded-md overflow-hidden mb-4 flex items-center bg_gray relative">
                                         <div className="services_icon bg-white p-3 text-center mb-md-0 mb-2">
-                                            <Image width={20} height={20} alt="img" src={exam} className="img-fluid" />
+                                            <Image
+                                                width={20}
+                                                height={20}
+                                                alt="Student support"
+                                                src={exam}
+                                                className="img-fluid"
+                                            />
                                         </div>
                                         <div className="services_text pl-3">
-                                            <h4>Provide assistance to students</h4>
+                                            <h3>Get Student Support</h3>
                                         </div>
                                     </div>
                                 </Link>

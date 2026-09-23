@@ -1,6 +1,14 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+export const metadata = {
+    title: "CA Course FAQs | Academy of Commerce Nepal",
+    description:
+        "Find answers to common questions about CA Foundation, CA Intermediate, CA Final, admission, fees, and exam preparation at Academy of Commerce.",
+    alternates: {
+        canonical: "https://aoc.edu.np/faqs",
+    },
+};
 
 interface FaqItem {
     id: number;
@@ -8,62 +16,61 @@ interface FaqItem {
     description: string;
 }
 
-const FaqPage: React.FC = () => {
-    const [faqItems, setFaqItems] = useState<FaqItem[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+async function getFaqData(): Promise<FaqItem[]> {
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=faq&status=published`,
+            {
+                next: { revalidate: 60 },
+            },
+        );
 
-    useEffect(() => {
-        const fetchFaqData = async () => {
-            try {
-                setIsLoading(true);
-                const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=faq&status=published`,
-                );
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
 
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status}`);
-                }
+        return response.json();
+    } catch (error) {
+        console.error("Error fetching FAQ data:", error);
+        return [];
+    }
+}
 
-                const data = await response.json();
-                setFaqItems(data);
-                setError(null);
-            } catch (err) {
-                setError("Failed to fetch FAQ data. Please try again later.");
-                console.error("Error fetching FAQ data:", err);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+const FaqPage = async () => {
+    const faqItems = await getFaqData();
 
-        fetchFaqData();
-    }, []);
-    if (isLoading) <p>loadding...</p>;
-    if (error) <p>loadding...</p>;
     return (
         <>
-            <div className="padding position-relative class-section pt-5 " id="faqSection">
+            <div className="padding position-relative class-section pt-5" id="faqSection">
                 <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
-                    <div className="grid grid-cols-12">
-                        <div className="col-span-4">
+                    <div className="grid grid-cols-12 gap-8 items-start">
+                        <div className="col-span-12 md:col-span-4">
                             <div className="sectionTitle">
                                 <p className="wow fadeInUp">Any questions?</p>
-                                <h1 className="wow fadeInUp">Your questions answered here. </h1>
+                                <h1 className="wow fadeInUp">Your questions answered here.</h1>
+                                <p className="mt-3 text-gray-600">
+                                    Explore common questions about admissions, paper structure, exam preparation, and
+                                    support at Academy of Commerce.
+                                </p>
                             </div>
                         </div>
-                        <div className="col-span-8">
-                            <Accordion type="single" collapsible className="w-full class-block">
-                                {faqItems.map((faq) => (
-                                    <AccordionItem key={faq.id} value={`item-${faq.id}`}>
-                                        <AccordionTrigger className="p-0 m-0">
-                                            <p className="text-left font-bold text-[20px]">{faq.title}</p>
-                                        </AccordionTrigger>
-                                        <AccordionContent>
-                                            <div dangerouslySetInnerHTML={{ __html: faq.description }} />
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                            </Accordion>
+                        <div className="col-span-12 md:col-span-8">
+                            {faqItems.length === 0 ? (
+                                <div className="py-10 text-center text-gray-600">No FAQs are available right now.</div>
+                            ) : (
+                                <Accordion type="single" collapsible className="w-full class-block">
+                                    {faqItems.map((faq) => (
+                                        <AccordionItem key={faq.id} value={`item-${faq.id}`}>
+                                            <AccordionTrigger className="p-0 m-0">
+                                                <p className="text-left font-bold text-[20px]">{faq.title}</p>
+                                            </AccordionTrigger>
+                                            <AccordionContent>
+                                                <div dangerouslySetInnerHTML={{ __html: faq.description }} />
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
+                            )}
                         </div>
                     </div>
                 </div>

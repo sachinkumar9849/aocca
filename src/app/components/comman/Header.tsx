@@ -98,7 +98,15 @@ const Header = () => {
             >
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
                     <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse md:pl-0 pl-2">
-                        <Image className=" w-[192px]" src={logo} alt="img" width={500} height={500} />
+                        <Image
+                            className="w-[192px]"
+                            src={logo}
+                            alt="Academy of Commerce logo"
+                            width={500}
+                            height={500}
+                            priority
+                            sizes="192px"
+                        />
                     </Link>
 
                     <div className="hidden w-full md:block md:w-auto" id="navbar-multi-level">

@@ -2,12 +2,27 @@ import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import React from "react";
 import { FiPhone, FiMail, FiMapPin, FiUser, FiTag, FiMessageSquare, FiSend } from "react-icons/fi";
 
+export const metadata = {
+    title: "Contact Academy of Commerce | Admissions & Support",
+    description:
+        "Contact Academy of Commerce for CA admissions, course guidance, student support, and campus inquiries in Kathmandu, Nepal.",
+    alternates: {
+        canonical: "https://aoc.edu.np/contact",
+    },
+};
+
 const ContactPage = () => {
     return (
         <>
             <Breadcrumbs title="Contact Us" />
             <div className="bg-gray-50 py-16">
                 <div className="mx-auto max-w-7xl md:px-0 px-4 px-4 sm:px-6 lg:px-8">
+                    <div className="mb-10 text-center">
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Contact Academy of Commerce</h1>
+                        <p className="mt-3 text-gray-600">
+                            Reach out for admissions help, course guidance, and academic support.
+                        </p>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                         <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
                             <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">

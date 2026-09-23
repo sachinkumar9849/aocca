@@ -16,18 +16,22 @@ const FourColumn = () => {
                         data-wow-delay="0s"
                         style={{ visibility: "visible", animationDelay: "0s", animationName: "fadeInUp" }}
                     >
-                        <Link className="hp-hero__cta-item-anchor" href="/ca-foundation">
+                        <Link
+                            className="hp-hero__cta-item-anchor"
+                            href="/ca-foundation"
+                            aria-label="Explore CA Foundation course"
+                        >
                             <div className="hp-hero__cta-item-container" data-expand="-42px">
                                 <Image
                                     className="w-full object-cover"
                                     src={corporateFinance}
-                                    alt="img"
+                                    alt="CA Foundation course"
                                     width={300}
                                     height={300}
                                 />
 
                                 <div className="hp-hero__cta-item-mask" />
-                                <div className="hp-hero__cta-item-title">Ca-Foundation</div>
+                                <div className="hp-hero__cta-item-title">CA Foundation</div>
                             </div>
                         </Link>
                     </li>
@@ -37,17 +41,21 @@ const FourColumn = () => {
                         data-wow-delay="0.2s"
                         style={{ visibility: "visible", animationDelay: "0.2s", animationName: "fadeInUp" }}
                     >
-                        <Link className="hp-hero__cta-item-anchor" href={"/ca-Intermediate"}>
+                        <Link
+                            className="hp-hero__cta-item-anchor"
+                            href={"/ca-Intermediate"}
+                            aria-label="Explore CA Intermediate course"
+                        >
                             <div className="hp-hero__cta-item-container" data-expand="-42px">
                                 <Image
                                     className="w-full object-cover"
                                     src={Accountancy}
-                                    alt="img"
+                                    alt="CA Intermediate course"
                                     width={300}
                                     height={300}
                                 />
                                 <div className="hp-hero__cta-item-mask" />
-                                <div className="hp-hero__cta-item-title">Ca-Intermediate</div>
+                                <div className="hp-hero__cta-item-title">CA Intermediate</div>
                                 <div className="hp-hero__cta-item-caption" />
                             </div>
                         </Link>
@@ -57,17 +65,21 @@ const FourColumn = () => {
                         data-wow-delay="0.4s"
                         style={{ visibility: "visible", animationDelay: "0.4s", animationName: "fadeInUp" }}
                     >
-                        <Link className="hp-hero__cta-item-anchor" href={"/ca-final"}>
+                        <Link
+                            className="hp-hero__cta-item-anchor"
+                            href={"/ca-final"}
+                            aria-label="Explore CA Final course"
+                        >
                             <div className="hp-hero__cta-item-container" data-expand="-42px">
                                 <Image
                                     className="w-full object-cover"
                                     src={Auditing}
-                                    alt="img"
+                                    alt="CA Final course"
                                     width={300}
                                     height={300}
                                 />
                                 <div className="hp-hero__cta-item-mask" />
-                                <div className="hp-hero__cta-item-title">Ca-Final</div>
+                                <div className="hp-hero__cta-item-title">CA Final</div>
                                 <div className="hp-hero__cta-item-caption" />
                             </div>
                         </Link>

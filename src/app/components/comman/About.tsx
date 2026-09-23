@@ -71,9 +71,10 @@ const About = () => {
                                 <div>{striptags(pageData.description).slice(0, 200)}...</div>
 
                                 <div className="mt-5">
-                                    <Link href="/about">
+                                    <Link href="/about" aria-label="Learn more about Academy of Commerce">
                                         <Button>
-                                            View All <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />
+                                            Learn More About AOC{" "}
+                                            <FontAwesomeIcon icon={faArrowRight} width={10} className="ml-2" />
                                         </Button>
                                     </Link>
                                 </div>

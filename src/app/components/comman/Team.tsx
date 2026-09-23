@@ -88,27 +88,30 @@ const Team = () => {
                                             />
                                         </div>
                                         <div className="p-a15 bg-primary text-white dez-team">
-                                            <h4 className="dez-title text-capitalize mb-2">{team?.name}</h4>
+                                            <h3 className="dez-title text-capitalize mb-2">{team?.name}</h3>
                                             <div className="dez-separator-outer ">
                                                 <div className="dez-separator bg-white style-liner"></div>
                                             </div>
                                             <span className="dez-member-position flex justify-center">
                                                 {team?.title}
                                             </span>
-                                            <div className="m-t10">
-                                                <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                                    <li>
-                                                        <a
-                                                            href={team.linkedin}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-white hover:text-gray-300"
-                                                        >
-                                                            <FontAwesomeIcon icon={faLinkedin} className="" />
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            {team?.linkedin ? (
+                                                <div className="m-t10">
+                                                    <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
+                                                        <li>
+                                                            <a
+                                                                href={team.linkedin}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="text-white hover:text-gray-300"
+                                                                aria-label={`${team?.name} on LinkedIn`}
+                                                            >
+                                                                <FontAwesomeIcon icon={faLinkedin} aria-hidden="true" />
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            ) : null}
                                         </div>
                                     </div>
                                 </CarouselItem>

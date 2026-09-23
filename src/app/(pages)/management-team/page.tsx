@@ -83,9 +83,9 @@ const Team = async () => {
                                         <div className="col-span-1 flex items-center">
                                             <div id="teamDetail" className="rounded-md">
                                                 <div className="">
-                                                    <h4 className="md:text-[32px] text-[20px] font-semibold text-[#0e569f]">
+                                                    <h3 className="md:text-[32px] text-[20px] font-semibold text-[#0e569f]">
                                                         {team?.name}
-                                                    </h4>
+                                                    </h3>
                                                     <span className="my-3 block text-[12px]">{team?.title}</span>
 
                                                     <div

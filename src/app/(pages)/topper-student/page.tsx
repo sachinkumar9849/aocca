@@ -100,7 +100,9 @@ const StudentSlider = () => {
                                                     href={`/topper-student/${topper.slug}`}
                                                     className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
                                                 >
-                                                    <span className="mr-2">Learn More</span>
+                                                    <span className="mr-2">
+                                                        Learn More<span className="sr-only"> about {topper.title}</span>
+                                                    </span>
                                                     <span>
                                                         <FontAwesomeIcon icon={faArrowRight} width={10} />
                                                     </span>

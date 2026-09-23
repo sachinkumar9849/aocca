@@ -107,11 +107,11 @@ const NewsList = () => {
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <h4>
+                                            <h3>
                                                 <Link href={`/news-list/${manItem.slug}`} className="w-full">
                                                     {manItem?.title}
                                                 </Link>
-                                            </h4>
+                                            </h3>
                                             <div className="textBtn">
                                                 <Link href={`/news-list/${manItem.slug}`} className="w-100">
                                                     READ MORE{" "}

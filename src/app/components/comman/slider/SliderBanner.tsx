@@ -9,24 +9,35 @@ import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import Image from "next/image";
 import { getSafeImageSrc, dummyImageUrl } from "@/app/utils/other";
 
-interface SliderItem {
+export interface SliderItem {
     id: number;
     title?: string;
     description?: string;
     image_url: string;
 }
 
-export default function SliderBanner() {
-    const [sliderItems, setSliderItems] = useState<SliderItem[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+interface SliderBannerProps {
+    initialItems?: SliderItem[];
+}
+
+export default function SliderBanner({ initialItems = [] }: SliderBannerProps) {
+    const [sliderItems, setSliderItems] = useState<SliderItem[]>(initialItems);
+    const [isLoading, setIsLoading] = useState<boolean>(initialItems.length === 0);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        if (initialItems.length > 0) {
+            setSliderItems(initialItems);
+            setIsLoading(false);
+            return;
+        }
+
         const fetchSliderItems = async () => {
             try {
                 setIsLoading(true);
                 const response = await fetch(
                     "https://api.aoc.edu.np/api/v1/toper-testimonial-team?type=slider&status=published",
+                    { cache: "no-store" },
                 );
 
                 if (!response.ok) {
@@ -49,7 +60,7 @@ export default function SliderBanner() {
         };
 
         fetchSliderItems();
-    }, []);
+    }, [initialItems]);
 
     if (isLoading) {
         return (
@@ -75,7 +86,8 @@ export default function SliderBanner() {
     }
 
     return (
-        <section className="relative group">
+        <section className="relative group" aria-label="Academy of Commerce hero banner">
+            <h1 className="sr-only">CA Coaching in Nepal | Academy of Commerce</h1>
             <Swiper
                 spaceBetween={0}
                 centeredSlides={true}
@@ -94,12 +106,14 @@ export default function SliderBanner() {
                 modules={[Autoplay, Pagination, Navigation, EffectFade]}
                 className="mySwiper h-[50vh] md:h-[75vh] lg:h-[85vh] w-full"
             >
-                {sliderItems.map((item) => (
+                {sliderItems.map((item, index) => (
                     <SwiperSlide key={item.id} className="relative overflow-hidden">
                         <div className="relative w-full h-full">
                             <Image
                                 fill
-                                priority
+                                priority={index === 0}
+                                loading={index === 0 ? "eager" : "lazy"}
+                                fetchPriority={index === 0 ? "high" : "auto"}
                                 className="object-cover transition-transform duration-[10000ms] scale-100 group-hover:scale-110"
                                 src={item.image_url || dummyImageUrl}
                                 onError={(event) => {

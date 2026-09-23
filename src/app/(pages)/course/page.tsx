@@ -1,5 +1,14 @@
 import React from "react";
 
+export const metadata = {
+    title: "CA Course Details | Academy of Commerce Nepal",
+    description:
+        "Learn about CA course structure, registration eligibility, and deadlines for Chartered Accountancy programs at Academy of Commerce.",
+    alternates: {
+        canonical: "https://aoc.edu.np/course",
+    },
+};
+
 const page = () => {
     return (
         <>
@@ -14,12 +23,12 @@ const page = () => {
                                 >
                                     CAP II
                                 </p>
-                                <h2
+                                <h1
                                     className="wow fadeInUp"
                                     style={{ visibility: "visible", animationName: "fadeInUp" }}
                                 >
                                     Course structure
-                                </h2>
+                                </h1>
                             </div>
                         </div>
                         <div className="col-span-8 bg-white z-10">
@@ -113,7 +122,7 @@ const page = () => {
                                         <p>
                                             - Be a graduate or postgraduate in commerce, business Administration or
                                             management having major subjects then mention above and secured a minimum
-                                            55% aggregate marks, or{" "}
+                                            55% aggregate marks, or,{" "}
                                         </p>
                                         <p>
                                             - Be a Graduate or post Graduate in subjects other than above with a minimum

@@ -13,54 +13,82 @@ const Footer = () => {
                 <div className="mx-auto max-w-7xl md:px-0 px-4 mb-5 z-10 relative">
                     <div className="grid md:grid-cols-4">
                         <div className="col-span-1 md:mb-0 mb-3">
-                            <Link href={"/"}>
-                                <Image src={logo} alt="logo" width={200} height={200} />
+                            <Link href={"/"} aria-label="Academy of Commerce home page">
+                                <Image src={logo} alt="Academy of Commerce logo" width={200} height={200} />
                             </Link>
                         </div>
                         <div className="col-span-1">
                             <div className="footer-list">
-                                <h4 className="m-b15 text-uppercase">Quick Links</h4>
+                                <h3 className="m-b15 text-uppercase">Popular Courses</h3>
                                 <div className="dez-separator bg-primary" />
                                 <ul>
                                     <li className="wow fadeInUp">
-                                        <Link href="/ca-foundation">CA Foundation</Link>
+                                        <Link href="/ca-foundation" aria-label="Explore CA Foundation course in Nepal">
+                                            CA Foundation Course
+                                        </Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/ca-Intermediate">CA Intermediate</Link>
+                                        <Link
+                                            href="/ca-Intermediate"
+                                            aria-label="Explore CA Intermediate course in Nepal"
+                                        >
+                                            CA Intermediate Course
+                                        </Link>
                                     </li>
 
                                     <li className="wow fadeInUp">
-                                        <Link href="/ca-final">CA Final</Link>
+                                        <Link href="/ca-final" aria-label="Explore CA Final course in Nepal">
+                                            CA Final Course
+                                        </Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/mandatory-training">Mandatory Training</Link>
+                                        <Link href="/mandatory-training" aria-label="Explore mandatory training at AOC">
+                                            Mandatory Training
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="col-span-1">
                             <div className="footer-list">
-                                <h4 className="m-b15 text-uppercase">Quick Links</h4>
+                                <h3 className="m-b15 text-uppercase">Explore AOC</h3>
                                 <div className="dez-separator bg-primary" />
                                 <ul>
                                     <li className="wow fadeInUp">
-                                        <Link href="/about">About Us</Link>
+                                        <Link href="/about" aria-label="Learn more about Academy of Commerce">
+                                            About AOC
+                                        </Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/news-list">News</Link>
+                                        <Link
+                                            href="/news-list"
+                                            aria-label="Read latest Academy of Commerce news and updates"
+                                        >
+                                            News & Updates
+                                        </Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/faqs">FAQs</Link>
+                                        <Link
+                                            href="/faqs"
+                                            aria-label="View frequently asked questions about AOC programs"
+                                        >
+                                            FAQs
+                                        </Link>
                                     </li>
                                     <li className="wow fadeInUp">
-                                        <Link href="/contact">Contact</Link>
+                                        <Link
+                                            href="/contact"
+                                            aria-label="Contact Academy of Commerce for admissions and support"
+                                        >
+                                            Contact Us
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="col-span-1">
                             <div className="widget widget_gallery">
-                                <h4 className="m-b15 text-uppercase">PHOTOS FROM FLICKR</h4>
+                                <h3 className="m-b15 text-uppercase">PHOTOS FROM FLICKR</h3>
                                 <div className="dez-separator bg-primary" />
 
                                 <GalleryImgFooter />

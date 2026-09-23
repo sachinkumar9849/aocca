@@ -98,6 +98,8 @@ const News = () => {
                                                 }}
                                                 alt={manItem.title || "News image"}
                                                 width={500}
+                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                                quality={60}
                                                 height={400}
                                             />
                                         </div>
@@ -109,11 +111,11 @@ const News = () => {
                                                 {formatDate(manItem.created_at)}
                                             </p>
                                         </Link>
-                                        <h5>
+                                        <h3>
                                             <Link href={`/news-list/${manItem.slug}`} className="text-white">
                                                 {manItem?.title?.slice(0, 130)}...
                                             </Link>
-                                        </h5>
+                                        </h3>
                                     </div>
                                 </div>
                             ))}
@@ -133,6 +135,8 @@ const News = () => {
                                                 }}
                                                 alt={item.title || "News image"}
                                                 width={200}
+                                                sizes="(max-width: 768px) 30vw, 150px"
+                                                quality={60}
                                                 height={140}
                                             />
                                         </div>
@@ -143,14 +147,17 @@ const News = () => {
                                                     {formatDate(item.created_at)}
                                                 </p>
                                             </div>
-                                            <h5 className="relative z-10">
+                                            <h3 className="relative z-10">
                                                 <Link href={`/news-list/${item.slug}`}>
                                                     {item?.title?.slice(0, 50)}...
                                                 </Link>
-                                            </h5>
-                                            <div className="twoBtnHeader mt-3" id="topHeaderAnimatedbtn">
-                                                <Link href={`/news-list/${item.slug}`}>
-                                                    <button className="btnRemote border-animation">Learn more</button>
+                                            </h3>
+                                            <div className="twoBtnHeader topHeaderAnimatedbtn mt-3">
+                                                <Link
+                                                    href={`/news-list/${item.slug}`}
+                                                    className="btnRemote border-animation"
+                                                >
+                                                    Learn more<span className="sr-only"> about {item.title}</span>
                                                 </Link>
                                             </div>
                                         </div>
