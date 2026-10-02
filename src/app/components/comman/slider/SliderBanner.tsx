@@ -121,6 +121,7 @@ export default function SliderBanner({ initialItems = [] }: SliderBannerProps) {
                                 }}
                                 alt={item.title || "Academy of Commerce Slider"}
                                 sizes="100vw"
+                                quality={60}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 

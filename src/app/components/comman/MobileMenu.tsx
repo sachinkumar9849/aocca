@@ -84,7 +84,7 @@ export default function MobileMenu() {
             title: "CA Courses",
             children: [
                 { title: "CA Foundation", href: "/ca-foundation" },
-                { title: "CA Intermediate", href: "/ca-Intermediate" },
+                { title: "CA Intermediate", href: "/ca-intermediate" },
                 { title: "CA Final", href: "/ca-final" },
                 { title: "Mandatory Training", href: "/mandatory-training" },
             ],

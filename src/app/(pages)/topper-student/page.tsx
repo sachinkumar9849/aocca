@@ -57,7 +57,7 @@ const StudentSlider = () => {
     return (
         <>
             <Breadcrumbs title={"Toppers from AOC"} />
-            <div className="padding" id="student">
+            <div data-lazy-bg className="padding" id="student">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
                     {loading && <div className="text-center py-8">Loading topper students...</div>}
 

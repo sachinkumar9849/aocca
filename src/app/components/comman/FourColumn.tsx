@@ -43,7 +43,7 @@ const FourColumn = () => {
                     >
                         <Link
                             className="hp-hero__cta-item-anchor"
-                            href={"/ca-Intermediate"}
+                            href={"/ca-intermediate"}
                             aria-label="Explore CA Intermediate course"
                         >
                             <div className="hp-hero__cta-item-container" data-expand="-42px">

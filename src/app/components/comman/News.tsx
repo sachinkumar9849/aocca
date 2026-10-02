@@ -66,7 +66,7 @@ const News = () => {
         });
     };
     return (
-        <section id="news_section" className="padding bg_gray news_section">
+        <section data-lazy-bg id="news_section" className="padding bg_gray news_section">
             <Image className="home-shape" style={{ width: "auto", height: "auto" }} src={newsAnimation} alt="img" />
             <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
                 <div className="text-center">

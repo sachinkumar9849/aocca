@@ -4,7 +4,7 @@ import TestimonialSlider from "./slider/TestimonialSlider";
 
 const Testimonial = () => {
     return (
-        <section className="testimonial padding relative pb-0" style={{ paddingBottom: 0 }}>
+        <section data-lazy-bg className="testimonial padding relative pb-0" style={{ paddingBottom: 0 }}>
             <div className="mx-auto max-w-7xl md:px-0 px-4">
                 <div className="text-center testimonialPadding">
                     <Title title="Students Testimonial" subTitle="TESTIMONIAL" />

@@ -29,7 +29,7 @@ const Footer = () => {
                                     </li>
                                     <li className="wow fadeInUp">
                                         <Link
-                                            href="/ca-Intermediate"
+                                            href="/ca-intermediate"
                                             aria-label="Explore CA Intermediate course in Nepal"
                                         >
                                             CA Intermediate Course

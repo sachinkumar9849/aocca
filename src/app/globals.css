@@ -1518,7 +1518,6 @@ div.topHeaderAnimatedbtn .btn-animation:hover {
     outline-offset: -6px;
 }
 section#services {
-    background-image: url(https://assets.weforum.org/article/image/_sNw0oZO6IQV_vLpSbxFnx44SN_obtJrNdbSk0_yFFk.JPG);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -2907,4 +2906,8 @@ table table td:last-child {
 .footer {
     background-color: rgb(0 0 0);
     background-size: cover;
+}
+
+[data-lazy-bg]:not(.bg-visible) {
+    background-image: none !important;
 }

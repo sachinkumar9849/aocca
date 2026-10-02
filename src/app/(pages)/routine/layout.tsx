@@ -3,7 +3,12 @@ import { getArchiveSEO, generateMetadataFromSEO, SchemaMarkup } from "@/app/util
 
 export async function generateMetadata() {
     const seo = await getArchiveSEO("routine");
-    return generateMetadataFromSEO(seo);
+    return {
+        ...generateMetadataFromSEO(seo),
+        alternates: {
+            canonical: "https://aoc.edu.np/routine",
+        },
+    };
 }
 
 export default async function RoutineLayout({ children }: { children: React.ReactNode }) {

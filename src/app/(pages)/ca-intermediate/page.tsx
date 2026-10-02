@@ -2,7 +2,7 @@ import React from "react";
 import { generateMetadataFromSEO, getArchiveSEO } from "@/app/utils/seo";
 
 export async function generateMetadata() {
-    const slug = "ca-Intermediate";
+    const slug = "ca-intermediate";
     const seo = await getArchiveSEO("ca-intermediate");
     const metadata = generateMetadataFromSEO(seo);
     const title = seo?.meta_title || "CA Intermediate Course in Nepal | Academy of Commerce";

@@ -31,6 +31,14 @@ async function getNewsDetail(slug: string): Promise<NewsDetail> {
     return response.json();
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    return {
+        alternates: {
+            canonical: `https://aoc.edu.np/topper-student/${params.slug}`,
+        },
+    };
+}
+
 export default async function NewsDetailPage({ params }: { params: { slug: string } }) {
     const newsDetail = await getNewsDetail(params.slug);
 
