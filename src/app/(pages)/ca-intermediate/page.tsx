@@ -43,19 +43,27 @@ interface CourseItem {
 }
 
 async function getCourseData(): Promise<CourseItem[]> {
-    const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=intermediate&status=published`,
-        {
-            signal: apiTimeoutSignal(),
-            next: { revalidate: 60 },
-        },
-    );
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=intermediate&status=published`,
+            {
+                signal: apiTimeoutSignal(),
+                next: { revalidate: 60 },
+            },
+        );
 
-    if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+
+        return response.json();
+    } catch (error) {
+        if (process.env.NEXT_PHASE === "phase-production-build") {
+            console.error("Course data unavailable during build, rendering empty page:", error);
+            return [];
+        }
+        throw error;
     }
-
-    return response.json();
 }
 
 export default async function CapIntermediatePage() {
