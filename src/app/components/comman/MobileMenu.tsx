@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { useRef } from "react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/app/assets/img/logo.png";
@@ -16,47 +16,26 @@ interface MenuItem {
 }
 
 const MenuItem = ({ item, onNavigate }: { item: MenuItem; onNavigate: () => void }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleClick = () => {
-        if (item.children) {
-            setIsOpen(!isOpen);
-        }
-    };
-
-    const handleChildClick = () => {
-        setIsOpen(false);
-        onNavigate();
-    };
-
     return (
         <li className="w-full">
             {item.children ? (
-                <>
-                    <div
-                        className={`flex items-center justify-between p-4 hover:bg-gray-100 cursor-pointer ${
-                            isOpen ? "bg-gray-50" : ""
-                        }`}
-                        onClick={handleClick}
-                    >
+                <details className="group">
+                    <summary className="flex items-center justify-between p-4 hover:bg-gray-100 cursor-pointer list-none group-open:bg-gray-50 [&::-webkit-details-marker]:hidden">
                         <span className="font-medium">{item.title}</span>
-                        {isOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-                    </div>
-
-                    {isOpen && (
-                        <ul className="pl-4 border-l border-gray-200">
-                            {item.children.map((child, index) => (
-                                <li key={index} className="w-full">
-                                    <Link href={child.href} className="block w-full" onClick={handleChildClick}>
-                                        <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
-                                            <span>{child.title}</span>
-                                        </div>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </>
+                        <ChevronRight size={20} className="transition-transform group-open:rotate-90" />
+                    </summary>
+                    <ul className="pl-4 border-l border-gray-200">
+                        {item.children.map((child, index) => (
+                            <li key={index} className="w-full">
+                                <Link href={child.href} className="block w-full" onClick={onNavigate}>
+                                    <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
+                                        <span>{child.title}</span>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </details>
             ) : (
                 <Link href={item.href || "/"} className="block w-full" onClick={onNavigate}>
                     <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
@@ -69,14 +48,12 @@ const MenuItem = ({ item, onNavigate }: { item: MenuItem; onNavigate: () => void
 };
 
 export default function MobileMenu() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const toggleRef = useRef<HTMLInputElement>(null);
+    const navRef = useRef<HTMLElement>(null);
 
     const closeMenu = () => {
-        setIsMenuOpen(false);
+        if (toggleRef.current) toggleRef.current.checked = false;
+        navRef.current?.querySelectorAll("details[open]").forEach((details) => details.removeAttribute("open"));
     };
 
     const menuItems: MenuItem[] = [
@@ -109,37 +86,40 @@ export default function MobileMenu() {
 
     return (
         <div className="font-sans">
+            <input
+                ref={toggleRef}
+                id="mobile-menu-toggle"
+                type="checkbox"
+                className="peer sr-only"
+                aria-label="Toggle menu"
+            />
             <header className="bg-white shadow p-4 flex justify-between items-center">
                 <Link href="/">
                     <Image className="logoMobile" src={logo} alt="Logo" width={150} height={50} />
                 </Link>
-                <button
-                    onClick={toggleMenu}
-                    className="p-2 rounded-md hover:bg-gray-100 focus:outline-none lg:hidden"
-                    aria-label="Toggle menu"
+                <label
+                    htmlFor="mobile-menu-toggle"
+                    className="p-2 rounded-md hover:bg-gray-100 cursor-pointer lg:hidden"
+                    aria-hidden="true"
                 >
-                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                    <Menu size={24} />
+                </label>
             </header>
 
-            <div
-                className={`fixed inset-0 bg-white z-50 transition-transform transform ${
-                    isMenuOpen ? "translate-x-0" : "translate-x-full"
-                } lg:hidden`}
-            >
+            <div className="fixed inset-0 bg-white z-50 transition-transform transform translate-x-full peer-checked:translate-x-0 lg:hidden">
                 <div className="flex flex-col h-full">
                     <div className="flex justify-between items-center p-4 border-b">
                         <div className="text-xl font-bold">Menu</div>
-                        <button
-                            onClick={toggleMenu}
-                            className="p-2 rounded-md hover:bg-gray-100 focus:outline-none"
-                            aria-label="Close menu"
+                        <label
+                            htmlFor="mobile-menu-toggle"
+                            className="p-2 rounded-md hover:bg-gray-100 cursor-pointer"
+                            aria-hidden="true"
                         >
                             <X size={24} />
-                        </button>
+                        </label>
                     </div>
 
-                    <nav className="flex-1 overflow-y-auto">
+                    <nav ref={navRef} className="flex-1 overflow-y-auto">
                         <ul className="w-full">
                             {menuItems.map((item, index) => (
                                 <MenuItem key={index} item={item} onNavigate={closeMenu} />

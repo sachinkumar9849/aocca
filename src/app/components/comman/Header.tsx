@@ -8,10 +8,6 @@ import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-
-    const [dropdownOpent, setDropdownOpent] = useState(false);
-
     const [isSticky, setIsSticky] = useState(false);
     const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -118,12 +114,10 @@ const Header = () => {
                                     Home
                                 </Link>
                             </li>
-                            <li className="relative" id="headerList">
+                            <li className="relative group" id="headerList">
                                 <button
                                     id="dropdownNavbarLink"
                                     className="flex items-center justify-between w-full py-2 px-3 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-                                    onMouseEnter={() => setDropdownOpen(true)}
-                                    onMouseLeave={() => setDropdownOpen(false)}
                                 >
                                     About Us{" "}
                                     <svg
@@ -145,11 +139,7 @@ const Header = () => {
 
                                 <div
                                     id="dropdownNavbar"
-                                    className={`absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 ${
-                                        dropdownOpen ? "block" : "hidden"
-                                    }`}
-                                    onMouseEnter={() => setDropdownOpen(true)}
-                                    onMouseLeave={() => setDropdownOpen(false)}
+                                    className="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 hidden group-hover:block group-has-[:focus-visible]:block"
                                 >
                                     <ul
                                         className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -184,12 +174,10 @@ const Header = () => {
                                 </div>
                             </li>
 
-                            <li className="relative" id="headerList">
+                            <li className="relative group" id="headerList">
                                 <button
                                     id="dropdownNavbarLink"
                                     className="flex items-center justify-between w-full py-2 px-3 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-                                    onMouseEnter={() => setDropdownOpent(true)}
-                                    onMouseLeave={() => setDropdownOpent(false)}
                                 >
                                     CA Courses{" "}
                                     <svg
@@ -211,11 +199,7 @@ const Header = () => {
 
                                 <div
                                     id="dropdownNavbar"
-                                    className={`absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 ${
-                                        dropdownOpent ? "block" : "hidden"
-                                    }`}
-                                    onMouseEnter={() => setDropdownOpent(true)}
-                                    onMouseLeave={() => setDropdownOpent(false)}
+                                    className="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 hidden group-hover:block group-has-[:focus-visible]:block"
                                 >
                                     <ul
                                         className="py-2 text-sm text-gray-700 dark:text-gray-200"

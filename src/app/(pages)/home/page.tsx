@@ -9,6 +9,7 @@ import Team from "@/app/components/comman/Team";
 import React from "react";
 import Testimonial from "@/app/components/comman/Testimonial";
 import Blog from "@/app/components/comman/Blog";
+import DeferredSection from "@/app/components/comman/DeferredSection";
 import { getSafeImageSrc } from "@/app/utils/other";
 import { apiTimeoutSignal } from "@/app/utils/seo";
 
@@ -39,14 +40,26 @@ const Home = async () => {
         <>
             <SliderBanner initialItems={initialSliderItems} />
             <FourColumn />
-            <StudentSlider />
-            <About />
-            <VideoSection />
-            <News />
+            <DeferredSection>
+                <StudentSlider />
+            </DeferredSection>
+            <DeferredSection>
+                <About />
+            </DeferredSection>
+            <DeferredSection>
+                <VideoSection />
+            </DeferredSection>
+            <DeferredSection>
+                <News />
+            </DeferredSection>
             <Services />
-            <Team />
+            <DeferredSection>
+                <Team />
+            </DeferredSection>
             <Testimonial />
-            <Blog />
+            <DeferredSection>
+                <Blog />
+            </DeferredSection>
         </>
     );
 };

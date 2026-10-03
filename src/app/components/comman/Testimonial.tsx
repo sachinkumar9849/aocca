@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "./Title";
 import TestimonialSlider from "./slider/TestimonialSlider";
+import DeferredSection from "./DeferredSection";
 
 const Testimonial = () => {
     return (
@@ -9,7 +10,9 @@ const Testimonial = () => {
                 <div className="text-center testimonialPadding">
                     <Title title="Students Testimonial" subTitle="TESTIMONIAL" />
                 </div>
-                <TestimonialSlider />
+                <DeferredSection minHeight="400px">
+                    <TestimonialSlider />
+                </DeferredSection>
             </div>
         </section>
     );
