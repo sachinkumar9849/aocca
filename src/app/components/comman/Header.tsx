@@ -99,11 +99,9 @@ const Header = () => {
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
                     <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse md:pl-0 pl-2">
                         <Image
-                            className="w-[192px]"
+                            className="w-[192px] h-auto"
                             src={logo}
                             alt="Academy of Commerce logo"
-                            width={500}
-                            height={500}
                             priority
                             sizes="192px"
                         />

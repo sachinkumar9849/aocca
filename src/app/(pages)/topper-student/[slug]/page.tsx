@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { apiTimeoutSignal } from "@/app/utils/seo";
 
 interface NewsDetail {
     id: number;
@@ -21,6 +22,7 @@ interface NewsDetail {
 
 async function getNewsDetail(slug: string): Promise<NewsDetail> {
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team/${slug}`, {
+        signal: apiTimeoutSignal(),
         next: { revalidate: 60 },
     });
 

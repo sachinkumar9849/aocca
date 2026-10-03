@@ -68,7 +68,7 @@ const StudentSlider = () => {
 
                     {!loading && !error && toppers.length > 0 && (
                         <Carousel className="w-full">
-                            <div className="grid grid-cols-6 gap-7">
+                            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-7 lg:grid-cols-6">
                                 {toppers.map((topper) => (
                                     <div key={topper.id} className="col-span-1">
                                         <div className="blogImg alumniImg mb-3">

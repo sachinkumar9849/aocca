@@ -80,7 +80,7 @@ const News = () => {
                     <div className="text-center py-8">No topper students found</div>
                 )}
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {!loading && !error && toppers.length > 0 && (
                         <div className="col-span-1">
                             {toppers.slice(0, 1).map((manItem) => (

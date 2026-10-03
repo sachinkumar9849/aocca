@@ -10,6 +10,7 @@ import React from "react";
 import Testimonial from "@/app/components/comman/Testimonial";
 import Blog from "@/app/components/comman/Blog";
 import { getSafeImageSrc } from "@/app/utils/other";
+import { apiTimeoutSignal } from "@/app/utils/seo";
 
 const Home = async () => {
     let initialSliderItems: SliderItem[] = [];
@@ -18,6 +19,7 @@ const Home = async () => {
         const response = await fetch(
             "https://api.aoc.edu.np/api/v1/toper-testimonial-team?type=slider&status=published",
             {
+                signal: apiTimeoutSignal(),
                 next: { revalidate: 300 },
             },
         );

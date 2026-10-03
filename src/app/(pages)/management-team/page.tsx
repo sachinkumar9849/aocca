@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { getBaseUrl, getArchiveSEO, generateMetadataFromSEO, SchemaMarkup } from "@/app/utils/seo";
+import { getBaseUrl, getArchiveSEO, generateMetadataFromSEO, SchemaMarkup, apiTimeoutSignal } from "@/app/utils/seo";
 import type { SEOFields } from "@/app/utils/seo";
 
 interface TopperTestimonial {
@@ -27,6 +27,7 @@ interface TopperTestimonial {
 async function getTeamData(): Promise<TopperTestimonial[]> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/toper-testimonial-team?type=team&status=published`, {
+        signal: apiTimeoutSignal(),
         next: { revalidate: 60 },
     });
 

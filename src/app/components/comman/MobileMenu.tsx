@@ -15,13 +15,18 @@ interface MenuItem {
     children?: MenuChild[];
 }
 
-const MenuItem = ({ item }: { item: MenuItem }) => {
+const MenuItem = ({ item, onNavigate }: { item: MenuItem; onNavigate: () => void }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleClick = () => {
         if (item.children) {
             setIsOpen(!isOpen);
         }
+    };
+
+    const handleChildClick = () => {
+        setIsOpen(false);
+        onNavigate();
     };
 
     return (
@@ -42,7 +47,7 @@ const MenuItem = ({ item }: { item: MenuItem }) => {
                         <ul className="pl-4 border-l border-gray-200">
                             {item.children.map((child, index) => (
                                 <li key={index} className="w-full">
-                                    <Link href={child.href} className="block w-full">
+                                    <Link href={child.href} className="block w-full" onClick={handleChildClick}>
                                         <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
                                             <span>{child.title}</span>
                                         </div>
@@ -53,7 +58,7 @@ const MenuItem = ({ item }: { item: MenuItem }) => {
                     )}
                 </>
             ) : (
-                <Link href={item.href || "/"} className="block w-full">
+                <Link href={item.href || "/"} className="block w-full" onClick={onNavigate}>
                     <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
                         <span className="font-medium">{item.title}</span>
                     </div>
@@ -68,6 +73,10 @@ export default function MobileMenu() {
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
     };
 
     const menuItems: MenuItem[] = [
@@ -133,7 +142,7 @@ export default function MobileMenu() {
                     <nav className="flex-1 overflow-y-auto">
                         <ul className="w-full">
                             {menuItems.map((item, index) => (
-                                <MenuItem key={index} item={item} />
+                                <MenuItem key={index} item={item} onNavigate={closeMenu} />
                             ))}
                         </ul>
                     </nav>

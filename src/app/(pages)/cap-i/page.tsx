@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import CourseSectionMenu from "@/app/components/comman/course/CourseSectionMenu";
 
 interface CourseItem {
     id: string;
@@ -35,32 +36,9 @@ const CapIPage: React.FC = () => {
         fetchCourseData();
     }, []);
 
-    const scrollToSection = (id: string): void => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
     return (
         <>
-            <div className="page_link">
-                <ul>
-                    {courseData.map((item) => (
-                        <li key={item.id}>
-                            <a
-                                href={`#${item.slug}`}
-                                onClick={(e: React.MouseEvent<HTMLAnchorElement>): void => {
-                                    e.preventDefault();
-                                    scrollToSection(item.slug);
-                                }}
-                            >
-                                {item.title}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <CourseSectionMenu items={courseData} />
 
             {loading ? (
                 <div className="text-center py-10">
@@ -81,7 +59,7 @@ const CapIPage: React.FC = () => {
                             <div className="mx-auto max-w-7xl md:px-0 px-4">
                                 {isEvenSection ? (
                                     <div className="grid grid-cols-12">
-                                        <div className="col-span-4">
+                                        <div className="col-span-12 md:col-span-4">
                                             <div className="sectionTitle">
                                                 <p
                                                     className="wow fadeInUp ml-3"
@@ -97,7 +75,7 @@ const CapIPage: React.FC = () => {
                                                 </h2>
                                             </div>
                                         </div>
-                                        <div className="col-span-8">
+                                        <div className="col-span-12 md:col-span-8">
                                             <div className="class-block">
                                                 <div
                                                     className="about_text"

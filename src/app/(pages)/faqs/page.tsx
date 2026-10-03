@@ -1,5 +1,6 @@
 import React from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { apiTimeoutSignal } from "@/app/utils/seo";
 
 export const metadata = {
     title: "CA Course FAQs | Academy of Commerce Nepal",
@@ -21,6 +22,7 @@ async function getFaqData(): Promise<FaqItem[]> {
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=faq&status=published`,
             {
+                signal: apiTimeoutSignal(),
                 next: { revalidate: 60 },
             },
         );

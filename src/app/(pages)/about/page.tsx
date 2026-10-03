@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
-import { getBaseUrl, generateMetadataFromSEO, SchemaMarkup } from "@/app/utils/seo";
+import { getBaseUrl, generateMetadataFromSEO, SchemaMarkup, apiTimeoutSignal } from "@/app/utils/seo";
 import type { SEOFields } from "@/app/utils/seo";
 
 interface PageData {
@@ -20,6 +20,7 @@ interface PageData {
 async function getAboutPageData(): Promise<PageData> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/page-by-id/1`, {
+        signal: apiTimeoutSignal(),
         next: { revalidate: 60 },
     });
 

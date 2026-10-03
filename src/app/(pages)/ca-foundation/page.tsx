@@ -1,5 +1,6 @@
 import React from "react";
-import { generateMetadataFromSEO, getArchiveSEO } from "@/app/utils/seo";
+import { generateMetadataFromSEO, getArchiveSEO, apiTimeoutSignal } from "@/app/utils/seo";
+import CourseSectionMenu from "@/app/components/comman/course/CourseSectionMenu";
 
 export async function generateMetadata() {
     const slug = "ca-foundation";
@@ -45,6 +46,7 @@ async function getCourseData(): Promise<CourseItem[]> {
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team?type=foundation&status=published`,
         {
+            signal: apiTimeoutSignal(),
             next: { revalidate: 60 },
         },
     );
@@ -61,15 +63,7 @@ export default async function CapFoundationPage() {
 
     return (
         <>
-            <div className="page_link">
-                <ul>
-                    {courseData.map((item) => (
-                        <li key={item.id}>
-                            <a href={`#${item.slug}`}>{item.title}</a>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <CourseSectionMenu items={courseData} />
 
             {courseData.map((item, index) => {
                 const isEvenSection = index % 2 === 0;
@@ -85,7 +79,7 @@ export default async function CapFoundationPage() {
                         <div className="mx-auto max-w-7xl md:px-0 px-4">
                             {isEvenSection ? (
                                 <div className="grid grid-cols-12">
-                                    <div className="col-span-4">
+                                    <div className="col-span-12 md:col-span-4">
                                         <div className="sectionTitle">
                                             <p
                                                 className="wow fadeInUp ml-3"
@@ -101,7 +95,7 @@ export default async function CapFoundationPage() {
                                             </h2>
                                         </div>
                                     </div>
-                                    <div className="col-span-8">
+                                    <div className="col-span-12 md:col-span-8">
                                         <div className="class-block">
                                             <div
                                                 className="about_text"

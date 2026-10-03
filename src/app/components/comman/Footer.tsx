@@ -14,7 +14,12 @@ const Footer = () => {
                     <div className="grid md:grid-cols-4">
                         <div className="col-span-1 md:mb-0 mb-3">
                             <Link href={"/"} aria-label="Academy of Commerce home page">
-                                <Image src={logo} alt="Academy of Commerce logo" width={200} height={200} />
+                                <Image
+                                    src={logo}
+                                    alt="Academy of Commerce logo"
+                                    className="w-[200px] h-auto"
+                                    sizes="200px"
+                                />
                             </Link>
                         </div>
                         <div className="col-span-1">
