@@ -2,20 +2,12 @@ import Footer from "./components/comman/Footer";
 import Header from "./components/comman/Header";
 import Script from "next/script";
 import LazyBackgrounds from "./components/comman/LazyBackgrounds";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { SchemaMarkup, getDefaultSiteSchema } from "./utils/seo";
 
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
-const inter = Inter({
-    subsets: ["latin"],
-    variable: "--font-inter",
-    display: "swap",
-    weight: ["400", "500", "600", "700"],
-    preload: false,
-});
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -33,7 +25,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+        <html lang="en" className={poppins.variable}>
             <body suppressHydrationWarning className="font-sans">
                 <SchemaMarkup schemaJson={getDefaultSiteSchema()} />
                 {GA_MEASUREMENT_ID ? (
