@@ -56,9 +56,14 @@ const TeamTwo = () => {
 
     return (
         <>
-            <Breadcrumbs title=" Faculties" />
-            <section className="teamSection padding">
+            <Breadcrumbs title="Faculties" />
+            <section className="teamSection padding" aria-labelledby="faculties-heading">
                 <div className="mx-auto max-w-7xl md:px-0 px-4 md:px-0 px-4">
+                    <div className="mb-8 text-center">
+                        <h1 id="faculties-heading" className="text-3xl md:text-4xl font-bold text-gray-900">
+                            Expert Faculties at AOC
+                        </h1>
+                    </div>
                     {loading && <div className="text-center py-8">Loading team ...</div>}
 
                     {error && <div className="text-center py-8 text-red-500">Error loading team : {error}</div>}
@@ -84,27 +89,30 @@ const TeamTwo = () => {
                                             />
                                         </div>
                                         <div className="p-a15 bg-primary text-white dez-team">
-                                            <h4 className="dez-title text-capitalize mb-2">{team?.name}</h4>
+                                            <h3 className="dez-title text-capitalize mb-2">{team?.name}</h3>
                                             <div className="dez-separator-outer ">
                                                 <div className="dez-separator bg-white style-liner"></div>
                                             </div>
                                             <span className="dez-member-position flex justify-center">
                                                 {team?.title}
                                             </span>
-                                            <div className="m-t10">
-                                                <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
-                                                    <li>
-                                                        <a
-                                                            href={team.linkedin}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-white hover:text-gray-300"
-                                                        >
-                                                            <FontAwesomeIcon icon={faLinkedin} className="" />
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            {team?.linkedin ? (
+                                                <div className="m-t10">
+                                                    <ul className="dez-social-icon dez-social-icon-lg ml-0 pl-0">
+                                                        <li>
+                                                            <a
+                                                                href={team.linkedin}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="text-white hover:text-gray-300"
+                                                                aria-label={`${team?.name} on LinkedIn`}
+                                                            >
+                                                                <FontAwesomeIcon icon={faLinkedin} aria-hidden="true" />
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            ) : null}
                                         </div>
                                     </div>
                                 </div>

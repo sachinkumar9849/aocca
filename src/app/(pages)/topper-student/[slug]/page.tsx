@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { apiTimeoutSignal } from "@/app/utils/seo";
 
 interface NewsDetail {
     id: number;
@@ -21,6 +22,7 @@ interface NewsDetail {
 
 async function getNewsDetail(slug: string): Promise<NewsDetail> {
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/toper-testimonial-team/${slug}`, {
+        signal: apiTimeoutSignal(),
         next: { revalidate: 60 },
     });
 
@@ -29,6 +31,14 @@ async function getNewsDetail(slug: string): Promise<NewsDetail> {
     }
 
     return response.json();
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    return {
+        alternates: {
+            canonical: `https://aoc.edu.np/topper-student/${params.slug}`,
+        },
+    };
 }
 
 export default async function NewsDetailPage({ params }: { params: { slug: string } }) {

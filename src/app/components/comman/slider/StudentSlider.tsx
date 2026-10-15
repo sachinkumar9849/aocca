@@ -63,7 +63,7 @@ const StudentSlider = () => {
         fetchToppers();
     }, []);
     return (
-        <div className="padding" id="student">
+        <div data-lazy-bg className="padding" id="student">
             <div className="mx-auto max-w-7xl md:px-0 px-4">
                 <div className="text-center">
                     <Title title="Toppers from AOC" subTitle="Students" />
@@ -92,6 +92,8 @@ const StudentSlider = () => {
                                                 }}
                                                 alt={topper.name}
                                                 width={400}
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                                quality={60}
                                                 height={300}
                                             />
                                         </Link>
@@ -110,7 +112,9 @@ const StudentSlider = () => {
                                                     href={`/topper-student/${topper.slug}`}
                                                     className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
                                                 >
-                                                    <span className="mr-2">Learn More</span>
+                                                    <span className="mr-2">
+                                                        Learn More<span className="sr-only"> about {topper.title}</span>
+                                                    </span>
                                                     <span>
                                                         <FontAwesomeIcon icon={faArrowRight} width={10} />
                                                     </span>

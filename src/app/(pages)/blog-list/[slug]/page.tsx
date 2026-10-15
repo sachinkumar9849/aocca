@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { generateMetadataFromSEO, getBaseUrl, SchemaMarkup } from "@/app/utils/seo";
+import { generateMetadataFromSEO, getBaseUrl, SchemaMarkup, apiTimeoutSignal } from "@/app/utils/seo";
 import type { SEOFields } from "@/app/utils/seo";
 
 interface NewsDetail {
@@ -19,6 +19,7 @@ interface NewsDetail {
 async function getNewsDetail(slug: string): Promise<NewsDetail> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/news-blog/${slug}`, {
+        signal: apiTimeoutSignal(),
         next: { revalidate: 60 },
     });
 

@@ -1,8 +1,20 @@
-import { useState } from "react";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/app/assets/img/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+    faFacebook,
+    faTwitter,
+    faInstagram,
+    faLinkedin,
+    faYoutube,
+    faTiktok,
+    faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
+import { CompanySetting, DEFAULT_COMPANY_SETTINGS, fetchCompanySettings } from "@/app/utils/companySettings";
 
 interface MenuChild {
     title: string;
@@ -15,45 +27,29 @@ interface MenuItem {
     children?: MenuChild[];
 }
 
-const MenuItem = ({ item }: { item: MenuItem }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleClick = () => {
-        if (item.children) {
-            setIsOpen(!isOpen);
-        }
-    };
-
+const MenuItem = ({ item, onNavigate }: { item: MenuItem; onNavigate: () => void }) => {
     return (
         <li className="w-full">
             {item.children ? (
-                <>
-                    <div
-                        className={`flex items-center justify-between p-4 hover:bg-gray-100 cursor-pointer ${
-                            isOpen ? "bg-gray-50" : ""
-                        }`}
-                        onClick={handleClick}
-                    >
+                <details className="group">
+                    <summary className="flex items-center justify-between p-4 hover:bg-gray-100 cursor-pointer list-none group-open:bg-gray-50 [&::-webkit-details-marker]:hidden">
                         <span className="font-medium">{item.title}</span>
-                        {isOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-                    </div>
-
-                    {isOpen && (
-                        <ul className="pl-4 border-l border-gray-200">
-                            {item.children.map((child, index) => (
-                                <li key={index} className="w-full">
-                                    <Link href={child.href} className="block w-full">
-                                        <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
-                                            <span>{child.title}</span>
-                                        </div>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </>
+                        <ChevronRight size={20} className="transition-transform group-open:rotate-90" />
+                    </summary>
+                    <ul className="pl-4 border-l border-gray-200">
+                        {item.children.map((child, index) => (
+                            <li key={index} className="w-full">
+                                <Link href={child.href} className="block w-full" onClick={onNavigate}>
+                                    <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
+                                        <span>{child.title}</span>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </details>
             ) : (
-                <Link href={item.href || "/"} className="block w-full">
+                <Link href={item.href || "/"} className="block w-full" onClick={onNavigate}>
                     <div className="flex items-center p-4 hover:bg-gray-100 cursor-pointer">
                         <span className="font-medium">{item.title}</span>
                     </div>
@@ -64,10 +60,17 @@ const MenuItem = ({ item }: { item: MenuItem }) => {
 };
 
 export default function MobileMenu() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleRef = useRef<HTMLInputElement>(null);
+    const navRef = useRef<HTMLElement>(null);
+    const [settings, setSettings] = useState<CompanySetting>(DEFAULT_COMPANY_SETTINGS);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+    useEffect(() => {
+        fetchCompanySettings().then(setSettings);
+    }, []);
+
+    const closeMenu = () => {
+        if (toggleRef.current) toggleRef.current.checked = false;
+        navRef.current?.querySelectorAll("details[open]").forEach((details) => details.removeAttribute("open"));
     };
 
     const menuItems: MenuItem[] = [
@@ -84,7 +87,7 @@ export default function MobileMenu() {
             title: "CA Courses",
             children: [
                 { title: "CA Foundation", href: "/ca-foundation" },
-                { title: "CA Intermediate", href: "/ca-Intermediate" },
+                { title: "CA Intermediate", href: "/ca-intermediate" },
                 { title: "CA Final", href: "/ca-final" },
                 { title: "Mandatory Training", href: "/mandatory-training" },
             ],
@@ -100,110 +103,108 @@ export default function MobileMenu() {
 
     return (
         <div className="font-sans">
+            <input
+                ref={toggleRef}
+                id="mobile-menu-toggle"
+                type="checkbox"
+                className="peer sr-only"
+                aria-label="Toggle menu"
+            />
             <header className="bg-white shadow p-4 flex justify-between items-center">
                 <Link href="/">
-                    <Image className="logoMobile" src={logo} alt="Logo" width={150} height={50} />
+                    <Image className="logoMobile" src={logo} alt="Logo" width={150} height={50} priority />
                 </Link>
-                <button
-                    onClick={toggleMenu}
-                    className="p-2 rounded-md hover:bg-gray-100 focus:outline-none lg:hidden"
-                    aria-label="Toggle menu"
+                <label
+                    htmlFor="mobile-menu-toggle"
+                    className="p-2 rounded-md hover:bg-gray-100 cursor-pointer lg:hidden"
+                    aria-hidden="true"
                 >
-                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                    <Menu size={24} />
+                </label>
             </header>
 
-            <div
-                className={`fixed inset-0 bg-white z-50 transition-transform transform ${
-                    isMenuOpen ? "translate-x-0" : "translate-x-full"
-                } lg:hidden`}
-            >
-                <div className="flex flex-col h-full">
-                    <div className="flex justify-between items-center p-4 border-b">
-                        <div className="text-xl font-bold">Menu</div>
-                        <button
-                            onClick={toggleMenu}
-                            className="p-2 rounded-md hover:bg-gray-100 focus:outline-none"
-                            aria-label="Close menu"
-                        >
-                            <X size={24} />
-                        </button>
-                    </div>
-
-                    <nav className="flex-1 overflow-y-auto">
-                        <ul className="w-full">
-                            {menuItems.map((item, index) => (
-                                <MenuItem key={index} item={item} />
-                            ))}
-                        </ul>
-                    </nav>
+            <div className="fixed inset-0 bg-white z-50 transition-transform transform translate-x-full peer-checked:translate-x-0 lg:hidden flex flex-col">
+                <div className="flex justify-between items-center p-4 border-b">
+                    <div className="text-xl font-bold">Menu</div>
+                    <label
+                        htmlFor="mobile-menu-toggle"
+                        className="p-2 rounded-md hover:bg-gray-100 cursor-pointer"
+                        aria-hidden="true"
+                    >
+                        <X size={24} />
+                    </label>
                 </div>
-            </div>
 
-            <div className="hidden lg:block">
-                <nav className="bg-white border-gray-200 dark:bg-gray-900">
-                    <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-                        <ul className="flex items-center flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            {menuItems.map((item, index) => (
-                                <li key={index} id="headerList" className={item.children ? "relative" : ""}>
-                                    {item.children ? (
-                                        <>
-                                            <button
-                                                id="dropdownNavbarLink"
-                                                className="flex items-center justify-between w-full py-2 px-3 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-                                            >
-                                                {item.title}{" "}
-                                                <svg
-                                                    className="w-2.5 h-2.5 ms-2.5"
-                                                    aria-hidden="true"
-                                                    xmlns="https://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 10 6"
-                                                >
-                                                    <path
-                                                        stroke="currentColor"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={2}
-                                                        d="m1 1 4 4 4-4"
-                                                    />
-                                                </svg>
-                                            </button>
-
-                                            <div
-                                                id="dropdownNavbar"
-                                                className="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 hidden group-hover:block"
-                                            >
-                                                <ul
-                                                    className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                                    aria-labelledby="dropdownLargeButton"
-                                                >
-                                                    {item.children.map((child, childIndex) => (
-                                                        <li key={childIndex}>
-                                                            <Link
-                                                                href={child.href}
-                                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                            >
-                                                                {child.title}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <Link
-                                            href={item.href || "/"}
-                                            className="block py-2 px-1 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                                        >
-                                            {item.title}
-                                        </Link>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                <nav ref={navRef} className="flex-1 overflow-y-auto">
+                    <ul className="w-full">
+                        {menuItems.map((item, index) => (
+                            <MenuItem key={index} item={item} onNavigate={closeMenu} />
+                        ))}
+                    </ul>
                 </nav>
+
+                {/* Mobile Drawer Footer Contact Info */}
+                <div className="p-4 border-t border-gray-100 bg-gray-50 text-xs text-gray-700 space-y-2 shrink-0">
+                    <div className="flex items-start gap-2">
+                        <FontAwesomeIcon icon={faLocationDot} className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                        <span className="leading-tight">{settings.address}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <FontAwesomeIcon icon={faPhone} className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                        <div className="flex flex-wrap items-center gap-1 font-medium">
+                            <a href={`tel:${settings.phone}`} className="hover:underline text-gray-900 whitespace-nowrap">
+                                {settings.phone}
+                            </a>
+                            {settings.secondary_phone && (
+                                <>
+                                    <span>,</span>
+                                    <a href={`tel:${settings.secondary_phone}`} className="hover:underline text-gray-900 whitespace-nowrap">
+                                        {settings.secondary_phone}
+                                    </a>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                        <FontAwesomeIcon icon={faEnvelope} className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                        <a href={`mailto:${settings.email}`} className="hover:underline font-medium text-gray-900 break-words flex-1 min-w-0">
+                            {settings.email}
+                        </a>
+                    </div>
+                    {/* Social links */}
+                    <div className="flex items-center gap-3 pt-2 text-gray-600 text-sm">
+                        {settings.facebook_url && (
+                            <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-600">
+                                <FontAwesomeIcon icon={faFacebook} className="w-4 h-4" />
+                            </a>
+                        )}
+                        {settings.twitter_url && (
+                            <a href={settings.twitter_url} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-sky-500">
+                                <FontAwesomeIcon icon={faTwitter} className="w-4 h-4" />
+                            </a>
+                        )}
+                        {settings.instagram_url && (
+                            <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-600">
+                                <FontAwesomeIcon icon={faInstagram} className="w-4 h-4" />
+                            </a>
+                        )}
+                        {settings.linkedin_url && (
+                            <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-700">
+                                <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4" />
+                            </a>
+                        )}
+                        {settings.youtube_url && (
+                            <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-red-600">
+                                <FontAwesomeIcon icon={faYoutube} className="w-4 h-4" />
+                            </a>
+                        )}
+                        {settings.whatsapp_number && (
+                            <a href={`https://wa.me/${settings.whatsapp_number.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-green-600">
+                                <FontAwesomeIcon icon={faWhatsapp} className="w-4 h-4" />
+                            </a>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { getBaseUrl, getArchiveSEO, generateMetadataFromSEO, SchemaMarkup } from "@/app/utils/seo";
+import { getBaseUrl, getArchiveSEO, generateMetadataFromSEO, SchemaMarkup, apiTimeoutSignal } from "@/app/utils/seo";
 import type { SEOFields } from "@/app/utils/seo";
 
 interface TopperTestimonial {
@@ -27,6 +27,7 @@ interface TopperTestimonial {
 async function getTeamData(): Promise<TopperTestimonial[]> {
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/toper-testimonial-team?type=team&status=published`, {
+        signal: apiTimeoutSignal(),
         next: { revalidate: 60 },
     });
 
@@ -83,9 +84,9 @@ const Team = async () => {
                                         <div className="col-span-1 flex items-center">
                                             <div id="teamDetail" className="rounded-md">
                                                 <div className="">
-                                                    <h4 className="md:text-[32px] text-[20px] font-semibold text-[#0e569f]">
+                                                    <h3 className="md:text-[32px] text-[20px] font-semibold text-[#0e569f]">
                                                         {team?.name}
-                                                    </h4>
+                                                    </h3>
                                                     <span className="my-3 block text-[12px]">{team?.title}</span>
 
                                                     <div

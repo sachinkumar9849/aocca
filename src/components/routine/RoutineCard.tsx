@@ -18,7 +18,7 @@ export default function RoutineCard({ slot }: RoutineCardProps) {
                             <BookOpen size={18} />
                         </div>
                         <div>
-                            <h4 className="font-bold text-blackDark text-highlight-accent">{slot.subject_name}</h4>
+                            <h3 className="font-bold text-blackDark text-highlight-accent">{slot.subject_name}</h3>
                             <p className="text-grayDark text-xs font-semibold uppercase tracking-wider">
                                 {slot.subject_code}
                             </p>

@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import dynamic from "next/dynamic";
 import { normalizeImageUrl } from "@/app/utils/other";
+
+const Lightbox = dynamic(() => import("./PhotoLightbox"), { ssr: false });
 
 interface GalleryItem {
     id: number;
@@ -110,12 +111,14 @@ export default function GalleryImgFooter() {
                 ))}
             </div>
 
-            <Lightbox
-                open={open}
-                close={() => setOpen(false)}
-                index={currentIndex}
-                slides={photos.map((photo) => ({ src: photo.src, alt: photo.alt }))}
-            />
+            {open && (
+                <Lightbox
+                    open={open}
+                    close={() => setOpen(false)}
+                    index={currentIndex}
+                    slides={photos.map((photo) => ({ src: photo.src, alt: photo.alt }))}
+                />
+            )}
         </div>
     );
 }

@@ -5,7 +5,12 @@ import { getArchiveSEO, generateMetadataFromSEO, SchemaMarkup } from "@/app/util
 
 export async function generateMetadata() {
     const seo = await getArchiveSEO("gallery");
-    return generateMetadataFromSEO(seo);
+    return {
+        ...generateMetadataFromSEO(seo),
+        alternates: {
+            canonical: "https://aoc.edu.np/gallery",
+        },
+    };
 }
 
 const page = async () => {

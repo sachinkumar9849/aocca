@@ -26,6 +26,10 @@ export const getBaseUrl = () => {
     return url.trim().replace(/^['"]|['"]$/g, "");
 };
 
+const API_FETCH_TIMEOUT_MS = 3000;
+
+export const apiTimeoutSignal = () => AbortSignal.timeout(API_FETCH_TIMEOUT_MS);
+
 export function shortenMetaDescription(description?: string | null): string | undefined {
     if (!description) return undefined;
     const clean = description.replace(/\s+/g, " ").trim();
@@ -120,6 +124,7 @@ export async function getArchiveSEO(slug: string): Promise<SEOFields | null> {
     try {
         const baseUrl = getBaseUrl();
         const response = await fetch(`${baseUrl}/seo/archive/${slug}`, {
+            signal: apiTimeoutSignal(),
             next: { revalidate: 60, tags: ["seo", `seo-${slug}`] },
         });
         if (!response.ok) {

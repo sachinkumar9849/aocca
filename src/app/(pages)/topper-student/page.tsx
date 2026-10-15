@@ -57,7 +57,7 @@ const StudentSlider = () => {
     return (
         <>
             <Breadcrumbs title={"Toppers from AOC"} />
-            <div className="padding" id="student">
+            <div data-lazy-bg className="padding" id="student">
                 <div className="mx-auto max-w-7xl md:px-0 px-4">
                     {loading && <div className="text-center py-8">Loading topper students...</div>}
 
@@ -71,7 +71,7 @@ const StudentSlider = () => {
 
                     {!loading && !error && toppers.length > 0 && (
                         <Carousel className="w-full">
-                            <div className="grid grid-cols-3 gap-7">
+                            <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
                                 {toppers.map((topper) => (
                                     <div key={topper.id} className="col-span-1">
                                         <div className="blogImg ">
@@ -100,7 +100,9 @@ const StudentSlider = () => {
                                                     href={`/topper-student/${topper.slug}`}
                                                     className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
                                                 >
-                                                    <span className="mr-2">Learn More</span>
+                                                    <span className="mr-2">
+                                                        Learn More<span className="sr-only"> about {topper.title}</span>
+                                                    </span>
                                                     <span>
                                                         <FontAwesomeIcon icon={faArrowRight} width={10} />
                                                     </span>
