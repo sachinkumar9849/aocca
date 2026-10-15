@@ -15,7 +15,8 @@ import {
     faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 import GalleryImgFooter from "./GalleryImgFooter";
-import { CompanySetting, DEFAULT_COMPANY_SETTINGS, fetchCompanySettings } from "@/app/utils/companySettings";
+import type { CompanySetting } from "@/app/utils/companySettings";
+import { DEFAULT_COMPANY_SETTINGS, fetchCompanySettings } from "@/app/utils/companySettings";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -50,13 +51,19 @@ const Footer = () => {
                                 <div className="flex items-start gap-2.5">
                                     <span className="text-blue-300 font-bold shrink-0 mt-0.5">📞</span>
                                     <div className="flex flex-wrap items-center gap-x-1 leading-relaxed">
-                                        <a href={`tel:${settings.phone}`} className="hover:underline hover:text-white transition-colors whitespace-nowrap">
+                                        <a
+                                            href={`tel:${settings.phone}`}
+                                            className="hover:underline hover:text-white transition-colors whitespace-nowrap"
+                                        >
                                             {settings.phone}
                                         </a>
                                         {settings.secondary_phone && (
                                             <>
                                                 <span className="text-gray-400">,</span>
-                                                <a href={`tel:${settings.secondary_phone}`} className="hover:underline hover:text-white transition-colors whitespace-nowrap">
+                                                <a
+                                                    href={`tel:${settings.secondary_phone}`}
+                                                    className="hover:underline hover:text-white transition-colors whitespace-nowrap"
+                                                >
                                                     {settings.secondary_phone}
                                                 </a>
                                             </>
@@ -75,40 +82,82 @@ const Footer = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* Social Icons */}
+                            {}
                             <div className="flex items-center gap-3 pt-2 text-white text-base">
                                 {settings.facebook_url && (
-                                    <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-400 transition-colors flex items-center justify-center">
+                                    <a
+                                        href={settings.facebook_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="Facebook"
+                                        className="hover:text-blue-400 transition-colors flex items-center justify-center"
+                                    >
                                         <FontAwesomeIcon icon={faFacebook} className="w-4 h-4" />
                                     </a>
                                 )}
                                 {settings.twitter_url && (
-                                    <a href={settings.twitter_url} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-sky-400 transition-colors flex items-center justify-center">
+                                    <a
+                                        href={settings.twitter_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="Twitter"
+                                        className="hover:text-sky-400 transition-colors flex items-center justify-center"
+                                    >
                                         <FontAwesomeIcon icon={faTwitter} className="w-4 h-4" />
                                     </a>
                                 )}
                                 {settings.instagram_url && (
-                                    <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-400 transition-colors flex items-center justify-center">
+                                    <a
+                                        href={settings.instagram_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="Instagram"
+                                        className="hover:text-pink-400 transition-colors flex items-center justify-center"
+                                    >
                                         <FontAwesomeIcon icon={faInstagram} className="w-4 h-4" />
                                     </a>
                                 )}
                                 {settings.linkedin_url && (
-                                    <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-400 transition-colors flex items-center justify-center">
+                                    <a
+                                        href={settings.linkedin_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="LinkedIn"
+                                        className="hover:text-blue-400 transition-colors flex items-center justify-center"
+                                    >
                                         <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4" />
                                     </a>
                                 )}
                                 {settings.youtube_url && (
-                                    <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-red-400 transition-colors flex items-center justify-center">
+                                    <a
+                                        href={settings.youtube_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="YouTube"
+                                        className="hover:text-red-400 transition-colors flex items-center justify-center"
+                                    >
                                         <FontAwesomeIcon icon={faYoutube} className="w-4 h-4" />
                                     </a>
                                 )}
                                 {settings.tiktok_url && (
-                                    <a href={settings.tiktok_url} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-gray-300 transition-colors flex items-center justify-center">
+                                    <a
+                                        href={settings.tiktok_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="TikTok"
+                                        className="hover:text-gray-300 transition-colors flex items-center justify-center"
+                                    >
                                         <FontAwesomeIcon icon={faTiktok} className="w-4 h-4" />
                                     </a>
                                 )}
                                 {settings.whatsapp_number && (
-                                    <a href={`https://wa.me/${settings.whatsapp_number.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-green-400 transition-colors flex items-center justify-center">
+                                    <a
+                                        href={`https://wa.me/${settings.whatsapp_number.replace(/[^0-9]/g, "")}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="WhatsApp"
+                                        className="hover:text-green-400 transition-colors flex items-center justify-center"
+                                    >
                                         <FontAwesomeIcon icon={faWhatsapp} className="w-4 h-4" />
                                     </a>
                                 )}

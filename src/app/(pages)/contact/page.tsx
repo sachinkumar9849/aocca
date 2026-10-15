@@ -23,9 +23,12 @@ const ContactPage = async () => {
             <div className="bg-gray-50 py-12 md:py-16">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mb-10 text-center">
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Contact {settings.company_name}</h1>
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+                            Contact {settings.company_name}
+                        </h1>
                         <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-                            {settings.tagline || "Reach out for admissions help, course guidance, and academic support."}
+                            {settings.tagline ||
+                                "Reach out for admissions help, course guidance, and academic support."}
                         </p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
@@ -41,7 +44,10 @@ const ContactPage = async () => {
                                 {settings.secondary_phone && (
                                     <>
                                         <span className="text-gray-400">,</span>
-                                        <a href={`tel:${settings.secondary_phone}`} className="hover:text-blue-800 whitespace-nowrap">
+                                        <a
+                                            href={`tel:${settings.secondary_phone}`}
+                                            className="hover:text-blue-800 whitespace-nowrap"
+                                        >
                                             {settings.secondary_phone}
                                         </a>
                                     </>
@@ -87,7 +93,9 @@ const ContactPage = async () => {
                             <h3 className="font-semibold text-gray-800 mb-2">Our Location</h3>
                             <p className="text-gray-600 leading-relaxed">{settings.address}</p>
                             {settings.opening_hours && (
-                                <p className="text-xs text-gray-500 mt-2 font-medium">Hours: {settings.opening_hours}</p>
+                                <p className="text-xs text-gray-500 mt-2 font-medium">
+                                    Hours: {settings.opening_hours}
+                                </p>
                             )}
                         </div>
                     </div>

@@ -50,7 +50,6 @@ const getApiBase = (): string => {
             return "http://localhost:8082/api/v1";
         }
     }
-    // On the server during local development, use localhost backend
     if (process.env.NODE_ENV !== "production") {
         if (envUrl.includes("localhost")) {
             return envUrl;
@@ -64,11 +63,11 @@ export async function fetchCompanySettings(): Promise<CompanySetting> {
     const base = getApiBase();
     const candidateUrls = [`${base}/company-settings`];
 
-    // Ensure local backend at 8082 is always tried in development (SSR and browser)
     if (!base.includes("8082")) {
         if (
             process.env.NODE_ENV !== "production" ||
-            (typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"))
+            (typeof window !== "undefined" &&
+                (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"))
         ) {
             candidateUrls.push("http://localhost:8082/api/v1/company-settings");
         }
@@ -78,9 +77,7 @@ export async function fetchCompanySettings(): Promise<CompanySetting> {
         try {
             const res = await fetch(url, {
                 headers: { Accept: "application/json" },
-                ...(process.env.NODE_ENV === "production"
-                    ? { next: { revalidate: 60 } }
-                    : { cache: "no-store" }),
+                ...(process.env.NODE_ENV === "production" ? { next: { revalidate: 60 } } : { cache: "no-store" }),
             });
             if (res.ok) {
                 const data = await res.json();
@@ -92,7 +89,7 @@ export async function fetchCompanySettings(): Promise<CompanySetting> {
                 }
             }
         } catch {
-            // Try fallback candidate URL
+            continue;
         }
     }
 

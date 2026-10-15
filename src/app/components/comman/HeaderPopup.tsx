@@ -32,21 +32,22 @@ export const resolvePopupImageUrl = (url?: string): string => {
     if (!url) return "";
     let clean = url.trim();
 
-    // If relative path like /uploads/...
     if (clean.startsWith("/")) {
         const base = (process.env.NEXT_PUBLIC_IMG_URL || "https://api.aoc.edu.np").replace(/\/$/, "");
         return `${base}${clean}`;
     }
 
-    // In production/staging (non-localhost), if the image URL stored in DB points to localhost:8082, map it to public backend
-    if (typeof window !== "undefined" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+    if (
+        typeof window !== "undefined" &&
+        window.location.hostname !== "localhost" &&
+        window.location.hostname !== "127.0.0.1"
+    ) {
         if (clean.includes("localhost:8082") || clean.includes("127.0.0.1:8082")) {
             const prodImgBase = (process.env.NEXT_PUBLIC_IMG_URL || "https://api.aoc.edu.np").replace(/\/$/, "");
             clean = clean.replace(/^https?:\/\/(localhost|127\.0\.0\.1):8082/, prodImgBase);
         }
     }
 
-    // Upgrade http to https on HTTPS origins to prevent mixed content blocking
     if (typeof window !== "undefined" && window.location.protocol === "https:" && clean.startsWith("http://")) {
         clean = clean.replace(/^http:\/\//, "https://");
     }
@@ -61,11 +62,9 @@ const HeaderPopup: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     const pathname = usePathname();
 
-    // Touch swipe handling for mobile
     const touchStartX = useRef<number | null>(null);
     const touchEndX = useRef<number | null>(null);
 
-    // Prevent background scrolling when popup is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
@@ -77,16 +76,12 @@ const HeaderPopup: React.FC = () => {
         };
     }, [isOpen]);
 
-    // Fetch active popups on mount
     useEffect(() => {
         let isMounted = true;
 
         const fetchActivePopups = async () => {
             const base = getApiBase();
-            const candidateUrls = [
-                `${base}/popups/active`,
-                `${base}/popups?status=active`,
-            ];
+            const candidateUrls = [`${base}/popups/active`, `${base}/popups?status=active`];
 
             if (typeof window !== "undefined" && window.location.hostname === "localhost" && !base.includes("8082")) {
                 candidateUrls.push("http://localhost:8082/api/v1/popups/active");
@@ -105,14 +100,10 @@ const HeaderPopup: React.FC = () => {
                     }
 
                     const json = await res.json();
-                    const list: PopupItem[] = Array.isArray(json)
-                        ? json
-                        : Array.isArray(json?.data)
-                        ? json.data
-                        : [];
+                    const list: PopupItem[] = Array.isArray(json) ? json : Array.isArray(json?.data) ? json.data : [];
 
                     const activePopups = list.filter(
-                        (p) => p && p.image_url && (p.status === "active" || p.status === "published")
+                        (p) => p && p.image_url && (p.status === "active" || p.status === "published"),
                     );
 
                     if (activePopups.length > 0 && isMounted) {
@@ -120,8 +111,8 @@ const HeaderPopup: React.FC = () => {
                         setPopups(activePopups);
                         return;
                     }
-                } catch {
-                    // Try next candidate URL
+                } catch (error) {
+                    void error;
                 }
             }
         };
@@ -148,7 +139,6 @@ const HeaderPopup: React.FC = () => {
         }, 300);
     }, []);
 
-    // Whenever pathname is home ("/") and popups are loaded, show popup
     useEffect(() => {
         if (pathname === "/" && popups.length > 0) {
             const timer = setTimeout(() => {
@@ -156,22 +146,18 @@ const HeaderPopup: React.FC = () => {
             }, 400);
             return () => clearTimeout(timer);
         } else if (pathname !== "/") {
-            // Close popup if user navigated away from home
             setIsVisible(false);
             setIsOpen(false);
         }
     }, [pathname, popups.length, openPopup]);
 
-    // Listen for clicks on "Home" links or Logo anywhere on the page to re-open popup every time
     useEffect(() => {
         const handleHomeLinkClick = (e: MouseEvent) => {
             const target = e.target as HTMLElement | null;
             if (!target) return;
 
-            // Check if clicked element or its parent is a Home link
             const link = target.closest('a[href="/"]') as HTMLAnchorElement | null;
             if (link) {
-                // If popups exist, trigger popup opening
                 if (popups.length > 0) {
                     setTimeout(() => {
                         openPopup();
@@ -186,7 +172,6 @@ const HeaderPopup: React.FC = () => {
         };
     }, [popups.length, openPopup]);
 
-    // Handle ESC key press to close
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape" && isOpen) {
@@ -197,7 +182,6 @@ const HeaderPopup: React.FC = () => {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [isOpen, handleClose]);
 
-    // Touch swipe handlers for multiple popups
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
     };
@@ -209,13 +193,11 @@ const HeaderPopup: React.FC = () => {
     const handleTouchEnd = () => {
         if (touchStartX.current === null || touchEndX.current === null) return;
         const diff = touchStartX.current - touchEndX.current;
-        const threshold = 40; // minimum distance to trigger swipe
+        const threshold = 40;
 
         if (diff > threshold) {
-            // Swiped left -> next
             setCurrentIndex((prev) => (prev === popups.length - 1 ? 0 : prev + 1));
         } else if (diff < -threshold) {
-            // Swiped right -> prev
             setCurrentIndex((prev) => (prev === 0 ? popups.length - 1 : prev - 1));
         }
 
@@ -223,7 +205,6 @@ const HeaderPopup: React.FC = () => {
         touchEndX.current = null;
     };
 
-    // Only render when on home page, open, and popups exist
     if (pathname !== "/" || !isOpen || popups.length === 0) {
         return null;
     }
@@ -241,7 +222,8 @@ const HeaderPopup: React.FC = () => {
         setCurrentIndex((prev) => (prev === popups.length - 1 ? 0 : prev + 1));
     };
 
-    const isInternalLink = currentPopup.link_url && (currentPopup.link_url.startsWith("/") || currentPopup.link_url.startsWith("#"));
+    const isInternalLink =
+        currentPopup.link_url && (currentPopup.link_url.startsWith("/") || currentPopup.link_url.startsWith("#"));
 
     return (
         <div
@@ -262,7 +244,7 @@ const HeaderPopup: React.FC = () => {
                     isVisible ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-3 opacity-0"
                 }`}
             >
-                {/* Floating Close Button */}
+                {}
                 <button
                     onClick={handleClose}
                     className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-black/70 hover:bg-black text-white rounded-full flex items-center justify-center backdrop-blur-xs border border-white/20 transition-all duration-200 shadow-lg active:scale-90 focus:outline-hidden"
@@ -271,7 +253,7 @@ const HeaderPopup: React.FC = () => {
                     <X size={18} />
                 </button>
 
-                {/* Multiple Popups Navigation: Prev & Next */}
+                {}
                 {hasMultiple && (
                     <>
                         <button
@@ -291,7 +273,7 @@ const HeaderPopup: React.FC = () => {
                     </>
                 )}
 
-                {/* Popup Image Content */}
+                {}
                 <div className="relative w-full bg-gray-50 flex items-center justify-center overflow-hidden max-h-[60vh] sm:max-h-[70vh]">
                     {currentPopup.link_url ? (
                         isInternalLink ? (
@@ -330,7 +312,7 @@ const HeaderPopup: React.FC = () => {
                     )}
                 </div>
 
-                {/* Bottom Bar: Title & Action (if title or link is available) */}
+                {}
                 {(currentPopup.title || currentPopup.link_url) && (
                     <div className="p-3 sm:p-4 bg-white border-t border-gray-100 flex items-center justify-between gap-2.5">
                         {currentPopup.title ? (
@@ -341,8 +323,8 @@ const HeaderPopup: React.FC = () => {
                             <span className="text-[11px] sm:text-xs text-gray-400">Academy of Commerce</span>
                         )}
 
-                        {currentPopup.link_url && (
-                            isInternalLink ? (
+                        {currentPopup.link_url &&
+                            (isInternalLink ? (
                                 <Link
                                     href={currentPopup.link_url}
                                     onClick={handleClose}
@@ -362,12 +344,11 @@ const HeaderPopup: React.FC = () => {
                                     <span>Learn More</span>
                                     <ExternalLink size={12} className="hidden sm:inline" />
                                 </a>
-                            )
-                        )}
+                            ))}
                     </div>
                 )}
 
-                {/* Multiple Popups Dots Indicator */}
+                {}
                 {hasMultiple && (
                     <div className="py-1.5 sm:py-2 bg-gray-50 flex items-center justify-center gap-1.5 border-t border-gray-100">
                         {popups.map((_, idx) => (
@@ -378,7 +359,9 @@ const HeaderPopup: React.FC = () => {
                                     setCurrentIndex(idx);
                                 }}
                                 className={`h-1.5 sm:h-2 rounded-full transition-all ${
-                                    idx === currentIndex ? "w-5 sm:w-6 bg-blue-600" : "w-1.5 sm:w-2 bg-gray-300 hover:bg-gray-400"
+                                    idx === currentIndex
+                                        ? "w-5 sm:w-6 bg-blue-600"
+                                        : "w-1.5 sm:w-2 bg-gray-300 hover:bg-gray-400"
                                 }`}
                                 aria-label={`Go to slide ${idx + 1}`}
                             />

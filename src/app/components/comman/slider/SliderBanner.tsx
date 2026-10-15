@@ -67,8 +67,8 @@ export default function SliderBanner({ initialItems = [] }: SliderBannerProps) {
                             data = await response.json();
                             break;
                         }
-                    } catch {
-                        // Try next candidate URL
+                    } catch (error) {
+                        void error;
                     }
                 }
 
@@ -123,7 +123,10 @@ export default function SliderBanner({ initialItems = [] }: SliderBannerProps) {
     const hasMultipleSlides = sliderItems.length > 1;
 
     return (
-        <section className="relative group w-full overflow-hidden bg-slate-950" aria-label="Academy of Commerce hero banner">
+        <section
+            className="relative group w-full overflow-hidden bg-slate-950"
+            aria-label="Academy of Commerce hero banner"
+        >
             <h1 className="sr-only">CA Coaching in Nepal | Academy of Commerce</h1>
             <Swiper
                 spaceBetween={0}
@@ -153,9 +156,12 @@ export default function SliderBanner({ initialItems = [] }: SliderBannerProps) {
                 className="mySwiper w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[calc(100vh-130px)] min-h-[480px] max-h-[960px]"
             >
                 {sliderItems.map((item, index) => (
-                    <SwiperSlide key={item.id} className="relative w-full h-full overflow-hidden bg-slate-950 select-none">
+                    <SwiperSlide
+                        key={item.id}
+                        className="relative w-full h-full overflow-hidden bg-slate-950 select-none"
+                    >
                         <div className="relative w-full h-full">
-                            {/* Full-width, full-screen edge-to-edge hero image */}
+                            {}
                             <Image
                                 fill
                                 priority={index === 0}
@@ -171,10 +177,10 @@ export default function SliderBanner({ initialItems = [] }: SliderBannerProps) {
                                 quality={90}
                             />
 
-                            {/* Subtle dark gradient overlay for text legibility and cinematic depth */}
+                            {}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/10 pointer-events-none" />
 
-                            {/* Full-screen caption overlay */}
+                            {}
                             {(item.title || item.description) && (
                                 <div className="absolute inset-0 flex flex-col justify-end pb-16 sm:pb-20 md:pb-24 px-6 sm:px-12 md:px-20 lg:px-28 z-20 pointer-events-none">
                                     <div className="max-w-4xl pointer-events-auto">

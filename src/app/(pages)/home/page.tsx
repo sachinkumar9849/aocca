@@ -50,8 +50,8 @@ const Home = async () => {
                         break;
                     }
                 }
-            } catch {
-                // Try next endpoint
+            } catch (error) {
+                void error;
             }
         }
     } catch (error) {
