@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import MobileMenu from "./MobileMenu";
+import HeaderPopup from "./HeaderPopup";
 
 const Header = () => {
     const [isSticky, setIsSticky] = useState(false);
@@ -41,6 +42,7 @@ const Header = () => {
 
     return (
         <>
+            <HeaderPopup />
             <div className="md:hidden block">
                 <MobileMenu />
             </div>
