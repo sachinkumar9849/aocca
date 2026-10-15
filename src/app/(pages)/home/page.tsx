@@ -17,20 +17,42 @@ const Home = async () => {
     let initialSliderItems: SliderItem[] = [];
 
     try {
-        const response = await fetch(
+        const candidateUrls = [
+            process.env.NEXT_PUBLIC_API_URL
+                ? `${process.env.NEXT_PUBLIC_API_URL}/toper-testimonial-team?type=slider&status=published`
+                : null,
+            "http://localhost:8082/api/v1/toper-testimonial-team?type=slider&status=published",
             "https://api.aoc.edu.np/api/v1/toper-testimonial-team?type=slider&status=published",
-            {
-                signal: apiTimeoutSignal(),
-                next: { revalidate: 300 },
-            },
-        );
+        ].filter(Boolean) as string[];
 
-        if (response.ok) {
-            const data = await response.json();
-            initialSliderItems = data.map((item: SliderItem) => ({
-                ...item,
-                image_url: getSafeImageSrc(item.image_url),
-            }));
+        for (const url of candidateUrls) {
+            try {
+                const response = await fetch(url, {
+                    signal: apiTimeoutSignal(),
+                    next: { revalidate: 300 },
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        initialSliderItems = [
+                            {
+                                id: 999991,
+                                title: "Academy of Commerce",
+                                description: "The Pathway to Chartered Accountancy (CA) | Leading CA Coaching in Nepal",
+                                image_url: "/slider-standard-banner.jpg",
+                            },
+                            ...data.map((item: SliderItem) => ({
+                                ...item,
+                                image_url: getSafeImageSrc(item.image_url),
+                            })),
+                        ];
+                        break;
+                    }
+                }
+            } catch {
+                // Try next endpoint
+            }
         }
     } catch (error) {
         console.error("Unable to preload homepage slider data:", error);

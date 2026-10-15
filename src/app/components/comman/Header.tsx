@@ -5,12 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+    faFacebook,
+    faTwitter,
+    faInstagram,
+    faLinkedin,
+    faYoutube,
+    faTiktok,
+    faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
 import MobileMenu from "./MobileMenu";
 import HeaderPopup from "./HeaderPopup";
+import { CompanySetting, DEFAULT_COMPANY_SETTINGS, fetchCompanySettings } from "@/app/utils/companySettings";
 
 const Header = () => {
     const [isSticky, setIsSticky] = useState(false);
     const [headerHeight, setHeaderHeight] = useState(0);
+    const [settings, setSettings] = useState<CompanySetting>(DEFAULT_COMPANY_SETTINGS);
+
+    useEffect(() => {
+        fetchCompanySettings().then(setSettings);
+    }, []);
 
     const topHeaderRef = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLElement>(null);
@@ -43,61 +58,111 @@ const Header = () => {
     return (
         <>
             <HeaderPopup />
-            <div className="md:hidden block">
+            <div className="lg:hidden block">
                 <MobileMenu />
             </div>
-            <div className="top-header md:block hidden" ref={topHeaderRef}>
+            <div className="top-header hidden md:block" ref={topHeaderRef}>
                 <p className="hidden">{headerHeight}</p>
-                <div className="mx-auto max-w-7xl md:px-0 px-4">
-                    <div className="grid grid-cols-1">
-                        <div className="col-span-1">
-                            <div className="topHeaderBlock">
-                                <div className="top-header-info">
-                                    <div className="header-contact-info">
-                                        <ul className="flex items-center">
-                                            <li className="flex flex-row items-center">
-                                                <FontAwesomeIcon icon={faLocationDot} width={13} />
-                                                <span> AOC Blue Complex, Ramshah Path, Putalisadak,Kathmandu</span>
-                                            </li>
-                                            <li className="flex flex-row items-center">
-                                                <FontAwesomeIcon icon={faEnvelope} width={13} />
-                                                academyofcommercenepal@gmail.com
-                                            </li>
-                                            <li className="flex flex-row items-center">
-                                                <FontAwesomeIcon icon={faPhone} width={13} />
-                                                +977-01-4240338 , 01-4232067
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="socialIconsTop">
-                                    <ul>
-                                        <li>
-                                            <i className="fab fa-facebook" />
-                                        </li>
-                                        <li>
-                                            <i className="fab fa-twitter" />
-                                        </li>
-                                        <li>
-                                            <i className="fab fa-instagram" />
-                                        </li>
-                                    </ul>
-                                </div>
+                <div className="mx-auto max-w-7xl px-4 lg:px-6">
+                    <div className="flex flex-wrap items-center justify-between py-2 gap-y-2 gap-x-4">
+                        <div className="min-w-0 flex-1">
+                            <div className="header-contact-info">
+                                <ul className="flex flex-wrap items-center gap-x-4 lg:gap-x-6 gap-y-1 text-xs lg:text-[13px] text-white">
+                                    <li className="flex items-center gap-1.5 min-w-0">
+                                        <FontAwesomeIcon icon={faLocationDot} className="w-3.5 h-3.5 shrink-0 text-blue-200" />
+                                        <span className="truncate max-w-[280px] lg:max-w-[420px] xl:max-w-none">
+                                            {settings.address}
+                                        </span>
+                                    </li>
+                                    <li className="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                                        <FontAwesomeIcon icon={faEnvelope} className="w-3.5 h-3.5 shrink-0 text-blue-200" />
+                                        <a href={`mailto:${settings.email}`} className="hover:underline hover:text-blue-200 transition-colors">
+                                            {settings.email}
+                                        </a>
+                                    </li>
+                                    <li className="flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                                        <FontAwesomeIcon icon={faPhone} className="w-3.5 h-3.5 shrink-0 text-blue-200" />
+                                        <a href={`tel:${settings.phone}`} className="hover:underline hover:text-blue-200 transition-colors">
+                                            {settings.phone}
+                                        </a>
+                                        {settings.secondary_phone && (
+                                            <>
+                                                <span className="text-white/60">,</span>
+                                                <a href={`tel:${settings.secondary_phone}`} className="hover:underline hover:text-blue-200 transition-colors">
+                                                    {settings.secondary_phone}
+                                                </a>
+                                            </>
+                                        )}
+                                    </li>
+                                </ul>
                             </div>
+                        </div>
+                        <div className="socialIconsTop shrink-0">
+                            <ul className="flex items-center space-x-3 text-white text-sm">
+                                {settings.facebook_url && (
+                                    <li>
+                                        <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-200 transition-colors flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faFacebook} className="w-3.5 h-3.5" />
+                                        </a>
+                                    </li>
+                                )}
+                                {settings.twitter_url && (
+                                    <li>
+                                        <a href={settings.twitter_url} target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-sky-200 transition-colors flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faTwitter} className="w-3.5 h-3.5" />
+                                        </a>
+                                    </li>
+                                )}
+                                {settings.instagram_url && (
+                                    <li>
+                                        <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-200 transition-colors flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faInstagram} className="w-3.5 h-3.5" />
+                                        </a>
+                                    </li>
+                                )}
+                                {settings.linkedin_url && (
+                                    <li>
+                                        <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-200 transition-colors flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faLinkedin} className="w-3.5 h-3.5" />
+                                        </a>
+                                    </li>
+                                )}
+                                {settings.youtube_url && (
+                                    <li>
+                                        <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-red-300 transition-colors flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faYoutube} className="w-3.5 h-3.5" />
+                                        </a>
+                                    </li>
+                                )}
+                                {settings.tiktok_url && (
+                                    <li>
+                                        <a href={settings.tiktok_url} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-gray-300 transition-colors flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faTiktok} className="w-3.5 h-3.5" />
+                                        </a>
+                                    </li>
+                                )}
+                                {settings.whatsapp_number && (
+                                    <li>
+                                        <a href={`https://wa.me/${settings.whatsapp_number.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-emerald-300 transition-colors flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faWhatsapp} className="w-3.5 h-3.5" />
+                                        </a>
+                                    </li>
+                                )}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <nav
                 ref={navRef}
-                className={`md:block hidden headerNav w-full z-50 border-gray-200 bg-white dark:border-gray-700 py-[8px] ${
+                className={`lg:block hidden headerNav w-full z-50 border-gray-200 bg-white dark:border-gray-700 py-[8px] ${
                     isSticky ? "fixed top-0 left-0 shadow-md transition-all duration-300" : "relative"
                 }`}
             >
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white">
-                    <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse md:pl-0 pl-2">
+                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto bg-white px-4">
+                    <Link href={"/"} className="flex items-center space-x-3 rtl:space-x-reverse md:pl-0 pl-2 shrink-0">
                         <Image
-                            className="w-[192px] h-auto"
+                            className="w-[160px] xl:w-[192px] h-auto"
                             src={logo}
                             alt="Academy of Commerce logo"
                             priority
@@ -105,8 +170,8 @@ const Header = () => {
                         />
                     </Link>
 
-                    <div className="hidden w-full md:block md:w-auto" id="navbar-multi-level">
-                        <ul className="flex items-center flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <div className="hidden w-full lg:block lg:w-auto" id="navbar-multi-level">
+                        <ul className="flex items-center flex-row font-medium lg:space-x-4 xl:space-x-7 text-[13px] xl:text-[15px] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             <li id="headerList">
                                 <Link
                                     href="/"

@@ -1,6 +1,9 @@
 import Breadcrumbs from "@/app/components/comman/Breadcrumbs";
 import React from "react";
 import { FiPhone, FiMail, FiMapPin, FiUser, FiTag, FiMessageSquare, FiSend } from "react-icons/fi";
+import { fetchCompanySettings, DEFAULT_COMPANY_SETTINGS } from "@/app/utils/companySettings";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
     title: "Contact Academy of Commerce | Admissions & Support",
@@ -11,27 +14,47 @@ export const metadata = {
     },
 };
 
-const ContactPage = () => {
+const ContactPage = async () => {
+    const settings = await fetchCompanySettings();
+
     return (
         <>
             <Breadcrumbs title="Contact Us" />
-            <div className="bg-gray-50 py-16">
-                <div className="mx-auto max-w-7xl md:px-0 px-4 px-4 sm:px-6 lg:px-8">
+            <div className="bg-gray-50 py-12 md:py-16">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mb-10 text-center">
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Contact Academy of Commerce</h1>
-                        <p className="mt-3 text-gray-600">
-                            Reach out for admissions help, course guidance, and academic support.
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Contact {settings.company_name}</h1>
+                        <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+                            {settings.tagline || "Reach out for admissions help, course guidance, and academic support."}
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
                         <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
                             <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                                 <FiPhone className="text-blue-600 text-xl" />
                             </div>
                             <h3 className="font-semibold text-gray-800 mb-2">Call Us</h3>
-                            <a href="tel:+977-01-4240338" className="text-blue-600 hover:text-blue-800 font-medium">
-                                +977-01-4240338
-                            </a>
+                            <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 font-medium text-blue-600">
+                                <a href={`tel:${settings.phone}`} className="hover:text-blue-800 whitespace-nowrap">
+                                    {settings.phone}
+                                </a>
+                                {settings.secondary_phone && (
+                                    <>
+                                        <span className="text-gray-400">,</span>
+                                        <a href={`tel:${settings.secondary_phone}`} className="hover:text-blue-800 whitespace-nowrap">
+                                            {settings.secondary_phone}
+                                        </a>
+                                    </>
+                                )}
+                            </div>
+                            {settings.mobile && (
+                                <p className="text-xs text-gray-500 mt-2">
+                                    Mobile:{" "}
+                                    <a href={`tel:${settings.mobile}`} className="hover:underline">
+                                        {settings.mobile}
+                                    </a>
+                                </p>
+                            )}
                         </div>
 
                         <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
@@ -39,20 +62,33 @@ const ContactPage = () => {
                                 <FiMail className="text-green-600 text-xl" />
                             </div>
                             <h3 className="font-semibold text-gray-800 mb-2">Email Us</h3>
-                            <a
-                                href="mailto:academyofcommercenepal@gmail.com"
-                                className="text-green-600 hover:text-green-800 font-medium truncate max-w-full"
-                            >
-                                academyofcommercenepal@gmail.com
-                            </a>
+                            <div className="w-full flex flex-col items-center gap-1">
+                                <a
+                                    href={`mailto:${settings.email}`}
+                                    className="text-green-600 hover:text-green-800 font-medium break-words [overflow-wrap:anywhere] max-w-full text-center"
+                                >
+                                    {settings.email}
+                                </a>
+                                {settings.secondary_email && (
+                                    <a
+                                        href={`mailto:${settings.secondary_email}`}
+                                        className="text-green-500 hover:text-green-700 text-sm break-words [overflow-wrap:anywhere] max-w-full text-center"
+                                    >
+                                        {settings.secondary_email}
+                                    </a>
+                                )}
+                            </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
+                        <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 sm:col-span-2 lg:col-span-1">
                             <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                                 <FiMapPin className="text-purple-600 text-xl" />
                             </div>
                             <h3 className="font-semibold text-gray-800 mb-2">Our Location</h3>
-                            <p className="text-gray-600">AOC Blue Complex, Ramshah Path, Putalisadak, Kathmandu</p>
+                            <p className="text-gray-600 leading-relaxed">{settings.address}</p>
+                            {settings.opening_hours && (
+                                <p className="text-xs text-gray-500 mt-2 font-medium">Hours: {settings.opening_hours}</p>
+                            )}
                         </div>
                     </div>
 
@@ -60,7 +96,7 @@ const ContactPage = () => {
                         <div className="rounded-lg overflow-hidden shadow-md bg-white">
                             <iframe
                                 className="w-full"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.5421846170616!2d85.31723307165261!3d27.70054137318389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a8da4510ab%3A0xc86ae3d135068afd!2sAcademy%20Of%20Commerce!5e0!3m2!1sen!2snp!4v1735921866914!5m2!1sen!2snp"
+                                src={settings.google_map_url || DEFAULT_COMPANY_SETTINGS.google_map_url}
                                 height={450}
                                 style={{ border: 0 }}
                                 loading="lazy"
